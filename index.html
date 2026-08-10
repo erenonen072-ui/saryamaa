@@ -213,7 +213,9 @@ background:linear-gradient(135deg,#ff2f7d,#870038);
 font-size:22px;
 }
 
-.music-info{flex:1}
+.music-info{
+flex:1;
+}
 
 .music-info b{
 display:block;
@@ -251,7 +253,8 @@ color:#ff9fc1;
 margin-top:30px;
 padding:35px 20px;
 border-radius:28px;
-background:linear-gradient(
+background:
+linear-gradient(
 135deg,
 rgba(255,47,125,.15),
 rgba(255,255,255,.04)
@@ -296,8 +299,14 @@ animation:spark 3s infinite;
 }
 
 @keyframes show{
-from{opacity:0;transform:translateY(30px) scale(.95)}
-to{opacity:1;transform:none}
+from{
+opacity:0;
+transform:translateY(30px) scale(.95)
+}
+to{
+opacity:1;
+transform:none
+}
 }
 
 @keyframes shine{
@@ -313,23 +322,47 @@ opacity:0;
 }
 
 @keyframes spark{
-0%,100%{opacity:.1;transform:scale(.5)}
-50%{opacity:1;transform:scale(1.5)}
+0%,100%{
+opacity:.1;
+transform:scale(.5)
+}
+50%{
+opacity:1;
+transform:scale(1.5)
+}
 }
 
 @media(max-width:650px){
-.container{padding:45px 0}
-.counter{grid-template-columns:repeat(2,1fr)}
-.big-heart{font-size:65px}
-.message{font-size:16px}
-.music{flex-wrap:wrap}
+
+.container{
+padding:45px 0;
+}
+
+.counter{
+grid-template-columns:repeat(2,1fr);
+}
+
+.big-heart{
+font-size:65px;
+}
+
+.message{
+font-size:16px;
+}
+
+.music{
+flex-wrap:wrap;
+}
+
 }
 </style>
 </head>
 
 <body>
 
+<!-- ŞİFRE EKRANI -->
 <div id="lock">
+
 <div class="lock-box">
 
 <div class="lock-heart">❤️</div>
@@ -346,7 +379,8 @@ id="password"
 type="password"
 inputmode="numeric"
 placeholder="GG.AA.YYYY"
-autocomplete="off">
+autocomplete="off"
+>
 
 <button class="unlock" onclick="unlock()">
 ❤️ SÜRPRİZİ AÇ
@@ -355,8 +389,11 @@ autocomplete="off">
 <div id="error"></div>
 
 </div>
+
 </div>
 
+
+<!-- ANA SİTE -->
 <div id="site" class="hidden">
 
 <div class="container">
@@ -367,34 +404,51 @@ SADECE SARYAMMM İÇİN ❤️
 
 <div class="big-heart">❤️</div>
 
-<h1 class="title">Saryammm</h1>
+<h1 class="title">
+Saryammm
+</h1>
 
 <p class="subtitle">
 İyi ki hayatımdasın. Seni çok seviyorum. 💗
 </p>
 
+
+<!-- HİKAYEMİZ -->
 <div class="card">
 
 <h2>Bizim Hikâyemiz 💕</h2>
 
 <p class="message">
+
 15.12.2025...
+
 <br><br>
+
 Belki sadece bir tarih gibi görünüyor
 ama benim için çok daha fazlası.
+
 Çünkü o gün bizim hikâyemizin
 en güzel sayfalarından biri başladı.
+
 <br><br>
+
 Sen hayatıma girdikten sonra
 bazı şeyler daha güzel,
 bazı günler daha anlamlı oldu.
+
 <br><br>
+
 Ve bugün burada sana sadece
 küçük bir sürpriz bırakmak istedim.
+
 <br><br>
+
 <b>Seni çok seviyorum Saryammm. ❤️</b>
+
 </p>
 
+
+<!-- SAYAÇ -->
 <div class="counter">
 
 <div class="counter-box">
@@ -421,47 +475,77 @@ küçük bir sürpriz bırakmak istedim.
 
 </div>
 
+
+<!-- MÜZİK -->
 <div class="card">
 
 <h2>Bizim Şarkımız 🎵</h2>
 
 <div class="music">
 
-<div class="music-icon">🎵</div>
-
-<div class="music-info">
-<b>Pinhani - Beni Sen İnandır</b>
-<small>Saryammm için ❤️</small>
+<div class="music-icon">
+🎵
 </div>
 
-<button id="musicBtn" onclick="toggleMusic()">▶</button>
+<div class="music-info">
+
+<b>Pinhani - Beni Sen İnandır</b>
+
+<small>
+Saryammm için ❤️
+</small>
+
+</div>
+
+<button id="musicBtn" onclick="toggleMusic()">
+▶
+</button>
 
 </div>
 
 <audio id="music" loop preload="auto">
-<source src="Pinhani - Beni Sen İ̇nandır.mp3" type="audio/mpeg">
+
+<source
+src="sarki.mp3"
+type="audio/mpeg"
+>
+
 </audio>
 
 </div>
 
+
+<!-- MEKTUP -->
 <div class="card">
 
 <h2>Sana Birkaç Kelime 💌</h2>
 
 <p class="letter">
+
 Bazen insana uzun uzun anlatacak kelimeler
 yetmez.
+
 <br><br>
+
 O yüzden sadece şunu söylemek istiyorum:
+
 <br><br>
+
 Sen benim için çok özelsin.
+
 <br>
+
 Gülüşün, konuşman, varlığın...
+
 <br><br>
+
 Bunların hepsi benim için ayrı bir güzellik.
+
 <br><br>
+
 Ne olursa olsun bu güzel anıları
 hep hatırlayacağım.
+
 </p>
 
 <div class="signature">
@@ -470,21 +554,38 @@ Seni seven biri... ❤️
 
 </div>
 
+
+<!-- SON -->
 <div class="final">
 
-<h2>Saryammm ❤️</h2>
+<h2>
+Saryammm ❤️
+</h2>
 
 <p class="message">
-İyi ki varsın.<br>
-İyi ki hayatımdasın.<br>
+
+İyi ki varsın.
+
+<br>
+
+İyi ki hayatımdasın.
+
+<br>
+
 İyi ki bizim hikâyemiz var.
+
 <br><br>
-<b>15.12.2025 → ∞</b>
+
+<b>
+15.12.2025 → ∞
+</b>
+
 </p>
 
 </div>
 
 </div>
+
 
 <footer>
 15.12.2025 ❤️ Sonsuza kadar...
@@ -492,17 +593,21 @@ Seni seven biri... ❤️
 
 </div>
 
+
 <script>
 
-const PASSWORD="15.12.2025";
+const PASSWORD = "15.12.2025";
 
+
+/* ŞİFRE */
 function unlock(){
 
-const value=document
-.getElementById("password")
-.value.trim();
+const value =
+document.getElementById("password")
+.value
+.trim();
 
-if(value===PASSWORD){
+if(value === PASSWORD){
 
 document
 .getElementById("lock")
@@ -518,138 +623,191 @@ startHearts();
 
 document
 .getElementById("error")
-.textContent=
+.textContent =
 "Şifre yanlış. ❤️ Tekrar dene.";
 
 }
 
 }
 
+
+/* ENTER İLE AÇ */
 document
 .getElementById("password")
-.addEventListener("keydown",e=>{
-if(e.key==="Enter")unlock();
+.addEventListener("keydown",function(e){
+
+if(e.key === "Enter"){
+unlock();
+}
+
 });
 
 
-const music=document.getElementById("music");
-const musicBtn=document.getElementById("musicBtn");
+/* MÜZİK */
+const music =
+document.getElementById("music");
+
+const musicBtn =
+document.getElementById("musicBtn");
+
 
 function toggleMusic(){
 
 if(music.paused){
 
 music.play()
-.then(()=>{
-musicBtn.textContent="⏸";
+.then(function(){
+
+musicBtn.textContent = "⏸";
+
 })
-.catch(()=>{
-alert("Müziği başlatmak için tekrar butona bas.");
+.catch(function(){
+
+alert(
+"Müziği başlatmak için tekrar butona bas."
+);
+
 });
 
 }else{
 
 music.pause();
-musicBtn.textContent="▶";
+
+musicBtn.textContent = "▶";
 
 }
 
 }
 
 
-const startDate=
+/* SAYAÇ */
+const startDate =
 new Date("2025-12-15T00:00:00");
+
 
 function updateCounter(){
 
-let now=new Date();
+let now = new Date();
 
-let diff=now-startDate;
+let diff = now - startDate;
 
-if(diff<0)diff=0;
+if(diff < 0){
+diff = 0;
+}
 
-let days=Math.floor(diff/86400000);
+let days =
+Math.floor(diff / 86400000);
 
-diff%=86400000;
+diff %= 86400000;
 
-let hours=Math.floor(diff/3600000);
+let hours =
+Math.floor(diff / 3600000);
 
-diff%=3600000;
+diff %= 3600000;
 
-let minutes=Math.floor(diff/60000);
+let minutes =
+Math.floor(diff / 60000);
 
-let seconds=Math.floor((diff%60000)/1000);
+let seconds =
+Math.floor((diff % 60000) / 1000);
+
 
 document.getElementById("days")
-.textContent=days;
+.textContent = days;
 
 document.getElementById("hours")
-.textContent=hours;
+.textContent = hours;
 
 document.getElementById("minutes")
-.textContent=minutes;
+.textContent = minutes;
 
 document.getElementById("seconds")
-.textContent=seconds;
+.textContent = seconds;
 
 }
 
+
 updateCounter();
+
 setInterval(updateCounter,1000);
 
 
+/* KALPLER */
 function createHeart(){
 
-const h=document.createElement("div");
+const h =
+document.createElement("div");
 
-h.className="heart";
+h.className = "heart";
 
-h.textContent=[
-"❤️","💕","💗","💖","💘","💞","💓"
+h.textContent = [
+"❤️",
+"💕",
+"💗",
+"💖",
+"💘",
+"💞",
+"💓"
 ][Math.floor(Math.random()*7)];
 
-h.style.left=
-Math.random()*100+"vw";
 
-h.style.fontSize=
-(14+Math.random()*25)+"px";
+h.style.left =
+Math.random()*100 + "vw";
 
-h.style.animationDuration=
-(5+Math.random()*6)+"s";
+h.style.fontSize =
+(14 + Math.random()*25) + "px";
+
+h.style.animationDuration =
+(5 + Math.random()*6) + "s";
+
 
 document.body.appendChild(h);
 
-setTimeout(()=>h.remove(),12000);
+
+setTimeout(function(){
+
+h.remove();
+
+},12000);
 
 }
+
 
 function startHearts(){
 
 for(let i=0;i<15;i++){
 
-setTimeout(createHeart,i*180);
+setTimeout(
+createHeart,
+i*180
+);
 
 }
 
-setInterval(createHeart,850);
+setInterval(
+createHeart,
+850
+);
 
 }
 
 
+/* PARILTILAR */
 for(let i=0;i<35;i++){
 
-const s=document.createElement("div");
+const s =
+document.createElement("div");
 
-s.className="spark";
+s.className = "spark";
 
-s.style.left=
-Math.random()*100+"vw";
+s.style.left =
+Math.random()*100 + "vw";
 
-s.style.top=
-Math.random()*100+"vh";
+s.style.top =
+Math.random()*100 + "vh";
 
-s.style.animationDelay=
-Math.random()*3+"s";
+s.style.animationDelay =
+Math.random()*3 + "s";
 
 document.body.appendChild(s);
 
