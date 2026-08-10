@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0d0710">
-<title>Irmak Sarya ❤️</title>
+<title>Saryammm ❤️</title>
 
 <style>
 *{
@@ -13,927 +12,460 @@
     padding:0;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#09050b;
-    color:white;
-    overflow-x:hidden;
-}
-
-/* ================= ARKA PLAN ================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
+    min-height:100vh;
+    font-family:Arial, sans-serif;
     background:
-        radial-gradient(circle at 20% 20%,rgba(255,50,110,.18),transparent 30%),
-        radial-gradient(circle at 80% 80%,rgba(180,40,120,.15),transparent 30%);
-    pointer-events:none;
-    z-index:-2;
+        radial-gradient(circle at top,#ff8fa3 0%,#ff4f70 35%,#180914 100%);
+    color:white;
+    overflow:hidden;
 }
 
-#hearts{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-    z-index:20;
+.hidden{
+    display:none!important;
+}
+
+/* ŞİFRE EKRANI */
+
+#lockScreen{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.lock-box{
+    width:100%;
+    max-width:430px;
+    padding:40px 28px;
+    text-align:center;
+    border-radius:30px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    backdrop-filter:blur(18px);
+    box-shadow:0 20px 70px rgba(0,0,0,.35);
+}
+
+.lock-heart{
+    font-size:70px;
+    animation:pulse 1.5s infinite;
+}
+
+.lock-box h1{
+    margin-top:10px;
+    font-size:38px;
+}
+
+.lock-box p{
+    margin:12px 0 25px;
+    opacity:.85;
+}
+
+#password{
+    width:100%;
+    padding:16px;
+    border:0;
+    outline:0;
+    border-radius:15px;
+    text-align:center;
+    font-size:18px;
+    background:rgba(255,255,255,.9);
+    color:#222;
+}
+
+#enterBtn{
+    width:100%;
+    margin-top:14px;
+    padding:16px;
+    border:0;
+    border-radius:15px;
+    background:#fff;
+    color:#e82f59;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#error{
+    margin-top:14px;
+    color:#ffd0d9;
+    min-height:20px;
+}
+
+/* ANA SAYFA */
+
+#mainPage{
+    min-height:100vh;
+    overflow:auto;
+    padding:25px 15px 50px;
+    text-align:center;
+}
+
+.container{
+    width:100%;
+    max-width:850px;
+    margin:auto;
 }
 
 .heart{
-    position:absolute;
-    bottom:-50px;
+    font-size:65px;
+    animation:pulse 1.5s infinite;
+}
+
+h1{
+    font-size:clamp(42px,9vw,80px);
+    margin:5px 0;
+    text-shadow:0 5px 25px rgba(0,0,0,.3);
+}
+
+.subtitle{
+    font-size:20px;
+    opacity:.9;
+}
+
+.date{
+    margin:22px auto;
+    padding:13px 22px;
+    width:max-content;
+    max-width:100%;
+    border-radius:50px;
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.2);
+}
+
+.message{
+    margin:25px auto;
+    padding:28px;
+    border-radius:25px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+    box-shadow:0 15px 50px rgba(0,0,0,.2);
+}
+
+.message h2{
+    margin-bottom:15px;
+}
+
+.message p{
+    font-size:18px;
+    line-height:1.8;
+}
+
+.counter{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin:25px 0;
+}
+
+.box{
+    padding:18px 8px;
+    border-radius:18px;
+    background:rgba(255,255,255,.12);
+}
+
+.number{
+    font-size:30px;
+    font-weight:bold;
+}
+
+.label{
+    font-size:12px;
+    opacity:.75;
+    margin-top:5px;
+}
+
+.music{
+    margin-top:20px;
+    padding:20px;
+    border-radius:22px;
+    background:rgba(0,0,0,.18);
+}
+
+.music-title{
+    margin-bottom:12px;
+}
+
+audio{
+    width:100%;
+    max-width:500px;
+}
+
+.love{
+    margin-top:30px;
+    font-size:20px;
+    line-height:1.7;
+}
+
+.footer{
+    margin-top:35px;
+    opacity:.65;
+    font-size:13px;
+}
+
+/* KALPLER */
+
+.floating-heart{
+    position:fixed;
+    bottom:-30px;
+    pointer-events:none;
     animation:floatUp linear forwards;
     opacity:.8;
 }
 
 @keyframes floatUp{
-    0%{
-        transform:translateY(0) rotate(0deg) scale(.7);
-        opacity:0;
-    }
-    15%{
+    from{
+        transform:translateY(0) rotate(0deg);
         opacity:.8;
     }
-    100%{
-        transform:translateY(-115vh) rotate(360deg) scale(1.3);
+    to{
+        transform:translateY(-110vh) rotate(360deg);
         opacity:0;
     }
-}
-
-/* ================= ŞİFRE ================= */
-
-#lockScreen{
-    position:fixed;
-    inset:0;
-    z-index:100;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:25px;
-    background:
-        radial-gradient(circle at center,#2a0d20 0%,#100711 45%,#050306 100%);
-    transition:opacity .8s,visibility .8s;
-}
-
-#lockScreen.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-.lockBox{
-    width:100%;
-    max-width:420px;
-    text-align:center;
-    padding:40px 28px;
-    border:1px solid rgba(255,120,170,.25);
-    border-radius:30px;
-    background:rgba(255,255,255,.06);
-    backdrop-filter:blur(20px);
-    box-shadow:0 25px 80px rgba(255,0,100,.18);
-}
-
-.lockHeart{
-    font-size:75px;
-    animation:pulse 1.8s infinite;
-    margin-bottom:15px;
 }
 
 @keyframes pulse{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.12)}
-}
-
-.lockBox h1{
-    font-size:30px;
-    margin-bottom:10px;
-}
-
-.lockBox p{
-    color:#cdbbc5;
-    margin-bottom:25px;
-    line-height:1.6;
-}
-
-.passwordInput{
-    width:100%;
-    padding:16px 18px;
-    border-radius:15px;
-    border:1px solid rgba(255,255,255,.15);
-    background:rgba(0,0,0,.3);
-    color:white;
-    text-align:center;
-    font-size:18px;
-    outline:none;
-    margin-bottom:12px;
-}
-
-.passwordInput:focus{
-    border-color:#ff4f91;
-    box-shadow:0 0 20px rgba(255,79,145,.2);
-}
-
-.unlockBtn{
-    width:100%;
-    border:0;
-    padding:16px;
-    border-radius:15px;
-    background:linear-gradient(135deg,#ff397d,#ff6aa0);
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.unlockBtn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 10px 30px rgba(255,50,110,.3);
-}
-
-.error{
-    color:#ff7b9f;
-    margin-top:12px;
-    min-height:20px;
-}
-
-/* ================= ANA SAYFA ================= */
-
-#main{
-    display:none;
-}
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:30px 20px;
-    position:relative;
-}
-
-.heroContent{
-    max-width:850px;
-}
-
-.smallText{
-    color:#ff8db5;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    font-size:13px;
-    margin-bottom:20px;
-}
-
-.hero h1{
-    font-size:clamp(48px,10vw,105px);
-    line-height:.95;
-    margin-bottom:25px;
-    background:linear-gradient(90deg,#fff,#ff9abd,#fff);
-    -webkit-background-clip:text;
-    color:transparent;
-}
-
-.hero h1 span{
-    display:block;
-}
-
-.heroMessage{
-    font-size:20px;
-    color:#d8c7d0;
-    line-height:1.8;
-    max-width:650px;
-    margin:auto;
-}
-
-.scroll{
-    margin-top:45px;
-    animation:bounce 2s infinite;
-    color:#ff88ae;
-}
-
-@keyframes bounce{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(10px)}
-}
-
-/* ================= BÖLÜMLER ================= */
-
-section{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:80px 20px;
-}
-
-.sectionBox{
-    width:100%;
-    max-width:900px;
-    text-align:center;
-}
-
-.sectionTitle{
-    font-size:clamp(34px,6vw,60px);
-    margin-bottom:20px;
-}
-
-.sectionText{
-    color:#cdbdc5;
-    font-size:18px;
-    line-height:1.9;
-}
-
-/* ================= SÜRE ================= */
-
-.counter{
-    margin-top:40px;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.timeCard{
-    padding:25px 10px;
-    border-radius:22px;
-    background:rgba(255,255,255,.055);
-    border:1px solid rgba(255,120,170,.12);
-    backdrop-filter:blur(12px);
-}
-
-.timeNumber{
-    font-size:40px;
-    font-weight:bold;
-    color:#ff82aa;
-}
-
-.timeLabel{
-    margin-top:8px;
-    color:#a99aa2;
-    font-size:13px;
-}
-
-/* ================= MESAJLAR ================= */
-
-.messages{
-    display:grid;
-    gap:18px;
-    margin-top:40px;
-}
-
-.message{
-    padding:25px;
-    border-radius:22px;
-    background:linear-gradient(
-        135deg,
-        rgba(255,60,120,.1),
-        rgba(255,255,255,.04)
-    );
-    border:1px solid rgba(255,120,170,.12);
-    text-align:left;
-    transform:translateY(20px);
-    opacity:0;
-    transition:1s;
-}
-
-.message.show{
-    transform:translateY(0);
-    opacity:1;
-}
-
-.messageIcon{
-    font-size:28px;
-    margin-bottom:10px;
-}
-
-.message p{
-    color:#d9cbd2;
-    line-height:1.8;
-}
-
-/* ================= NEDEN ================= */
-
-.reasonGrid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
-    margin-top:35px;
-}
-
-.reason{
-    padding:25px;
-    border-radius:20px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
-    transition:.3s;
-}
-
-.reason:hover{
-    transform:translateY(-5px);
-    border-color:rgba(255,100,150,.3);
-}
-
-.reason b{
-    display:block;
-    margin-bottom:10px;
-    font-size:19px;
-}
-
-.reason span{
-    color:#bcaeb5;
-    line-height:1.6;
-}
-
-/* ================= SÜRPRİZ ================= */
-
-.surprise{
-    position:relative;
-}
-
-.surpriseBox{
-    padding:55px 25px;
-    border-radius:35px;
-    background:
-        radial-gradient(circle at center,rgba(255,50,110,.16),transparent 65%),
-        rgba(255,255,255,.04);
-    border:1px solid rgba(255,100,150,.2);
-}
-
-.gift{
-    font-size:90px;
-    cursor:pointer;
-    display:inline-block;
-    animation:giftFloat 2s infinite;
-}
-
-@keyframes giftFloat{
-    0%,100%{transform:translateY(0) rotate(-3deg)}
-    50%{transform:translateY(-12px) rotate(3deg)}
-}
-
-.surpriseBtn{
-    margin-top:25px;
-    padding:16px 30px;
-    border:0;
-    border-radius:50px;
-    color:white;
-    font-weight:bold;
-    background:linear-gradient(135deg,#ff397d,#b62cff);
-    cursor:pointer;
-    font-size:16px;
-}
-
-.hiddenMessage{
-    display:none;
-    margin-top:35px;
-    animation:appear 1s;
-}
-
-@keyframes appear{
-    from{
-        opacity:0;
-        transform:scale(.8);
-    }
-    to{
-        opacity:1;
+    0%,100%{
         transform:scale(1);
     }
+    50%{
+        transform:scale(1.12);
+    }
 }
 
-.hiddenMessage h2{
-    font-size:clamp(35px,7vw,70px);
-    margin-bottom:20px;
-    color:#ff8db5;
-}
-
-.hiddenMessage p{
-    color:#e3d4dc;
-    line-height:2;
-    font-size:18px;
-}
-
-/* ================= SON ================= */
-
-.final{
-    min-height:80vh;
-}
-
-.finalHeart{
-    font-size:100px;
-    animation:pulse 1.5s infinite;
-}
-
-.final h2{
-    font-size:clamp(35px,7vw,70px);
-    margin:25px 0;
-}
-
-.final p{
-    color:#bcaeb5;
-    line-height:1.8;
-}
-
-.signature{
-    margin-top:40px;
-    color:#ff83aa;
-    font-size:20px;
-}
-
-/* ================= MOBİL ================= */
-
-@media(max-width:650px){
-
+@media(max-width:600px){
     .counter{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .reasonGrid{
-        grid-template-columns:1fr;
+    .lock-box{
+        padding:30px 20px;
     }
 
-    .heroMessage{
-        font-size:17px;
+    .message{
+        padding:22px 18px;
     }
-
-    .timeNumber{
-        font-size:32px;
-    }
-
-    section{
-        padding:65px 18px;
-    }
-
-}
-
-/* yanlış şifre animasyonu */
-
-.shake{
-    animation:shake .4s;
-}
-
-@keyframes shake{
-    0%,100%{transform:translateX(0)}
-    25%{transform:translateX(-8px)}
-    75%{transform:translateX(8px)}
 }
 </style>
 </head>
 
 <body>
 
-<div id="hearts"></div>
+<!-- ŞİFRE EKRANI -->
 
-<!-- ================= ŞİFRE ================= -->
+<section id="lockScreen">
 
-<div id="lockScreen">
+    <div class="lock-box">
 
-    <div class="lockBox" id="lockBox">
+        <div class="lock-heart">❤️</div>
 
-        <div class="lockHeart">❤️</div>
-
-        <div class="smallText">Sadece senin için</div>
-
-        <h1>Bir Sürprizin Var</h1>
+        <h1>Saryammm</h1>
 
         <p>
-            Bu küçük dünyanın kapısını açmak için
-            özel tarihini gir. 💌
+            Bu küçük dünya sadece sana özel...
+            <br>
+            Girmek için bizim tarihimizi yaz ❤️
         </p>
 
         <input
             id="password"
-            class="passwordInput"
             type="password"
             inputmode="numeric"
-            placeholder="Tarihi gir..."
-            autocomplete="off"
+            placeholder="Şifre"
+            maxlength="10"
         >
 
-        <button class="unlockBtn" onclick="unlock()">
-            ❤️ SÜRPRİZİ AÇ
+        <button id="enterBtn">
+            ❤️ GİRİŞ YAP
         </button>
 
-        <div id="error" class="error"></div>
+        <div id="error"></div>
 
     </div>
 
-</div>
+</section>
 
-<!-- ================= ANA İÇERİK ================= -->
 
-<main id="main">
+<!-- ANA SAYFA -->
 
-    <!-- HERO -->
+<section id="mainPage" class="hidden">
 
-    <section class="hero">
+    <div class="container">
 
-        <div class="heroContent">
+        <div class="heart">❤️</div>
 
-            <div class="smallText">
-                Bu site sadece bir kişi için hazırlandı
-            </div>
+        <h1>Saryammm</h1>
 
-            <h1>
-                <span>Irmak</span>
-                <span>Sarya ❤️</span>
-            </h1>
-
-            <p class="heroMessage">
-                Bazı insanlar hayatımıza girer,
-                bazıları ise hayatımızın en güzel
-                kısmı olur.
-                <br><br>
-                Sen benim için ikinci olanlardansın.
-            </p>
-
-            <div class="scroll">
-                ↓ Aşağı kaydır ↓
-            </div>
-
+        <div class="subtitle">
+            İyi ki varsın, iyi ki biz olduk. ❤️
         </div>
 
-    </section>
-
-
-    <!-- TARİH -->
-
-    <section>
-
-        <div class="sectionBox">
-
-            <div class="smallText">
-                15.12.2025
-            </div>
-
-            <h2 class="sectionTitle">
-                Bizim Hikâyemiz ❤️
-            </h2>
-
-            <p class="sectionText">
-                Her şeyin başladığı o günden beri
-                zaman geçiyor.
-                Ama bazı şeyler zaman geçtikçe
-                daha da güzelleşiyor.
-            </p>
-
-            <div class="counter">
-
-                <div class="timeCard">
-                    <div class="timeNumber" id="days">0</div>
-                    <div class="timeLabel">GÜN</div>
-                </div>
-
-                <div class="timeCard">
-                    <div class="timeNumber" id="hours">0</div>
-                    <div class="timeLabel">SAAT</div>
-                </div>
-
-                <div class="timeCard">
-                    <div class="timeNumber" id="minutes">0</div>
-                    <div class="timeLabel">DAKİKA</div>
-                </div>
-
-                <div class="timeCard">
-                    <div class="timeNumber" id="seconds">0</div>
-                    <div class="timeLabel">SANİYE</div>
-                </div>
-
-            </div>
-
+        <div class="date">
+            📅 15.12.2025
         </div>
 
-    </section>
 
+        <div class="message">
 
-    <!-- MESAJ -->
-
-    <section>
-
-        <div class="sectionBox">
-
-            <div class="smallText">
-                Sana söylemek istediklerim
-            </div>
-
-            <h2 class="sectionTitle">
-                Küçük Birkaç Cümle 💌
-            </h2>
-
-            <div class="messages">
-
-                <div class="message">
-                    <div class="messageIcon">❤️</div>
-                    <p>
-                        İyi ki hayatıma girdin.
-                        Seninle konuştuğum, güldüğüm
-                        ve güzel anlar yaşadığım her an
-                        benim için gerçekten değerli.
-                    </p>
-                </div>
-
-                <div class="message">
-                    <div class="messageIcon">✨</div>
-                    <p>
-                        Bazen tek bir insanın bile
-                        bir günü güzelleştirmeye yettiğini
-                        sen bana gösterdin.
-                    </p>
-                </div>
-
-                <div class="message">
-                    <div class="messageIcon">🌙</div>
-                    <p>
-                        Günün nasıl geçerse geçsin,
-                        umarım bu siteyi gördüğünde
-                        yüzünde küçük de olsa
-                        bir gülümseme oluşur.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SEBEPLER -->
-
-    <section>
-
-        <div class="sectionBox">
-
-            <div class="smallText">
-                Çünkü...
-            </div>
-
-            <h2 class="sectionTitle">
-                Seni Özel Yapan Şeyler 💗
-            </h2>
-
-            <div class="reasonGrid">
-
-                <div class="reason">
-                    <b>🌸 Gülüşün</b>
-                    <span>
-                        Bazen hiçbir şey söylemene gerek yok.
-                        Gülüşün zaten yeter.
-                    </span>
-                </div>
-
-                <div class="reason">
-                    <b>✨ Enerjin</b>
-                    <span>
-                        Yanında olduğumda her şey biraz
-                        daha güzel hissettiriyor.
-                    </span>
-                </div>
-
-                <div class="reason">
-                    <b>💌 Kalbin</b>
-                    <span>
-                        Seni sen yapan en güzel şeylerden
-                        biri güzel kalbin.
-                    </span>
-                </div>
-
-                <div class="reason">
-                    <b>❤️ Sen</b>
-                    <span>
-                        En güzel sebep ise aslında çok basit:
-                        Sen olduğun için.
-                    </span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SÜRPRİZ -->
-
-    <section class="surprise">
-
-        <div class="sectionBox">
-
-            <div class="surpriseBox">
-
-                <div class="smallText">
-                    Son bir şey...
-                </div>
-
-                <div class="gift" onclick="openSurprise()">
-                    🎁
-                </div>
-
-                <h2 class="sectionTitle">
-                    Kutuyu açmak ister misin?
-                </h2>
-
-                <p class="sectionText">
-                    Buraya kadar geldiysen
-                    son sürprizi de hak ettin. ❤️
-                </p>
-
-                <button
-                    class="surpriseBtn"
-                    onclick="openSurprise()">
-                    🎁 AÇ
-                </button>
-
-                <div
-                    class="hiddenMessage"
-                    id="hiddenMessage">
-
-                    <h2>
-                        İyi ki varsın saryammmm ❤️
-                    </h2>
-
-                    <p>
-                        Belki bu sadece bir internet sitesi...
-                        <br>
-                        Ama içindeki her kelime
-                        sana özel.
-                        <br><br>
-                        15.12.2025 tarihinde başlayan
-                        hikâyemizin daha nice güzel
-                        günlere dönüşmesi dileğiyle.
-                        <br><br>
-                        Seni çok seviyorum. ❤️
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FİNAL -->
-
-    <section class="final">
-
-        <div class="sectionBox">
-
-            <div class="finalHeart">
-                ❤️
-            </div>
-
-            <h2>
-                Irmak Sarya
-            </h2>
+            <h2>💌 Sana...</h2>
 
             <p>
-                İyi ki hayatımdasın.
-                <br>
-                İyi ki biz olduk.
+                Belki bu sadece küçük bir site ama
+                benim için anlamı çok büyük.
+                Çünkü içinde <b>sen varsın.</b> ❤️
                 <br><br>
-                15.12.2025 ♾️
+                Hayatıma girdiğin için,
+                beni güldürdüğün için,
+                güzel anılar biriktirdiğimiz için
+                teşekkür ederim.
+                <br><br>
+                <b>Seni çok seviyorum Saryammm. ❤️</b>
             </p>
 
-            <div class="signature">
-                Seni seven biri tarafından hazırlandı. ❤️
+        </div>
+
+
+        <div class="counter">
+
+            <div class="box">
+                <div class="number" id="days">0</div>
+                <div class="label">GÜN</div>
+            </div>
+
+            <div class="box">
+                <div class="number" id="hours">0</div>
+                <div class="label">SAAT</div>
+            </div>
+
+            <div class="box">
+                <div class="number" id="minutes">0</div>
+                <div class="label">DAKİKA</div>
+            </div>
+
+            <div class="box">
+                <div class="number" id="seconds">0</div>
+                <div class="label">SANİYE</div>
             </div>
 
         </div>
 
-    </section>
 
-</main>
+        <div class="music">
+
+            <div class="music-title">
+                🎵 Bizim Şarkımız
+            </div>
+
+            <audio id="loveMusic" controls loop>
+                <source
+                    src="Pinhani - Beni Sen İnandır.mp3"
+                    type="audio/mpeg"
+                >
+                Tarayıcınız ses oynatmayı desteklemiyor.
+            </audio>
+
+        </div>
+
+
+        <div class="love">
+
+            🌹 Sen + Ben = Biz ❤️
+
+            <br>
+
+            <span>
+                15.12.2025'ten sonsuza...
+            </span>
+
+        </div>
+
+
+        <div class="footer">
+            Sadece Saryammm için ❤️
+        </div>
+
+    </div>
+
+</section>
 
 
 <script>
 
-/* ================= ŞİFRE ================= */
+/* ŞİFRE */
 
 const correctPassword = "15.12.2025";
 
-function unlock(){
+const lockScreen = document.getElementById("lockScreen");
+const mainPage = document.getElementById("mainPage");
+const password = document.getElementById("password");
+const enterBtn = document.getElementById("enterBtn");
+const error = document.getElementById("error");
 
-    const input = document.getElementById("password");
-    const error = document.getElementById("error");
-    const box = document.getElementById("lockBox");
+function enterSite(){
 
-    if(input.value.trim() === correctPassword){
+    if(password.value === correctPassword){
 
-        document.getElementById("lockScreen")
-            .classList.add("hide");
-
-        document.getElementById("main")
-            .style.display = "block";
-
-        document.body.style.overflowX = "hidden";
+        lockScreen.classList.add("hidden");
+        mainPage.classList.remove("hidden");
 
         startHearts();
 
-        setTimeout(()=>{
-            document.getElementById("lockScreen")
-                .style.display = "none";
-        },900);
+        updateCounter();
+
+        /*
+        Tarayıcı otomatik müzik oynatmayı engelleyebilir.
+        Bu yüzden kullanıcı giriş yaptıktan sonra
+        müziği başlatmayı deniyoruz.
+        */
+
+        const music = document.getElementById("loveMusic");
+
+        music.play().catch(() => {
+            // Kullanıcı isterse play butonuna basabilir.
+        });
 
     }else{
 
-        error.textContent =
-            "Bu tarih değil gibi... tekrar dene ❤️";
+        error.textContent = "💔 Bu tarih doğru değil...";
 
-        box.classList.remove("shake");
+        password.value = "";
 
-        void box.offsetWidth;
+        password.focus();
 
-        box.classList.add("shake");
-
-        input.value = "";
-        input.focus();
     }
+
 }
 
-document.getElementById("password")
-.addEventListener("keydown",function(e){
+enterBtn.addEventListener("click", enterSite);
+
+password.addEventListener("keydown", function(e){
 
     if(e.key === "Enter"){
-        unlock();
+        enterSite();
     }
 
 });
 
 
-/* ================= KALPLER ================= */
+/* SÜRE SAYACI */
 
-function createHeart(){
-
-    const container =
-        document.getElementById("hearts");
-
-    const heart =
-        document.createElement("div");
-
-    heart.className = "heart";
-
-    const symbols = [
-        "❤️","💗","💖","💕","💓","💘","💞","💝"
-    ];
-
-    heart.textContent =
-        symbols[Math.floor(Math.random()*symbols.length)];
-
-    heart.style.left =
-        Math.random()*100 + "%";
-
-    heart.style.fontSize =
-        (12 + Math.random()*25) + "px";
-
-    heart.style.animationDuration =
-        (5 + Math.random()*7) + "s";
-
-    container.appendChild(heart);
-
-    setTimeout(()=>{
-        heart.remove();
-    },13000);
-}
-
-function startHearts(){
-
-    for(let i=0;i<15;i++){
-
-        setTimeout(
-            createHeart,
-            i*300
-        );
-
-    }
-
-    setInterval(createHeart,700);
-}
-
-
-/* ================= SÜRE ================= */
-
-const startDate =
-    new Date(2025,11,15,0,0,0);
+const relationshipDate = new Date(
+    "2025-12-15T00:00:00"
+);
 
 function updateCounter(){
 
     const now = new Date();
 
-    let difference =
-        now.getTime() - startDate.getTime();
+    let diff = now - relationshipDate;
 
-    if(difference < 0){
-        difference = 0;
+    if(diff < 0){
+        diff = 0;
     }
 
     const totalSeconds =
-        Math.floor(difference / 1000);
+        Math.floor(diff / 1000);
 
     const days =
         Math.floor(totalSeconds / 86400);
@@ -951,92 +483,64 @@ function updateCounter(){
     const seconds =
         totalSeconds % 60;
 
-    document.getElementById("days")
-        .textContent = days;
+    document.getElementById("days").textContent =
+        days;
 
-    document.getElementById("hours")
-        .textContent =
+    document.getElementById("hours").textContent =
         String(hours).padStart(2,"0");
 
-    document.getElementById("minutes")
-        .textContent =
+    document.getElementById("minutes").textContent =
         String(minutes).padStart(2,"0");
 
-    document.getElementById("seconds")
-        .textContent =
+    document.getElementById("seconds").textContent =
         String(seconds).padStart(2,"0");
-}
 
-updateCounter();
+}
 
 setInterval(updateCounter,1000);
 
 
-/* ================= MESAJ ANİMASYONLARI ================= */
+/* UÇAN KALPLER */
 
-const observer =
-    new IntersectionObserver(
-        entries => {
+function createHeart(){
 
-            entries.forEach(entry => {
-
-                if(entry.isIntersecting){
-
-                    entry.target
-                        .classList.add("show");
-
-                }
-
-            });
-
-        },
-        {
-            threshold:.15
-        }
-    );
-
-document.querySelectorAll(".message")
-    .forEach(message=>{
-        observer.observe(message);
-    });
-
-
-/* ================= SON SÜRPRİZ ================= */
-
-let surpriseOpened = false;
-
-function openSurprise(){
-
-    const message =
-        document.getElementById("hiddenMessage");
-
-    message.style.display = "block";
-
-    if(!surpriseOpened){
-
-        surpriseOpened = true;
-
-        for(let i=0;i<40;i++){
-
-            setTimeout(
-                createHeart,
-                i*70
-            );
-
-        }
-
-        setTimeout(()=>{
-
-            message.scrollIntoView({
-                behavior:"smooth",
-                block:"center"
-            });
-
-        },300);
-
+    if(mainPage.classList.contains("hidden")){
+        return;
     }
 
+    const heart =
+        document.createElement("div");
+
+    heart.className = "floating-heart";
+
+    heart.textContent =
+        ["❤️","💕","💗","💖","💘"][Math.floor(
+            Math.random()*5
+        )];
+
+    heart.style.left =
+        Math.random()*100 + "vw";
+
+    heart.style.fontSize =
+        (15 + Math.random()*25) + "px";
+
+    heart.style.animationDuration =
+        (5 + Math.random()*6) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    },11000);
+
 }
+
+function startHearts(){
+
+    setInterval(createHeart,700);
+
+}
+
 </script>
 
 </body>
