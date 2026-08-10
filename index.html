@@ -82,7 +82,6 @@ Ve bugün burada sana sadece küçük bir sürpriz bırakmak istedim.
 <br><br>
 <b>Seni çok seviyorum Saryammm. ❤️</b>
 </p>
-
 <div class="counter">
 <div class="counter-box"><strong id="days">0</strong><span>GÜN</span></div>
 <div class="counter-box"><strong id="hours">0</strong><span>SAAT</span></div>
@@ -90,7 +89,6 @@ Ve bugün burada sana sadece küçük bir sürpriz bırakmak istedim.
 <div class="counter-box"><strong id="seconds">0</strong><span>SANİYE</span></div>
 </div>
 </div>
-
 <div class="card">
 <h2>Bizim Şarkımız 🎵</h2>
 <div class="music">
@@ -100,7 +98,6 @@ Ve bugün burada sana sadece küçük bir sürpriz bırakmak istedim.
 </div>
 <audio id="music" loop preload="auto"><source src="sarki.mp3" type="audio/mpeg"></audio>
 </div>
-
 <div class="card">
 <h2>Sana Birkaç Kelime 💌</h2>
 <p class="letter">
@@ -118,7 +115,6 @@ Ne olursa olsun bu güzel anıları hep hatırlayacağım.
 </p>
 <div class="signature">Seni seven biri... ❤️</div>
 </div>
-
 <div class="final">
 <h2>Saryammm ❤️</h2>
 <p class="message">
@@ -129,11 +125,9 @@ Ne olursa olsun bu güzel anıları hep hatırlayacağım.
 <b>15.12.2025 → ∞</b>
 </p>
 </div>
-
 </div>
 <footer>15.12.2025 ❤️ Sonsuza kadar...</footer>
 </div>
-
 <script>
 const PASSWORD="15.12.2025";
 function unlock(){
@@ -145,7 +139,6 @@ startHearts();
 }else document.getElementById("error").textContent="Şifre yanlış. ❤️ Tekrar dene.";
 }
 document.getElementById("password").addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});
-
 const music=document.getElementById("music");
 const musicBtn=document.getElementById("musicBtn");
 function toggleMusic(){
@@ -156,7 +149,6 @@ music.pause();
 musicBtn.textContent="▶";
 }
 }
-
 const startDate=new Date("2025-12-15T00:00:00");
 function updateCounter(){
 let diff=new Date()-startDate;
@@ -174,7 +166,6 @@ document.getElementById("seconds").textContent=seconds;
 }
 updateCounter();
 setInterval(updateCounter,1000);
-
 function createHeart(){
 const h=document.createElement("div");
 h.className="heart";
