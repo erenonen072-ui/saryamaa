@@ -2,145 +2,692 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#12000a">
 <title>Saryammm ❤️</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{min-height:100vh;font-family:Arial,sans-serif;color:#fff;background:radial-gradient(circle at top,#ff9aae,#ff4168 40%,#170812);overflow-x:hidden}
-.hidden{display:none!important}
-#lock{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-.card{width:100%;max-width:430px;text-align:center;padding:38px 25px;border-radius:30px;background:#ffffff1c;border:1px solid #ffffff35;backdrop-filter:blur(18px);box-shadow:0 20px 70px #0006}
-.heart{font-size:65px;animation:pulse 1.5s infinite}
-h1{font-size:clamp(45px,11vw,80px);margin:5px 0;text-shadow:0 5px 25px #0005}
-.subtitle{font-size:19px;opacity:.9}
-input{width:100%;padding:16px;margin-top:22px;border:0;border-radius:15px;text-align:center;font-size:18px;outline:0}
-button{width:100%;padding:16px;margin-top:12px;border:0;border-radius:15px;background:#fff;color:#e52d58;font-size:16px;font-weight:bold;cursor:pointer}
-#error{height:24px;margin-top:10px;color:#ffd2dc}
-#main{min-height:100vh;text-align:center;padding:30px 15px 50px}
-.container{max-width:850px;margin:auto}
-.date{display:inline-block;margin:20px;padding:12px 22px;border-radius:30px;background:#ffffff1c}
-.message,.music{margin:20px auto;padding:25px;border-radius:25px;background:#ffffff18;backdrop-filter:blur(15px);box-shadow:0 15px 50px #0003}
-.message p{font-size:18px;line-height:1.8;margin-top:12px}
-.counter{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:25px 0}
-.box{padding:18px 5px;border-radius:18px;background:#ffffff18}
-.number{font-size:30px;font-weight:bold}
-.label{font-size:11px;opacity:.7;margin-top:5px}
-.music-title{margin-bottom:12px;font-size:18px}
-audio{width:100%;max-width:500px}
-.love{font-size:20px;line-height:1.8;margin-top:25px}
-.footer{margin-top:35px;font-size:13px;opacity:.6}
-.fh{position:fixed;bottom:-30px;pointer-events:none;animation:up linear forwards}
-@keyframes up{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
-@keyframes pulse{50%{transform:scale(1.12)}}
-@media(max-width:600px){.counter{grid-template-columns:repeat(2,1fr)}.card{padding:30px 20px}.message{padding:20px 15px}}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    color:white;
+    background:
+        radial-gradient(circle at 20% 20%,#5c0b2d 0%,transparent 35%),
+        radial-gradient(circle at 80% 80%,#3b061d 0%,transparent 35%),
+        linear-gradient(135deg,#070006,#1a000d,#090006);
+    overflow-x:hidden;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* ŞİFRE EKRANI */
+
+#lockScreen{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:
+        radial-gradient(circle,#5b092d 0%,#19000d 45%,#050004 100%);
+}
+
+.lockBox{
+    width:min(430px,100%);
+    padding:42px 28px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:30px;
+    background:rgba(255,255,255,.07);
+    backdrop-filter:blur(20px);
+    box-shadow:0 0 70px rgba(255,0,100,.22);
+    animation:appear 1s ease;
+}
+
+.lockHeart{
+    font-size:70px;
+    animation:pulse 1.7s infinite;
+}
+
+.lockBox h1{
+    margin:15px 0 8px;
+    font-size:34px;
+}
+
+.lockBox p{
+    color:#e8cbd5;
+    margin-bottom:25px;
+}
+
+#password{
+    width:100%;
+    padding:16px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:15px;
+    outline:none;
+    text-align:center;
+    font-size:18px;
+    color:white;
+    background:rgba(0,0,0,.3);
+}
+
+#password:focus{
+    border-color:#ff4d91;
+    box-shadow:0 0 20px rgba(255,77,145,.2);
+}
+
+.unlock{
+    width:100%;
+    margin-top:14px;
+    padding:16px;
+    border:0;
+    border-radius:15px;
+    color:white;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff2f7d,#b7004c);
+    box-shadow:0 8px 25px rgba(255,0,100,.25);
+}
+
+#error{
+    min-height:20px;
+    margin-top:12px;
+    color:#ff7ba9;
+}
+
+/* ANA SAYFA */
+
+#main{
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+.container{
+    width:min(900px,92%);
+    margin:auto;
+    padding:70px 0;
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+.badge{
+    display:inline-block;
+    padding:9px 18px;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:30px;
+    background:rgba(255,255,255,.06);
+    color:#ff9fc1;
+    font-size:13px;
+    letter-spacing:2px;
+}
+
+.heroHeart{
+    font-size:78px;
+    margin:25px 0 5px;
+    filter:drop-shadow(0 0 25px rgba(255,30,110,.55));
+    animation:pulse 1.7s infinite;
+}
+
+h1.title{
+    font-size:clamp(45px,10vw,90px);
+    line-height:1;
+    background:linear-gradient(90deg,#fff,#ff9fc1,#fff);
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:shine 4s linear infinite;
+}
+
+.subtitle{
+    margin-top:18px;
+    color:#e8cbd5;
+    font-size:18px;
+}
+
+.card{
+    margin-top:35px;
+    padding:30px 22px;
+    border-radius:28px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.065);
+    backdrop-filter:blur(18px);
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.card h2{
+    color:#ff8fb8;
+    margin-bottom:18px;
+}
+
+.message{
+    color:#f5dfe7;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.counter{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:25px;
+}
+
+.counterBox{
+    padding:18px 8px;
+    border-radius:18px;
+    background:rgba(0,0,0,.2);
+}
+
+.counterBox strong{
+    display:block;
+    font-size:28px;
+    color:#ff78aa;
+}
+
+.counterBox span{
+    font-size:12px;
+    color:#cfaebc;
+}
+
+.music{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-top:25px;
+    padding:16px;
+    text-align:left;
+    border-radius:18px;
+    background:rgba(0,0,0,.25);
+}
+
+.musicIcon{
+    width:52px;
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:linear-gradient(135deg,#ff2f7d,#8d003c);
+    font-size:22px;
+}
+
+.musicInfo{
+    flex:1;
+}
+
+.musicInfo b{
+    display:block;
+    margin-bottom:5px;
+}
+
+.musicInfo small{
+    color:#bfa5af;
+}
+
+.music button{
+    border:0;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    cursor:pointer;
+    color:white;
+    background:#ff2f7d;
+    font-size:18px;
+}
+
+.final{
+    margin-top:35px;
+    padding:35px 20px;
+    border-radius:28px;
+    background:linear-gradient(
+        135deg,
+        rgba(255,47,125,.14),
+        rgba(255,255,255,.04)
+    );
+}
+
+.finalText{
+    font-size:28px;
+    color:#ffb1ca;
+    margin-bottom:12px;
+}
+
+footer{
+    padding:20px;
+    text-align:center;
+    color:#856b77;
+    font-size:12px;
+}
+
+/* KALPLER */
+
+.heart{
+    position:fixed;
+    bottom:-50px;
+    pointer-events:none;
+    z-index:1;
+    animation:floatUp linear forwards;
+    opacity:.7;
+}
+
+.spark{
+    position:fixed;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:#ff82ad;
+    opacity:.6;
+    animation:sparkle 3s infinite;
+}
+
+/* ANİMASYON */
+
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.12)}
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+@keyframes shine{
+    0%,100%{filter:brightness(1)}
+    50%{filter:brightness(1.35)}
+}
+
+@keyframes floatUp{
+    to{
+        transform:translateY(-110vh) rotate(30deg);
+        opacity:0;
+    }
+}
+
+@keyframes sparkle{
+    0%,100%{opacity:.15;transform:scale(.5)}
+    50%{opacity:1;transform:scale(1.5)}
+}
+
+@media(max-width:650px){
+    .container{
+        padding:45px 0;
+    }
+
+    .counter{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .heroHeart{
+        font-size:62px;
+    }
+
+    .message{
+        font-size:16px;
+    }
+
+    .music{
+        flex-wrap:wrap;
+    }
+}
 </style>
 </head>
+
 <body>
 
-<section id="lock">
-<div class="card">
-<div class="heart">❤️</div>
-<h1>Saryammm</h1>
-<div class="subtitle">Bu küçük dünya sadece sana özel...</div>
-<input id="pass" type="password" inputmode="numeric" placeholder="Bizim tarihimizi yaz ❤️">
-<button onclick="login()">❤️ GİRİŞ YAP</button>
-<div id="error"></div>
-</div>
-</section>
+<!-- ŞİFRE -->
+<div id="lockScreen">
+    <div class="lockBox">
 
-<section id="main" class="hidden">
-<div class="container">
+        <div class="lockHeart">❤️</div>
 
-<div class="heart">❤️</div>
-<h1>Saryammm</h1>
-<div class="subtitle">İyi ki varsın, iyi ki biz olduk. ❤️</div>
+        <h1>Saryammm</h1>
 
-<div class="date">📅 15.12.2025</div>
+        <p>
+            Bu site sadece sana özel.<br>
+            İçeri girmek için özel tarihi yaz. 💕
+        </p>
 
-<div class="message">
-<h2>💌 Sana...</h2>
-<p>
-Belki bu sadece küçük bir site ama benim için
-anlamı çok büyük. Çünkü içinde <b>sen varsın.</b> ❤️
-<br><br>
-Hayatıma girdiğin, beni güldürdüğün ve
-güzel anılar biriktirdiğimiz için teşekkür ederim.
-<br><br>
-<b>Seni çok seviyorum Saryammm. ❤️</b>
-</p>
+        <input
+            id="password"
+            type="password"
+            inputmode="numeric"
+            placeholder="GG.AA.YYYY"
+            autocomplete="off"
+        >
+
+        <button class="unlock" onclick="unlock()">
+            ❤️ SÜRPRİZİ AÇ
+        </button>
+
+        <div id="error"></div>
+    </div>
 </div>
 
-<div class="counter">
-<div class="box"><div class="number" id="d">0</div><div class="label">GÜN</div></div>
-<div class="box"><div class="number" id="h">00</div><div class="label">SAAT</div></div>
-<div class="box"><div class="number" id="m">00</div><div class="label">DAKİKA</div></div>
-<div class="box"><div class="number" id="s">00</div><div class="label">SANİYE</div></div>
-</div>
+<!-- ANA İÇERİK -->
+<div id="main" class="hidden">
 
-<div class="music">
-<div class="music-title">🎵 Bizim Şarkımız</div>
-<audio id="music" controls loop>
-<source src="Pinhani - Beni Sen İnandır.mp3" type="audio/mpeg">
-</audio>
-</div>
+    <div class="container">
 
-<div class="love">
-🌹 Sen + Ben = Biz ❤️<br>
-15.12.2025'ten sonsuza...
-</div>
+        <div class="badge">
+            SADECE SARYAMMM İÇİN ❤️
+        </div>
 
-<div class="footer">Sadece Saryammm için ❤️</div>
+        <div class="heroHeart">❤️</div>
+
+        <h1 class="title">Saryammm</h1>
+
+        <p class="subtitle">
+            İyi ki hayatımdasın. Seni çok seviyorum. 💗
+        </p>
+
+        <div class="card">
+
+            <h2>Bizim Hikâyemiz 💕</h2>
+
+            <div class="message">
+                Seninle başlayan bu güzel hikâyenin
+                her saniyesi benim için çok değerli.
+                <br><br>
+                Bazen tek bir insan bütün dünyayı
+                güzelleştirebilir. Benim dünyamı
+                güzelleştiren kişi de sensin.
+                <br><br>
+                <b>Seni seviyorum Saryammm. ❤️</b>
+            </div>
+
+            <div class="counter">
+
+                <div class="counterBox">
+                    <strong id="days">0</strong>
+                    <span>GÜN</span>
+                </div>
+
+                <div class="counterBox">
+                    <strong id="hours">0</strong>
+                    <span>SAAT</span>
+                </div>
+
+                <div class="counterBox">
+                    <strong id="minutes">0</strong>
+                    <span>DAKİKA</span>
+                </div>
+
+                <div class="counterBox">
+                    <strong id="seconds">0</strong>
+                    <span>SANİYE</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- MÜZİK -->
+        <div class="card">
+
+            <h2>Bizim Şarkımız 🎵</h2>
+
+            <div class="music">
+
+                <div class="musicIcon">🎵</div>
+
+                <div class="musicInfo">
+                    <b>Pinhani - Beni Sen İnandır</b>
+                    <small>Saryammm için ❤️</small>
+                </div>
+
+                <button onclick="toggleMusic()" id="musicBtn">
+                    ▶
+                </button>
+
+            </div>
+
+            <audio
+                id="music"
+                loop
+                preload="auto"
+            >
+                <source
+                    src="Pinhani - Beni Sen İ̇nandır.mp3"
+                    type="audio/mpeg"
+                >
+            </audio>
+
+        </div>
+
+        <div class="final">
+
+            <div class="finalText">
+                Saryammm ❤️
+            </div>
+
+            <p class="message">
+                Bu küçük site sana verebileceğim
+                en güzel sürprizlerden sadece biri.
+                <br><br>
+                <b>
+                    İyi ki varsın,
+                    iyi ki benimlesin. 💗
+                </b>
+            </p>
+
+        </div>
+
+    </div>
+
+    <footer>
+        15.12.2025 ❤️ Sonsuza kadar...
+    </footer>
 
 </div>
-</section>
 
 <script>
-const start=new Date("2025-12-15T00:00:00");
 
-function login(){
-if(document.getElementById("pass").value==="15.12.2025"){
-document.getElementById("lock").classList.add("hidden");
-document.getElementById("main").classList.remove("hidden");
-document.getElementById("music").play().catch(()=>{});
-hearts();
-}else{
-document.getElementById("error").textContent="💔 Tarih yanlış...";
-document.getElementById("pass").value="";
-}
+/* ŞİFRE */
+
+const correctPassword = "15.12.2025";
+
+function unlock(){
+
+    const input =
+        document.getElementById("password").value.trim();
+
+    const error =
+        document.getElementById("error");
+
+    if(input === correctPassword){
+
+        document
+            .getElementById("lockScreen")
+            .classList.add("hidden");
+
+        document
+            .getElementById("main")
+            .classList.remove("hidden");
+
+        startHearts();
+
+    }else{
+
+        error.textContent =
+            "Şifre yanlış. ❤️ Tekrar dene.";
+
+    }
 }
 
-document.getElementById("pass").addEventListener("keydown",e=>{
-if(e.key==="Enter")login();
-});
+document
+    .getElementById("password")
+    .addEventListener("keydown",function(e){
 
-function counter(){
-let x=Math.max(0,Date.now()-start);
-let sec=Math.floor(x/1000);
-let days=Math.floor(sec/86400);
-let hours=Math.floor(sec%86400/3600);
-let mins=Math.floor(sec%3600/60);
-let secs=sec%60;
-d.textContent=days;
-h.textContent=String(hours).padStart(2,"0");
-m.textContent=String(mins).padStart(2,"0");
-s.textContent=String(secs).padStart(2,"0");
-}
-setInterval(counter,1000);
-counter();
+        if(e.key === "Enter"){
+            unlock();
+        }
 
-function hearts(){
-setInterval(()=>{
-if(document.getElementById("main").classList.contains("hidden"))return;
-let e=document.createElement("div");
-e.className="fh";
-e.textContent=["❤️","💕","💗","💖","💘"][Math.floor(Math.random()*5)];
-e.style.left=Math.random()*100+"vw";
-e.style.fontSize=15+Math.random()*25+"px";
-e.style.animationDuration=5+Math.random()*5+"s";
-document.body.appendChild(e);
-setTimeout(()=>e.remove(),11000);
-},700);
+    });
+
+
+/* MÜZİK */
+
+const music =
+    document.getElementById("music");
+
+const musicBtn =
+    document.getElementById("musicBtn");
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play();
+
+        musicBtn.textContent = "⏸";
+
+    }else{
+
+        music.pause();
+
+        musicBtn.textContent = "▶";
+
+    }
+
 }
+
+
+/* İLİŞKİ SAYACI */
+
+const startDate =
+    new Date("2025-12-15T00:00:00");
+
+function updateCounter(){
+
+    const now = new Date();
+
+    let diff =
+        now.getTime() -
+        startDate.getTime();
+
+    if(diff < 0) diff = 0;
+
+    const days =
+        Math.floor(diff / 86400000);
+
+    diff %= 86400000;
+
+    const hours =
+        Math.floor(diff / 3600000);
+
+    diff %= 3600000;
+
+    const minutes =
+        Math.floor(diff / 60000);
+
+    const seconds =
+        Math.floor((diff % 60000) / 1000);
+
+    document.getElementById("days")
+        .textContent = days;
+
+    document.getElementById("hours")
+        .textContent = hours;
+
+    document.getElementById("minutes")
+        .textContent = minutes;
+
+    document.getElementById("seconds")
+        .textContent = seconds;
+}
+
+updateCounter();
+
+setInterval(updateCounter,1000);
+
+
+/* KALPLER */
+
+function createHeart(){
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.textContent =
+        ["❤️","💕","💗","💖","💘","💞"]
+        [Math.floor(Math.random()*6)];
+
+    heart.style.left =
+        Math.random()*100 + "vw";
+
+    heart.style.fontSize =
+        (14 + Math.random()*24) + "px";
+
+    heart.style.animationDuration =
+        (5 + Math.random()*6) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },12000);
+}
+
+function startHearts(){
+
+    for(let i=0;i<12;i++){
+
+        setTimeout(
+            createHeart,
+            i*250
+        );
+
+    }
+
+    setInterval(
+        createHeart,
+        900
+    );
+}
+
+
+/* YILDIZLAR */
+
+for(let i=0;i<35;i++){
+
+    const spark =
+        document.createElement("div");
+
+    spark.className = "spark";
+
+    spark.style.left =
+        Math.random()*100 + "vw";
+
+    spark.style.top =
+        Math.random()*100 + "vh";
+
+    spark.style.animationDelay =
+        Math.random()*3 + "s";
+
+    document.body.appendChild(spark);
+}
+
 </script>
+
 </body>
 </html>
