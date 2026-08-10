@@ -2,9 +2,9 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#000000">
-<title>Vynza - Video Sosyal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d0710">
+<title>Irmak Sarya ❤️</title>
 
 <style>
 *{
@@ -13,3259 +13,1028 @@
     padding:0;
 }
 
-:root{
-    --primary:#ff2d55;
-    --purple:#8b5cf6;
-    --bg:#000;
-    --card:#111;
-    --text:#fff;
-    --muted:#aaa;
-    --border:#292929;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:#000;
-    color:#fff;
     font-family:Arial,Helvetica,sans-serif;
-    overflow:hidden;
+    background:#09050b;
+    color:white;
+    overflow-x:hidden;
 }
 
-/* AUTH */
+/* ================= ARKA PLAN ================= */
 
-#auth{
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,50,110,.18),transparent 30%),
+        radial-gradient(circle at 80% 80%,rgba(180,40,120,.15),transparent 30%);
+    pointer-events:none;
+    z-index:-2;
+}
+
+#hearts{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:20;
+}
+
+.heart{
+    position:absolute;
+    bottom:-50px;
+    animation:floatUp linear forwards;
+    opacity:.8;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) rotate(0deg) scale(.7);
+        opacity:0;
+    }
+    15%{
+        opacity:.8;
+    }
+    100%{
+        transform:translateY(-115vh) rotate(360deg) scale(1.3);
+        opacity:0;
+    }
+}
+
+/* ================= ŞİFRE ================= */
+
+#lockScreen{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    background:
+        radial-gradient(circle at center,#2a0d20 0%,#100711 45%,#050306 100%);
+    transition:opacity .8s,visibility .8s;
+}
+
+#lockScreen.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.lockBox{
+    width:100%;
+    max-width:420px;
+    text-align:center;
+    padding:40px 28px;
+    border:1px solid rgba(255,120,170,.25);
+    border-radius:30px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(20px);
+    box-shadow:0 25px 80px rgba(255,0,100,.18);
+}
+
+.lockHeart{
+    font-size:75px;
+    animation:pulse 1.8s infinite;
+    margin-bottom:15px;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.12)}
+}
+
+.lockBox h1{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.lockBox p{
+    color:#cdbbc5;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.passwordInput{
+    width:100%;
+    padding:16px 18px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(0,0,0,.3);
+    color:white;
+    text-align:center;
+    font-size:18px;
+    outline:none;
+    margin-bottom:12px;
+}
+
+.passwordInput:focus{
+    border-color:#ff4f91;
+    box-shadow:0 0 20px rgba(255,79,145,.2);
+}
+
+.unlockBtn{
+    width:100%;
+    border:0;
+    padding:16px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#ff397d,#ff6aa0);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.unlockBtn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(255,50,110,.3);
+}
+
+.error{
+    color:#ff7b9f;
+    margin-top:12px;
+    min-height:20px;
+}
+
+/* ================= ANA SAYFA ================= */
+
+#main{
+    display:none;
+}
+
+.hero{
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:20px;
-    background:
-        radial-gradient(circle at 20% 20%,#ff2d5540,transparent 35%),
-        radial-gradient(circle at 80% 80%,#8b5cf640,transparent 35%),
-        #050505;
-}
-
-.auth-box{
-    width:100%;
-    max-width:400px;
-    background:#111;
-    border:1px solid #292929;
-    border-radius:24px;
-    padding:30px;
-}
-
-.logo{
     text-align:center;
-    font-size:42px;
-    font-weight:900;
-    background:linear-gradient(90deg,#ff2d55,#8b5cf6);
-    -webkit-background-clip:text;
-    color:transparent;
-    margin-bottom:7px;
+    padding:30px 20px;
+    position:relative;
 }
 
-.auth-sub{
-    text-align:center;
-    color:#999;
-    margin-bottom:25px;
+.heroContent{
+    max-width:850px;
 }
 
-.tabs{
-    display:flex;
-    gap:5px;
-    background:#1a1a1a;
-    padding:4px;
-    border-radius:12px;
+.smallText{
+    color:#ff8db5;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    font-size:13px;
     margin-bottom:20px;
 }
 
-.tabs button{
-    flex:1;
-    padding:11px;
-    border:0;
-    border-radius:9px;
-    background:transparent;
-    color:#999;
-    font-weight:bold;
-}
-
-.tabs button.active{
-    background:linear-gradient(90deg,#ff2d55,#8b5cf6);
-    color:white;
-}
-
-.form-group{
-    margin-bottom:14px;
-}
-
-.form-group label{
-    display:block;
-    font-size:13px;
-    font-weight:bold;
-    margin-bottom:6px;
-}
-
-input,
-textarea{
-    width:100%;
-    padding:13px;
-    border-radius:11px;
-    border:1px solid #333;
-    background:#1a1a1a;
-    color:white;
-    outline:none;
-}
-
-textarea{
-    resize:none;
-}
-
-.primary{
-    width:100%;
-    border:0;
-    padding:13px;
-    border-radius:11px;
-    color:white;
-    font-weight:bold;
-    background:linear-gradient(90deg,#ff2d55,#8b5cf6);
-}
-
-.error{
-    display:none;
-    background:#ff2d5520;
-    color:#ff6683;
-    padding:10px;
-    border-radius:9px;
-    font-size:13px;
-    margin-bottom:12px;
-}
-
-/* APP */
-
-#app{
-    display:none;
-    height:100vh;
-}
-
-/* TOP */
-
-.topbar{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    height:58px;
-    z-index:100;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 15px;
-    background:linear-gradient(#0009,transparent);
-}
-
-.top-logo{
-    font-size:25px;
-    font-weight:900;
-    background:linear-gradient(90deg,#ff2d55,#8b5cf6);
+.hero h1{
+    font-size:clamp(48px,10vw,105px);
+    line-height:.95;
+    margin-bottom:25px;
+    background:linear-gradient(90deg,#fff,#ff9abd,#fff);
     -webkit-background-clip:text;
     color:transparent;
 }
 
-.top-actions{
-    display:flex;
-    gap:7px;
-}
-
-.top-btn{
-    border:0;
-    background:#0007;
-    color:#fff;
-    width:38px;
-    height:38px;
-    border-radius:50%;
-    font-size:17px;
-}
-
-/* FEED */
-
-.feed{
-    width:100%;
-    height:100vh;
-    overflow-y:auto;
-    scroll-snap-type:y mandatory;
-    scrollbar-width:none;
-}
-
-.feed::-webkit-scrollbar{
-    display:none;
-}
-
-.video-item{
-    position:relative;
-    width:100%;
-    height:100vh;
-    scroll-snap-align:start;
-    background:#050505;
-    overflow:hidden;
-}
-
-.video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.video-overlay{
-    position:absolute;
-    inset:0;
-    background:
-        linear-gradient(
-            transparent 45%,
-            #0008 100%
-        );
-    pointer-events:none;
-}
-
-/* VIDEO INFO */
-
-.video-info{
-    position:absolute;
-    left:15px;
-    right:75px;
-    bottom:85px;
-    z-index:5;
-}
-
-.username{
-    font-weight:900;
-    font-size:16px;
-    margin-bottom:9px;
-}
-
-.caption{
-    font-size:14px;
-    line-height:1.5;
-    margin-bottom:12px;
-    white-space:pre-wrap;
-}
-
-/* SIDE ACTIONS */
-
-.video-actions{
-    position:absolute;
-    right:12px;
-    bottom:82px;
-    z-index:10;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:17px;
-}
-
-.action-wrap{
-    text-align:center;
-}
-
-.action-btn{
-    width:48px;
-    height:48px;
-    border:0;
-    border-radius:50%;
-    background:#0007;
-    color:#fff;
-    font-size:24px;
-}
-
-.action-btn.liked{
-    color:#ff2d55;
-}
-
-.action-count{
-    font-size:11px;
-    margin-top:3px;
-    font-weight:bold;
-}
-
-/* FOLLOW */
-
-.follow{
-    border:1px solid #fff;
-    color:#fff;
-    background:#0007;
-    border-radius:8px;
-    padding:6px 11px;
-    font-size:12px;
-    font-weight:bold;
-}
-
-.follow.following{
-    background:#fff;
-    color:#000;
-}
-
-/* BOTTOM NAV */
-
-.bottom-nav{
-    position:fixed;
-    left:0;
-    right:0;
-    bottom:0;
-    height:62px;
-    z-index:200;
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
-    background:#000d;
-    border-top:1px solid #ffffff10;
-}
-
-.bottom-nav button{
-    flex:1;
-    height:100%;
-    border:0;
-    background:transparent;
-    color:#aaa;
-    font-size:11px;
-}
-
-.bottom-nav button span{
-    display:block;
-    font-size:21px;
-    margin-bottom:2px;
-}
-
-.bottom-nav button.active{
-    color:#fff;
-}
-
-/* UPLOAD */
-
-.upload{
-    position:fixed;
-    inset:0;
-    background:#000e;
-    z-index:500;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.upload.show{
-    display:flex;
-}
-
-.upload-box{
-    width:100%;
-    max-width:430px;
-    background:#151515;
-    border:1px solid #333;
-    border-radius:20px;
-    padding:22px;
-}
-
-.modal-title{
-    font-size:22px;
-    font-weight:900;
-    margin-bottom:18px;
-}
-
-.file{
-    width:100%;
-    padding:18px;
-    border:2px dashed #444;
-    border-radius:14px;
-    text-align:center;
-    color:#aaa;
-    margin-bottom:15px;
-}
-
-.file input{
-    display:none;
-}
-
-.preview{
-    display:none;
-    width:100%;
-    max-height:350px;
-    object-fit:cover;
-    border-radius:12px;
-    margin-bottom:12px;
-}
-
-.modal-buttons{
-    display:flex;
-    gap:8px;
-}
-
-.modal-buttons button{
-    flex:1;
-    padding:12px;
-    border-radius:10px;
-    border:0;
-    font-weight:bold;
-}
-
-.cancel{
-    background:#292929;
-    color:#fff;
-}
-
-.publish{
-    background:linear-gradient(90deg,#ff2d55,#8b5cf6);
-    color:#fff;
-}
-
-/* PAGE */
-
-.page{
-    position:fixed;
-    inset:0;
-    z-index:300;
-    background:#090909;
-    display:none;
-    overflow-y:auto;
-    padding:65px 15px 85px;
-}
-
-.page.show{
+.hero h1 span{
     display:block;
 }
 
-.page-inner{
+.heroMessage{
+    font-size:20px;
+    color:#d8c7d0;
+    line-height:1.8;
     max-width:650px;
     margin:auto;
 }
 
-.page-header{
+.scroll{
+    margin-top:45px;
+    animation:bounce 2s infinite;
+    color:#ff88ae;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(10px)}
+}
+
+/* ================= BÖLÜMLER ================= */
+
+section{
+    min-height:100vh;
     display:flex;
     align-items:center;
-    gap:12px;
-    margin-bottom:18px;
-}
-
-.back{
-    border:0;
-    background:#1b1b1b;
-    color:#fff;
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    font-size:18px;
-}
-
-.page-title{
-    font-size:24px;
-    font-weight:900;
-}
-
-/* PROFILE */
-
-.profile-top{
-    text-align:center;
-    padding:20px 0;
-}
-
-.big-avatar{
-    width:100px;
-    height:100px;
-    object-fit:cover;
-    border-radius:50%;
-    border:3px solid #ff2d55;
-}
-
-.profile-top h2{
-    margin-top:10px;
-}
-
-.profile-top p{
-    color:#999;
-    margin-top:5px;
-}
-
-.profile-stats{
-    display:flex;
     justify-content:center;
-    gap:45px;
-    margin:20px 0;
+    padding:80px 20px;
 }
 
-.profile-stat strong{
-    display:block;
+.sectionBox{
+    width:100%;
+    max-width:900px;
     text-align:center;
-    font-size:19px;
 }
 
-.profile-stat span{
-    color:#999;
-    font-size:12px;
+.sectionTitle{
+    font-size:clamp(34px,6vw,60px);
+    margin-bottom:20px;
 }
 
-/* MESSAGES */
+.sectionText{
+    color:#cdbdc5;
+    font-size:18px;
+    line-height:1.9;
+}
 
-.messages-layout{
+/* ================= SÜRE ================= */
+
+.counter{
+    margin-top:40px;
     display:grid;
-    grid-template-columns:190px 1fr;
-    height:calc(100vh - 140px);
-    border:1px solid #292929;
-    border-radius:17px;
-    overflow:hidden;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
 }
 
-.conversations{
-    border-right:1px solid #292929;
-    overflow:auto;
+.timeCard{
+    padding:25px 10px;
+    border-radius:22px;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,120,170,.12);
+    backdrop-filter:blur(12px);
 }
 
-.conversation{
-    padding:12px;
-    display:flex;
-    gap:9px;
-    align-items:center;
-    cursor:pointer;
+.timeNumber{
+    font-size:40px;
+    font-weight:bold;
+    color:#ff82aa;
 }
 
-.conversation:hover,
-.conversation.active{
-    background:#1b1b1b;
-}
-
-.conversation img{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    object-fit:cover;
-}
-
-.conversation-name{
+.timeLabel{
+    margin-top:8px;
+    color:#a99aa2;
     font-size:13px;
-    font-weight:bold;
 }
 
-.chat{
-    display:flex;
-    flex-direction:column;
-    min-width:0;
-}
+/* ================= MESAJLAR ================= */
 
-.chat-head{
-    padding:12px;
-    border-bottom:1px solid #292929;
-    font-weight:bold;
-}
-
-.chat-body{
-    flex:1;
-    overflow:auto;
-    padding:14px;
+.messages{
+    display:grid;
+    gap:18px;
+    margin-top:40px;
 }
 
 .message{
-    max-width:75%;
-    padding:9px 12px;
-    border-radius:14px;
-    margin-bottom:8px;
-    font-size:13px;
-    line-height:1.4;
+    padding:25px;
+    border-radius:22px;
+    background:linear-gradient(
+        135deg,
+        rgba(255,60,120,.1),
+        rgba(255,255,255,.04)
+    );
+    border:1px solid rgba(255,120,170,.12);
+    text-align:left;
+    transform:translateY(20px);
+    opacity:0;
+    transition:1s;
 }
 
-.message.me{
-    margin-left:auto;
-    background:linear-gradient(90deg,#ff2d55,#8b5cf6);
-}
-
-.message.them{
-    background:#242424;
-}
-
-.chat-form{
-    display:flex;
-    gap:7px;
-    padding:10px;
-    border-top:1px solid #292929;
-}
-
-.chat-form input{
-    flex:1;
-}
-
-.chat-form button{
-    border:0;
-    background:#ff2d55;
-    color:#fff;
-    border-radius:10px;
-    padding:0 15px;
-}
-
-/* SEARCH */
-
-.search-page input{
-    margin-bottom:15px;
-}
-
-.user-result{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:12px;
-    border-radius:12px;
-    background:#151515;
-    margin-bottom:8px;
-    cursor:pointer;
-}
-
-.user-result img{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    object-fit:cover;
-}
-
-.user-result strong{
-    display:block;
-}
-
-.user-result span{
-    color:#999;
-    font-size:12px;
-}
-
-/* COMMENTS */
-
-.comments-panel{
-    position:fixed;
-    left:0;
-    right:0;
-    bottom:0;
-    max-height:70vh;
-    z-index:700;
-    background:#111;
-    border-radius:22px 22px 0 0;
-    transform:translateY(100%);
-    transition:.25s;
-    padding:18px;
-    display:flex;
-    flex-direction:column;
-}
-
-.comments-panel.show{
+.message.show{
     transform:translateY(0);
+    opacity:1;
 }
 
-.comment-head{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:12px;
-}
-
-.comment-list{
-    overflow:auto;
-    flex:1;
-    max-height:45vh;
-}
-
-.comment-item{
-    display:flex;
-    gap:9px;
+.messageIcon{
+    font-size:28px;
     margin-bottom:10px;
 }
 
-.comment-item img{
-    width:34px;
-    height:34px;
-    border-radius:50%;
+.message p{
+    color:#d9cbd2;
+    line-height:1.8;
 }
 
-.comment-content{
-    background:#202020;
-    padding:8px 10px;
-    border-radius:11px;
-    font-size:13px;
+/* ================= NEDEN ================= */
+
+.reasonGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin-top:35px;
 }
 
-.comment-content strong{
+.reason{
+    padding:25px;
+    border-radius:20px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.reason:hover{
+    transform:translateY(-5px);
+    border-color:rgba(255,100,150,.3);
+}
+
+.reason b{
     display:block;
-    margin-bottom:2px;
+    margin-bottom:10px;
+    font-size:19px;
 }
 
-.comment-form{
-    display:flex;
-    gap:7px;
-    margin-top:10px;
+.reason span{
+    color:#bcaeb5;
+    line-height:1.6;
 }
 
-.comment-form input{
-    flex:1;
+/* ================= SÜRPRİZ ================= */
+
+.surprise{
+    position:relative;
 }
 
-.comment-form button{
+.surpriseBox{
+    padding:55px 25px;
+    border-radius:35px;
+    background:
+        radial-gradient(circle at center,rgba(255,50,110,.16),transparent 65%),
+        rgba(255,255,255,.04);
+    border:1px solid rgba(255,100,150,.2);
+}
+
+.gift{
+    font-size:90px;
+    cursor:pointer;
+    display:inline-block;
+    animation:giftFloat 2s infinite;
+}
+
+@keyframes giftFloat{
+    0%,100%{transform:translateY(0) rotate(-3deg)}
+    50%{transform:translateY(-12px) rotate(3deg)}
+}
+
+.surpriseBtn{
+    margin-top:25px;
+    padding:16px 30px;
     border:0;
-    background:#ff2d55;
-    color:#fff;
-    border-radius:10px;
-    padding:0 15px;
+    border-radius:50px;
+    color:white;
+    font-weight:bold;
+    background:linear-gradient(135deg,#ff397d,#b62cff);
+    cursor:pointer;
+    font-size:16px;
 }
 
-/* EMPTY */
-
-.empty{
-    text-align:center;
-    color:#888;
-    padding:40px 15px;
+.hiddenMessage{
+    display:none;
+    margin-top:35px;
+    animation:appear 1s;
 }
 
-/* MOBILE */
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
 
-@media(min-width:700px){
+.hiddenMessage h2{
+    font-size:clamp(35px,7vw,70px);
+    margin-bottom:20px;
+    color:#ff8db5;
+}
 
-    .feed{
-        max-width:520px;
-        margin:auto;
-        box-shadow:0 0 70px #000;
+.hiddenMessage p{
+    color:#e3d4dc;
+    line-height:2;
+    font-size:18px;
+}
+
+/* ================= SON ================= */
+
+.final{
+    min-height:80vh;
+}
+
+.finalHeart{
+    font-size:100px;
+    animation:pulse 1.5s infinite;
+}
+
+.final h2{
+    font-size:clamp(35px,7vw,70px);
+    margin:25px 0;
+}
+
+.final p{
+    color:#bcaeb5;
+    line-height:1.8;
+}
+
+.signature{
+    margin-top:40px;
+    color:#ff83aa;
+    font-size:20px;
+}
+
+/* ================= MOBİL ================= */
+
+@media(max-width:650px){
+
+    .counter{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .bottom-nav{
-        width:520px;
-        left:50%;
-        right:auto;
-        transform:translateX(-50%);
+    .reasonGrid{
+        grid-template-columns:1fr;
+    }
+
+    .heroMessage{
+        font-size:17px;
+    }
+
+    .timeNumber{
+        font-size:32px;
+    }
+
+    section{
+        padding:65px 18px;
     }
 
 }
 
-@media(max-width:600px){
+/* yanlış şifre animasyonu */
 
-    .messages-layout{
-        grid-template-columns:110px 1fr;
-    }
+.shake{
+    animation:shake .4s;
+}
 
-    .conversation div:not(.conversation-name){
-        display:none;
-    }
-
-    .conversation-name{
-        font-size:11px;
-        overflow:hidden;
-    }
-
+@keyframes shake{
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-8px)}
+    75%{transform:translateX(8px)}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= AUTH ================= -->
+<div id="hearts"></div>
 
-<section id="auth">
+<!-- ================= ŞİFRE ================= -->
 
-<div class="auth-box">
+<div id="lockScreen">
 
-    <div class="logo">
-        Vynza
-    </div>
+    <div class="lockBox" id="lockBox">
 
-    <div class="auth-sub">
-        Video. Mesaj. Sosyal.
-    </div>
+        <div class="lockHeart">❤️</div>
 
-    <div class="tabs">
+        <div class="smallText">Sadece senin için</div>
 
-        <button
-            id="loginTab"
-            class="active"
-            onclick="showAuth('login')">
-            Giriş
+        <h1>Bir Sürprizin Var</h1>
+
+        <p>
+            Bu küçük dünyanın kapısını açmak için
+            özel tarihini gir. 💌
+        </p>
+
+        <input
+            id="password"
+            class="passwordInput"
+            type="password"
+            inputmode="numeric"
+            placeholder="Tarihi gir..."
+            autocomplete="off"
+        >
+
+        <button class="unlockBtn" onclick="unlock()">
+            ❤️ SÜRPRİZİ AÇ
         </button>
 
-        <button
-            id="registerTab"
-            onclick="showAuth('register')">
-            Kayıt
-        </button>
-
-    </div>
-
-    <div
-        id="error"
-        class="error">
-    </div>
-
-    <div id="loginForm">
-
-        <div class="form-group">
-
-            <label>Kullanıcı adı</label>
-
-            <input
-                id="loginUsername"
-                placeholder="kullaniciadi">
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Şifre</label>
-
-            <input
-                id="loginPassword"
-                type="password"
-                placeholder="••••••">
-
-        </div>
-
-        <button
-            class="primary"
-            onclick="login()">
-            Giriş Yap
-        </button>
-
-    </div>
-
-    <div
-        id="registerForm"
-        style="display:none">
-
-        <div class="form-group">
-
-            <label>Ad</label>
-
-            <input
-                id="registerName"
-                placeholder="Adın">
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Kullanıcı adı</label>
-
-            <input
-                id="registerUsername"
-                placeholder="kullaniciadi">
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Şifre</label>
-
-            <input
-                id="registerPassword"
-                type="password"
-                placeholder="En az 4 karakter">
-
-        </div>
-
-        <button
-            class="primary"
-            onclick="register()">
-            Hesap Oluştur
-        </button>
+        <div id="error" class="error"></div>
 
     </div>
 
 </div>
 
-</section>
+<!-- ================= ANA İÇERİK ================= -->
+
+<main id="main">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="heroContent">
+
+            <div class="smallText">
+                Bu site sadece bir kişi için hazırlandı
+            </div>
+
+            <h1>
+                <span>Irmak</span>
+                <span>Sarya ❤️</span>
+            </h1>
+
+            <p class="heroMessage">
+                Bazı insanlar hayatımıza girer,
+                bazıları ise hayatımızın en güzel
+                kısmı olur.
+                <br><br>
+                Sen benim için ikinci olanlardansın.
+            </p>
+
+            <div class="scroll">
+                ↓ Aşağı kaydır ↓
+            </div>
+
+        </div>
+
+    </section>
 
 
-<!-- ================= APP ================= -->
+    <!-- TARİH -->
 
-<div id="app">
+    <section>
 
-<div class="topbar">
+        <div class="sectionBox">
 
-    <div class="top-logo">
-        Vynza
-    </div>
+            <div class="smallText">
+                15.12.2025
+            </div>
 
-    <div class="top-actions">
+            <h2 class="sectionTitle">
+                Bizim Hikâyemiz ❤️
+            </h2>
 
-        <button
-            class="top-btn"
-            onclick="openSearch()">
-            🔎
-        </button>
+            <p class="sectionText">
+                Her şeyin başladığı o günden beri
+                zaman geçiyor.
+                Ama bazı şeyler zaman geçtikçe
+                daha da güzelleşiyor.
+            </p>
 
-        <button
-            class="top-btn"
-            onclick="toggleDark()">
-            🌙
-        </button>
+            <div class="counter">
 
-    </div>
+                <div class="timeCard">
+                    <div class="timeNumber" id="days">0</div>
+                    <div class="timeLabel">GÜN</div>
+                </div>
 
-</div>
+                <div class="timeCard">
+                    <div class="timeNumber" id="hours">0</div>
+                    <div class="timeLabel">SAAT</div>
+                </div>
+
+                <div class="timeCard">
+                    <div class="timeNumber" id="minutes">0</div>
+                    <div class="timeLabel">DAKİKA</div>
+                </div>
+
+                <div class="timeCard">
+                    <div class="timeNumber" id="seconds">0</div>
+                    <div class="timeLabel">SANİYE</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
-<!-- VIDEO FEED -->
+    <!-- MESAJ -->
 
-<main
-    id="feed"
-    class="feed">
+    <section>
+
+        <div class="sectionBox">
+
+            <div class="smallText">
+                Sana söylemek istediklerim
+            </div>
+
+            <h2 class="sectionTitle">
+                Küçük Birkaç Cümle 💌
+            </h2>
+
+            <div class="messages">
+
+                <div class="message">
+                    <div class="messageIcon">❤️</div>
+                    <p>
+                        İyi ki hayatıma girdin.
+                        Seninle konuştuğum, güldüğüm
+                        ve güzel anlar yaşadığım her an
+                        benim için gerçekten değerli.
+                    </p>
+                </div>
+
+                <div class="message">
+                    <div class="messageIcon">✨</div>
+                    <p>
+                        Bazen tek bir insanın bile
+                        bir günü güzelleştirmeye yettiğini
+                        sen bana gösterdin.
+                    </p>
+                </div>
+
+                <div class="message">
+                    <div class="messageIcon">🌙</div>
+                    <p>
+                        Günün nasıl geçerse geçsin,
+                        umarım bu siteyi gördüğünde
+                        yüzünde küçük de olsa
+                        bir gülümseme oluşur.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEBEPLER -->
+
+    <section>
+
+        <div class="sectionBox">
+
+            <div class="smallText">
+                Çünkü...
+            </div>
+
+            <h2 class="sectionTitle">
+                Seni Özel Yapan Şeyler 💗
+            </h2>
+
+            <div class="reasonGrid">
+
+                <div class="reason">
+                    <b>🌸 Gülüşün</b>
+                    <span>
+                        Bazen hiçbir şey söylemene gerek yok.
+                        Gülüşün zaten yeter.
+                    </span>
+                </div>
+
+                <div class="reason">
+                    <b>✨ Enerjin</b>
+                    <span>
+                        Yanında olduğumda her şey biraz
+                        daha güzel hissettiriyor.
+                    </span>
+                </div>
+
+                <div class="reason">
+                    <b>💌 Kalbin</b>
+                    <span>
+                        Seni sen yapan en güzel şeylerden
+                        biri güzel kalbin.
+                    </span>
+                </div>
+
+                <div class="reason">
+                    <b>❤️ Sen</b>
+                    <span>
+                        En güzel sebep ise aslında çok basit:
+                        Sen olduğun için.
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SÜRPRİZ -->
+
+    <section class="surprise">
+
+        <div class="sectionBox">
+
+            <div class="surpriseBox">
+
+                <div class="smallText">
+                    Son bir şey...
+                </div>
+
+                <div class="gift" onclick="openSurprise()">
+                    🎁
+                </div>
+
+                <h2 class="sectionTitle">
+                    Kutuyu açmak ister misin?
+                </h2>
+
+                <p class="sectionText">
+                    Buraya kadar geldiysen
+                    son sürprizi de hak ettin. ❤️
+                </p>
+
+                <button
+                    class="surpriseBtn"
+                    onclick="openSurprise()">
+                    🎁 AÇ
+                </button>
+
+                <div
+                    class="hiddenMessage"
+                    id="hiddenMessage">
+
+                    <h2>
+                        İyi ki varsın Irmak ❤️
+                    </h2>
+
+                    <p>
+                        Belki bu sadece bir internet sitesi...
+                        <br>
+                        Ama içindeki her kelime
+                        sana özel.
+                        <br><br>
+                        15.12.2025 tarihinde başlayan
+                        hikâyemizin daha nice güzel
+                        günlere dönüşmesi dileğiyle.
+                        <br><br>
+                        Seni çok seviyorum. ❤️
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FİNAL -->
+
+    <section class="final">
+
+        <div class="sectionBox">
+
+            <div class="finalHeart">
+                ❤️
+            </div>
+
+            <h2>
+                Irmak Sarya
+            </h2>
+
+            <p>
+                İyi ki hayatımdasın.
+                <br>
+                İyi ki biz olduk.
+                <br><br>
+                15.12.2025 ♾️
+            </p>
+
+            <div class="signature">
+                Seni seven biri tarafından hazırlandı. ❤️
+            </div>
+
+        </div>
+
+    </section>
+
 </main>
-
-
-<!-- BOTTOM NAV -->
-
-<nav class="bottom-nav">
-
-    <button
-        class="active"
-        onclick="goHome(this)">
-        <span>🏠</span>
-        Ana Sayfa
-    </button>
-
-    <button
-        onclick="openSearch()">
-        <span>🔎</span>
-        Keşfet
-    </button>
-
-    <button
-        onclick="openUpload()">
-        <span>➕</span>
-        Paylaş
-    </button>
-
-    <button
-        onclick="openMessages()">
-        <span>💬</span>
-        Mesaj
-    </button>
-
-    <button
-        onclick="openMyProfile()">
-        <span>👤</span>
-        Profil
-    </button>
-
-</nav>
-
-</div>
-
-
-<!-- ================= UPLOAD ================= -->
-
-<div
-    id="upload"
-    class="upload">
-
-<div class="upload-box">
-
-    <div class="modal-title">
-        🎬 Video Paylaş
-    </div>
-
-    <label class="file">
-
-        📁 Video seç
-
-        <input
-            id="videoFile"
-            type="file"
-            accept="video/*"
-            onchange="previewVideo(event)">
-
-    </label>
-
-    <video
-        id="videoPreview"
-        class="preview"
-        controls>
-    </video>
-
-    <textarea
-        id="videoCaption"
-        placeholder="Videona açıklama ekle..."
-        maxlength="300"></textarea>
-
-    <div class="modal-buttons">
-
-        <button
-            class="cancel"
-            onclick="closeUpload()">
-            Vazgeç
-        </button>
-
-        <button
-            class="publish"
-            onclick="publishVideo()">
-            Paylaş
-        </button>
-
-    </div>
-
-</div>
-
-</div>
-
-
-<!-- ================= PAGE ================= -->
-
-<div
-    id="page"
-    class="page">
-
-<div class="page-inner">
-
-    <div class="page-header">
-
-        <button
-            class="back"
-            onclick="closePage()">
-            ←
-        </button>
-
-        <div
-            id="pageTitle"
-            class="page-title">
-        </div>
-
-    </div>
-
-    <div id="pageContent"></div>
-
-</div>
-
-</div>
-
-
-<!-- ================= COMMENTS ================= -->
-
-<div
-    id="commentsPanel"
-    class="comments-panel">
-
-    <div class="comment-head">
-
-        <strong>
-            Yorumlar
-        </strong>
-
-        <button
-            class="top-btn"
-            onclick="closeComments()">
-            ✕
-        </button>
-
-    </div>
-
-    <div
-        id="commentList"
-        class="comment-list">
-    </div>
-
-    <div class="comment-form">
-
-        <input
-            id="commentInput"
-            placeholder="Yorum yaz...">
-
-        <button
-            onclick="sendComment()">
-            Gönder
-        </button>
-
-    </div>
-
-</div>
 
 
 <script>
 
-/* ======================================
-   STORAGE
-====================================== */
+/* ================= ŞİFRE ================= */
 
-const USERS_KEY = "vynza_v3_users";
-const VIDEOS_KEY = "vynza_v3_videos";
-const MSG_KEY = "vynza_v3_messages";
-const CURRENT_KEY = "vynza_v3_current";
-const DARK_KEY = "vynza_v3_dark";
+const correctPassword = "15.12.2025";
 
-let users =
-    JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+function unlock(){
 
-let videos =
-    JSON.parse(localStorage.getItem(VIDEOS_KEY)) || [];
+    const input = document.getElementById("password");
+    const error = document.getElementById("error");
+    const box = document.getElementById("lockBox");
 
-let messages =
-    JSON.parse(localStorage.getItem(MSG_KEY)) || [];
+    if(input.value.trim() === correctPassword){
 
-let currentId =
-    localStorage.getItem(CURRENT_KEY);
+        document.getElementById("lockScreen")
+            .classList.add("hide");
 
-let selectedVideo = null;
+        document.getElementById("main")
+            .style.display = "block";
 
-let currentChatUser = null;
+        document.body.style.overflowX = "hidden";
 
-let currentCommentVideo = null;
+        startHearts();
 
-
-/* ======================================
-   DEMO USER
-====================================== */
-
-if(users.length === 0){
-
-    users.push({
-
-        id:Date.now(),
-
-        name:"Vynza",
-
-        username:"vynza",
-
-        password:"1234",
-
-        bio:"Vynza'ya hoş geldin! 🚀",
-
-        avatar:"https://i.pravatar.cc/200?img=12",
-
-        followers:[],
-
-        following:[]
-
-    });
-
-    saveUsers();
-
-}
-
-
-/* ======================================
-   STORAGE
-====================================== */
-
-function saveUsers(){
-
-    localStorage.setItem(
-        USERS_KEY,
-        JSON.stringify(users)
-    );
-
-}
-
-function saveVideos(){
-
-    localStorage.setItem(
-        VIDEOS_KEY,
-        JSON.stringify(videos)
-    );
-
-}
-
-function saveMessages(){
-
-    localStorage.setItem(
-        MSG_KEY,
-        JSON.stringify(messages)
-    );
-
-}
-
-
-/* ======================================
-   AUTH
-====================================== */
-
-function showAuth(type){
-
-    document.getElementById("loginForm")
-        .style.display =
-        type === "login"
-        ? "block"
-        : "none";
-
-    document.getElementById("registerForm")
-        .style.display =
-        type === "register"
-        ? "block"
-        : "none";
-
-    document.getElementById("loginTab")
-        .classList.toggle(
-            "active",
-            type === "login"
-        );
-
-    document.getElementById("registerTab")
-        .classList.toggle(
-            "active",
-            type === "register"
-        );
-
-    hideError();
-
-}
-
-
-function error(text){
-
-    const box =
-        document.getElementById("error");
-
-    box.textContent = text;
-
-    box.style.display = "block";
-
-}
-
-
-function hideError(){
-
-    document.getElementById("error")
-        .style.display = "none";
-
-}
-
-
-/* REGISTER */
-
-function register(){
-
-    hideError();
-
-    const name =
-        document.getElementById(
-            "registerName"
-        ).value.trim();
-
-    const username =
-        document.getElementById(
-            "registerUsername"
-        ).value.trim().toLowerCase();
-
-    const password =
-        document.getElementById(
-            "registerPassword"
-        ).value;
-
-
-    if(name.length < 2){
-
-        error("Adını gir.");
-
-        return;
-
-    }
-
-
-    if(username.length < 3){
-
-        error(
-            "Kullanıcı adı en az 3 karakter olmalı."
-        );
-
-        return;
-
-    }
-
-
-    if(!/^[a-z0-9_]+$/.test(username)){
-
-        error(
-            "Kullanıcı adında sadece harf, sayı ve _ kullan."
-        );
-
-        return;
-
-    }
-
-
-    if(password.length < 4){
-
-        error(
-            "Şifre en az 4 karakter olmalı."
-        );
-
-        return;
-
-    }
-
-
-    if(
-        users.some(
-            u =>
-                u.username === username
-        )
-    ){
-
-        error(
-            "Bu kullanıcı adı alınmış."
-        );
-
-        return;
-
-    }
-
-
-    const user = {
-
-        id:Date.now(),
-
-        name,
-
-        username,
-
-        password,
-
-        bio:"Vynza kullanıcısı 👋",
-
-        avatar:
-            "https://i.pravatar.cc/200?u="
-            + Date.now(),
-
-        followers:[],
-
-        following:[]
-
-    };
-
-
-    users.push(user);
-
-    saveUsers();
-
-    currentId = user.id;
-
-    localStorage.setItem(
-        CURRENT_KEY,
-        currentId
-    );
-
-    openApp();
-
-}
-
-
-/* LOGIN */
-
-function login(){
-
-    hideError();
-
-    const username =
-        document.getElementById(
-            "loginUsername"
-        ).value.trim().toLowerCase();
-
-    const password =
-        document.getElementById(
-            "loginPassword"
-        ).value;
-
-
-    const user =
-        users.find(
-            u =>
-                u.username === username
-                &&
-                u.password === password
-        );
-
-
-    if(!user){
-
-        error(
-            "Kullanıcı adı veya şifre yanlış."
-        );
-
-        return;
-
-    }
-
-
-    currentId = user.id;
-
-    localStorage.setItem(
-        CURRENT_KEY,
-        currentId
-    );
-
-    openApp();
-
-}
-
-
-/* LOGOUT */
-
-function logout(){
-
-    currentId = null;
-
-    localStorage.removeItem(
-        CURRENT_KEY
-    );
-
-    document.getElementById(
-        "app"
-    ).style.display = "none";
-
-    document.getElementById(
-        "auth"
-    ).style.display = "flex";
-
-}
-
-
-/* ======================================
-   USER
-====================================== */
-
-function me(){
-
-    return users.find(
-        u =>
-            String(u.id)
-            ===
-            String(currentId)
-    );
-
-}
-
-
-/* ======================================
-   APP
-====================================== */
-
-function openApp(){
-
-    if(!me()){
-
-        logout();
-
-        return;
-
-    }
-
-
-    document.getElementById(
-        "auth"
-    ).style.display = "none";
-
-    document.getElementById(
-        "app"
-    ).style.display = "block";
-
-
-    renderFeed();
-
-}
-
-
-/* ======================================
-   FEED
-====================================== */
-
-function renderFeed(){
-
-    const feed =
-        document.getElementById(
-            "feed"
-        );
-
-    feed.innerHTML = "";
-
-
-    if(videos.length === 0){
-
-        feed.innerHTML = `
-
-            <div
-                style="
-                    height:100vh;
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                    text-align:center;
-                    padding:30px;
-                ">
-
-                <div>
-
-                    <div style="
-                        font-size:65px;
-                        margin-bottom:15px;
-                    ">
-                        🎬
-                    </div>
-
-                    <h2>
-                        Henüz video yok
-                    </h2>
-
-                    <p style="
-                        color:#aaa;
-                        margin-top:8px;
-                    ">
-                        İlk videoyu sen paylaş!
-                    </p>
-
-                    <button
-                        class="primary"
-                        style="
-                            width:auto;
-                            padding:12px 20px;
-                            margin-top:15px;
-                        "
-                        onclick="openUpload()">
-                        + Video Paylaş
-                    </button>
-
-                </div>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    videos.forEach(
-        video =>
-            feed.appendChild(
-                createVideo(video)
-            )
-    );
-
-
-    setTimeout(
-        setupVideos,
-        100
-    );
-
-}
-
-
-/* CREATE VIDEO */
-
-function createVideo(video){
-
-    const user =
-        users.find(
-            u =>
-                u.id === video.userId
-        );
-
-
-    if(!user){
-
-        return document.createElement(
-            "div"
-        );
-
-    }
-
-
-    const current =
-        me();
-
-
-    const liked =
-        video.likes.includes(
-            current.id
-        );
-
-
-    const following =
-        current.following.includes(
-            user.id
-        );
-
-
-    const item =
-        document.createElement(
-            "section"
-        );
-
-
-    item.className =
-        "video-item";
-
-
-    item.innerHTML = `
-
-        <video
-            class="video"
-            src="${safeVideo(video.video)}"
-            loop
-            playsinline
-            muted
-            preload="metadata"
-            onclick="toggleVideo(this)">
-        </video>
-
-        <div class="video-overlay"></div>
-
-
-        <div class="video-info">
-
-            <div class="username">
-                @${escapeHTML(user.username)}
-            </div>
-
-            <div class="caption">
-                ${escapeHTML(video.caption || "")}
-            </div>
-
-            ${
-                user.id !== current.id
-                ?
-                `
-                <button
-                    class="follow
-                    ${following ? "following" : ""}"
-                    onclick="toggleFollow(${user.id})">
-
-                    ${
-                        following
-                        ? "Takipte"
-                        : "Takip Et"
-                    }
-
-                </button>
-                `
-                :
-                ""
-            }
-
-        </div>
-
-
-        <div class="video-actions">
-
-            <img
-                src="${safeImage(user.avatar)}"
-                style="
-                    width:48px;
-                    height:48px;
-                    border-radius:50%;
-                    object-fit:cover;
-                    border:2px solid white;
-                    cursor:pointer;
-                "
-                onclick="openUserProfile(${user.id})">
-
-
-            <div class="action-wrap">
-
-                <button
-                    class="action-btn ${liked ? "liked" : ""}"
-                    onclick="toggleLike(${video.id})">
-
-                    ${liked ? "❤️" : "🤍"}
-
-                </button>
-
-                <div class="action-count">
-                    ${video.likes.length}
-                </div>
-
-            </div>
-
-
-            <div class="action-wrap">
-
-                <button
-                    class="action-btn"
-                    onclick="openComments(${video.id})">
-
-                    💬
-
-                </button>
-
-                <div class="action-count">
-                    ${video.comments.length}
-                </div>
-
-            </div>
-
-
-            <div class="action-wrap">
-
-                <button
-                    class="action-btn"
-                    onclick="shareVideo(${video.id})">
-
-                    ↗️
-
-                </button>
-
-                <div class="action-count">
-                    Paylaş
-                </div>
-
-            </div>
-
-
-            ${
-                video.userId === current.id
-                ?
-                `
-                <div class="action-wrap">
-
-                    <button
-                        class="action-btn"
-                        onclick="deleteVideo(${video.id})">
-
-                        🗑️
-
-                    </button>
-
-                </div>
-                `
-                :
-                ""
-            }
-
-        </div>
-
-    `;
-
-
-    return item;
-
-}
-
-
-/* ======================================
-   VIDEO OBSERVER
-====================================== */
-
-function setupVideos(){
-
-    const observer =
-        new IntersectionObserver(
-            entries => {
-
-                entries.forEach(
-                    entry => {
-
-                        const video =
-                            entry.target
-                            .querySelector(
-                                ".video"
-                            );
-
-                        if(!video)
-                            return;
-
-
-                        if(entry.isIntersecting){
-
-                            video.play()
-                                .catch(
-                                    () => {}
-                                );
-
-                        }else{
-
-                            video.pause();
-
-                        }
-
-                    }
-                );
-
-            },
-            {
-                threshold:.7
-            }
-        );
-
-
-    document
-        .querySelectorAll(".video-item")
-        .forEach(
-            item =>
-                observer.observe(item)
-        );
-
-}
-
-
-function toggleVideo(video){
-
-    if(video.paused){
-
-        video.play();
+        setTimeout(()=>{
+            document.getElementById("lockScreen")
+                .style.display = "none";
+        },900);
 
     }else{
 
-        video.pause();
+        error.textContent =
+            "Bu tarih değil gibi... tekrar dene ❤️";
 
+        box.classList.remove("shake");
+
+        void box.offsetWidth;
+
+        box.classList.add("shake");
+
+        input.value = "";
+        input.focus();
     }
-
 }
 
+document.getElementById("password")
+.addEventListener("keydown",function(e){
 
-/* ======================================
-   LIKE
-====================================== */
-
-function toggleLike(id){
-
-    const video =
-        videos.find(
-            v =>
-                v.id === id
-        );
-
-    const user =
-        me();
-
-
-    if(!video)
-        return;
-
-
-    const index =
-        video.likes.indexOf(
-            user.id
-        );
-
-
-    if(index >= 0){
-
-        video.likes.splice(
-            index,
-            1
-        );
-
-    }else{
-
-        video.likes.push(
-            user.id
-        );
-
+    if(e.key === "Enter"){
+        unlock();
     }
 
+});
 
-    saveVideos();
 
-    renderFeed();
+/* ================= KALPLER ================= */
 
+function createHeart(){
+
+    const container =
+        document.getElementById("hearts");
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart";
+
+    const symbols = [
+        "❤️","💗","💖","💕","💓","💘","💞","💝"
+    ];
+
+    heart.textContent =
+        symbols[Math.floor(Math.random()*symbols.length)];
+
+    heart.style.left =
+        Math.random()*100 + "%";
+
+    heart.style.fontSize =
+        (12 + Math.random()*25) + "px";
+
+    heart.style.animationDuration =
+        (5 + Math.random()*7) + "s";
+
+    container.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },13000);
 }
 
+function startHearts(){
 
-/* ======================================
-   FOLLOW
-====================================== */
+    for(let i=0;i<15;i++){
 
-function toggleFollow(id){
-
-    const current =
-        me();
-
-    const target =
-        users.find(
-            u =>
-                u.id === id
-        );
-
-
-    if(!target)
-        return;
-
-
-    const index =
-        current.following.indexOf(id);
-
-
-    if(index >= 0){
-
-        current.following.splice(
-            index,
-            1
-        );
-
-
-        const targetIndex =
-            target.followers.indexOf(
-                current.id
-            );
-
-
-        if(targetIndex >= 0){
-
-            target.followers.splice(
-                targetIndex,
-                1
-            );
-
-        }
-
-    }else{
-
-        current.following.push(id);
-
-        target.followers.push(
-            current.id
+        setTimeout(
+            createHeart,
+            i*300
         );
 
     }
 
-
-    saveUsers();
-
-    renderFeed();
-
+    setInterval(createHeart,700);
 }
 
 
-/* ======================================
-   COMMENTS
-====================================== */
+/* ================= SÜRE ================= */
 
-function openComments(id){
+const startDate =
+    new Date(2025,11,15,0,0,0);
 
-    currentCommentVideo =
-        id;
+function updateCounter(){
 
+    const now = new Date();
 
-    renderComments();
+    let difference =
+        now.getTime() - startDate.getTime();
 
-
-    document
-        .getElementById(
-            "commentsPanel"
-        )
-        .classList
-        .add("show");
-
-}
-
-
-function closeComments(){
-
-    document
-        .getElementById(
-            "commentsPanel"
-        )
-        .classList
-        .remove("show");
-
-}
-
-
-function renderComments(){
-
-    const video =
-        videos.find(
-            v =>
-                v.id ===
-                currentCommentVideo
-        );
-
-
-    const box =
-        document.getElementById(
-            "commentList"
-        );
-
-
-    if(!video)
-        return;
-
-
-    if(video.comments.length === 0){
-
-        box.innerHTML = `
-
-            <div class="empty">
-                Henüz yorum yok.
-            </div>
-
-        `;
-
-        return;
-
+    if(difference < 0){
+        difference = 0;
     }
 
+    const totalSeconds =
+        Math.floor(difference / 1000);
 
-    box.innerHTML =
-        video.comments
-        .map(
-            comment => {
+    const days =
+        Math.floor(totalSeconds / 86400);
 
-                const user =
-                    users.find(
-                        u =>
-                            u.id ===
-                            comment.userId
-                    );
-
-
-                if(!user)
-                    return "";
-
-
-                return `
-
-                    <div class="comment-item">
-
-                        <img
-                            src="${safeImage(user.avatar)}">
-
-                        <div
-                            class="comment-content">
-
-                            <strong>
-                                ${escapeHTML(
-                                    user.username
-                                )}
-                            </strong>
-
-                            ${escapeHTML(
-                                comment.text
-                            )}
-
-                        </div>
-
-                    </div>
-
-                `;
-
-            }
-        )
-        .join("");
-
-}
-
-
-function sendComment(){
-
-    const input =
-        document.getElementById(
-            "commentInput"
+    const hours =
+        Math.floor(
+            (totalSeconds % 86400) / 3600
         );
 
-
-    const text =
-        input.value.trim();
-
-
-    if(!text)
-        return;
-
-
-    const video =
-        videos.find(
-            v =>
-                v.id ===
-                currentCommentVideo
+    const minutes =
+        Math.floor(
+            (totalSeconds % 3600) / 60
         );
 
+    const seconds =
+        totalSeconds % 60;
 
-    if(!video)
-        return;
+    document.getElementById("days")
+        .textContent = days;
 
+    document.getElementById("hours")
+        .textContent =
+        String(hours).padStart(2,"0");
 
-    video.comments.push({
+    document.getElementById("minutes")
+        .textContent =
+        String(minutes).padStart(2,"0");
 
-        id:Date.now(),
-
-        userId:me().id,
-
-        text:text
-
-    });
-
-
-    input.value = "";
-
-    saveVideos();
-
-    renderComments();
-
-    renderFeed();
-
+    document.getElementById("seconds")
+        .textContent =
+        String(seconds).padStart(2,"0");
 }
 
+updateCounter();
 
-/* ======================================
-   UPLOAD
-====================================== */
+setInterval(updateCounter,1000);
 
-function openUpload(){
 
-    document
-        .getElementById(
-            "upload"
-        )
-        .classList
-        .add("show");
+/* ================= MESAJ ANİMASYONLARI ================= */
 
-}
+const observer =
+    new IntersectionObserver(
+        entries => {
 
+            entries.forEach(entry => {
 
-function closeUpload(){
+                if(entry.isIntersecting){
 
-    document
-        .getElementById(
-            "upload"
-        )
-        .classList
-        .remove("show");
+                    entry.target
+                        .classList.add("show");
 
-}
-
-
-function previewVideo(event){
-
-    const file =
-        event.target.files[0];
-
-
-    if(!file)
-        return;
-
-
-    if(file.size > 50 * 1024 * 1024){
-
-        alert(
-            "Demo sürümünde video 50 MB'dan küçük olmalı."
-        );
-
-        event.target.value = "";
-
-        return;
-
-    }
-
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload =
-        function(e){
-
-            selectedVideo =
-                e.target.result;
-
-
-            const preview =
-                document.getElementById(
-                    "videoPreview"
-                );
-
-
-            preview.src =
-                selectedVideo;
-
-
-            preview.style.display =
-                "block";
-
-        };
-
-
-    reader.readAsDataURL(file);
-
-}
-
-
-/* PUBLISH */
-
-function publishVideo(){
-
-    if(!selectedVideo){
-
-        alert(
-            "Önce bir video seç."
-        );
-
-        return;
-
-    }
-
-
-    const caption =
-        document.getElementById(
-            "videoCaption"
-        ).value.trim();
-
-
-    videos.unshift({
-
-        id:Date.now(),
-
-        userId:me().id,
-
-        video:selectedVideo,
-
-        caption:caption,
-
-        likes:[],
-
-        comments:[]
-
-    });
-
-
-    saveVideos();
-
-
-    selectedVideo = null;
-
-
-    document.getElementById(
-        "videoFile"
-    ).value = "";
-
-
-    document.getElementById(
-        "videoCaption"
-    ).value = "";
-
-
-    document.getElementById(
-        "videoPreview"
-    ).style.display = "none";
-
-
-    closeUpload();
-
-    renderFeed();
-
-}
-
-
-/* ======================================
-   DELETE
-====================================== */
-
-function deleteVideo(id){
-
-    const video =
-        videos.find(
-            v =>
-                v.id === id
-        );
-
-
-    if(!video)
-        return;
-
-
-    if(video.userId !== me().id)
-        return;
-
-
-    if(
-        !confirm(
-            "Bu videoyu silmek istiyor musun?"
-        )
-    )
-        return;
-
-
-    videos =
-        videos.filter(
-            v =>
-                v.id !== id
-        );
-
-
-    saveVideos();
-
-    renderFeed();
-
-}
-
-
-/* ======================================
-   SHARE
-====================================== */
-
-function shareVideo(id){
-
-    const text =
-        "Vynza'da güzel bir video gördüm!";
-
-
-    if(
-        navigator.share
-    ){
-
-        navigator.share({
-            title:"Vynza",
-            text:text
-        })
-        .catch(
-            () => {}
-        );
-
-    }else{
-
-        navigator.clipboard
-            .writeText(text)
-            .then(
-                () =>
-                    alert(
-                        "Paylaşım metni kopyalandı."
-                    )
-            );
-
-    }
-
-}
-
-
-/* ======================================
-   PROFILE
-====================================== */
-
-function openMyProfile(){
-
-    openUserProfile(
-        me().id
-    );
-
-}
-
-
-function openUserProfile(id){
-
-    const user =
-        users.find(
-            u =>
-                u.id === id
-        );
-
-
-    if(!user)
-        return;
-
-
-    const current =
-        me();
-
-
-    const following =
-        current.following.includes(
-            id
-        );
-
-
-    const userVideos =
-        videos.filter(
-            v =>
-                v.userId === id
-        );
-
-
-    showPage(
-        "Profil",
-        `
-
-        <div class="profile-top">
-
-            <img
-                class="big-avatar"
-                src="${safeImage(user.avatar)}">
-
-            <h2>
-                ${escapeHTML(user.name)}
-            </h2>
-
-            <p>
-                @${escapeHTML(user.username)}
-            </p>
-
-            <p>
-                ${escapeHTML(user.bio)}
-            </p>
-
-            <div class="profile-stats">
-
-                <div class="profile-stat">
-
-                    <strong>
-                        ${userVideos.length}
-                    </strong>
-
-                    <span>
-                        Video
-                    </span>
-
-                </div>
-
-                <div class="profile-stat">
-
-                    <strong>
-                        ${user.followers.length}
-                    </strong>
-
-                    <span>
-                        Takipçi
-                    </span>
-
-                </div>
-
-                <div class="profile-stat">
-
-                    <strong>
-                        ${user.following.length}
-                    </strong>
-
-                    <span>
-                        Takip
-                    </span>
-
-                </div>
-
-            </div>
-
-            ${
-                id !== current.id
-                ?
-                `
-                <button
-                    class="primary"
-                    style="
-                        width:auto;
-                        padding:11px 30px;
-                    "
-                    onclick="toggleFollow(${id})">
-
-                    ${
-                        following
-                        ?
-                        "Takibi Bırak"
-                        :
-                        "Takip Et"
-                    }
-
-                </button>
-                `
-                :
-                `
-                <button
-                    class="primary"
-                    style="
-                        width:auto;
-                        padding:11px 30px;
-                    "
-                    onclick="editProfile()">
-
-                    Profili Düzenle
-
-                </button>
-                `
-            }
-
-        </div>
-
-        <h3 style="
-            margin:20px 0 10px;
-        ">
-            Videolar
-        </h3>
-
-        ${
-            userVideos.length === 0
-            ?
-            `
-            <div class="empty">
-                Henüz video yok.
-            </div>
-            `
-            :
-            userVideos
-            .map(
-                v =>
-                    `
-                    <div
-                        style="
-                            margin-bottom:12px;
-                        ">
-
-                        <video
-                            src="${safeVideo(v.video)}"
-                            controls
-                            style="
-                                width:100%;
-                                max-height:500px;
-                                border-radius:15px;
-                                background:#000;
-                            ">
-                        </video>
-
-                    </div>
-                    `
-            )
-            .join("")
-        }
-
-        `
-    );
-
-}
-
-
-/* ======================================
-   EDIT PROFILE
-====================================== */
-
-function editProfile(){
-
-    const user =
-        me();
-
-
-    showPage(
-        "Profili Düzenle",
-        `
-
-        <div class="form-group">
-
-            <label>Ad</label>
-
-            <input
-                id="editName"
-                value="${escapeAttribute(
-                    user.name
-                )}">
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Biyografi</label>
-
-            <textarea
-                id="editBio"
-                rows="4">${escapeHTML(
-                    user.bio
-                )}</textarea>
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Profil fotoğrafı</label>
-
-            <input
-                id="avatarFile"
-                type="file"
-                accept="image/*">
-
-        </div>
-
-        <button
-            class="primary"
-            onclick="saveProfile()">
-
-            Kaydet
-
-        </button>
-
-        <button
-            class="cancel"
-            style="
-                width:100%;
-                margin-top:8px;
-                padding:12px;
-                border:0;
-                border-radius:10px;
-            "
-            onclick="closePage()">
-
-            Vazgeç
-
-        </button>
-
-        `
-    );
-
-}
-
-
-function saveProfile(){
-
-    const user =
-        me();
-
-
-    const name =
-        document.getElementById(
-            "editName"
-        ).value.trim();
-
-
-    const bio =
-        document.getElementById(
-            "editBio"
-        ).value.trim();
-
-
-    if(name){
-
-        user.name =
-            name;
-
-    }
-
-
-    user.bio =
-        bio;
-
-
-    const file =
-        document.getElementById(
-            "avatarFile"
-        ).files[0];
-
-
-    if(file){
-
-        const reader =
-            new FileReader();
-
-
-        reader.onload =
-            function(e){
-
-                user.avatar =
-                    e.target.result;
-
-                saveUsers();
-
-                closePage();
-
-                renderFeed();
-
-            };
-
-
-        reader.readAsDataURL(file);
-
-    }else{
-
-        saveUsers();
-
-        closePage();
-
-        renderFeed();
-
-    }
-
-}
-
-
-/* ======================================
-   SEARCH
-====================================== */
-
-function openSearch(){
-
-    showPage(
-        "Keşfet",
-        `
-
-        <div class="search-page">
-
-            <input
-                id="userSearch"
-                placeholder="Kullanıcı ara..."
-                oninput="searchUsers()">
-
-            <div id="searchResults"></div>
-
-        </div>
-
-        `
-    );
-
-}
-
-
-function searchUsers(){
-
-    const input =
-        document.getElementById(
-            "userSearch"
-        );
-
-
-    const result =
-        document.getElementById(
-            "searchResults"
-        );
-
-
-    if(!input || !result)
-        return;
-
-
-    const q =
-        input.value
-        .trim()
-        .toLowerCase();
-
-
-    if(!q){
-
-        result.innerHTML = "";
-
-        return;
-
-    }
-
-
-    const matches =
-        users.filter(
-            user =>
-                user.username
-                    .includes(q)
-                ||
-                user.name
-                    .toLowerCase()
-                    .includes(q)
-        );
-
-
-    result.innerHTML =
-        matches
-        .map(
-            user =>
-                `
-
-                <div
-                    class="user-result"
-                    onclick="openUserProfile(${user.id})">
-
-                    <img
-                        src="${safeImage(
-                            user.avatar
-                        )}">
-
-                    <div>
-
-                        <strong>
-                            ${escapeHTML(
-                                user.name
-                            )}
-                        </strong>
-
-                        <span>
-                            @${escapeHTML(
-                                user.username
-                            )}
-                        </span>
-
-                    </div>
-
-                </div>
-
-                `
-        )
-        .join("");
-
-}
-
-
-/* ======================================
-   MESSAGES
-====================================== */
-
-function openMessages(){
-
-    const otherUsers =
-        users.filter(
-            u =>
-                u.id !== me().id
-        );
-
-
-    showPage(
-        "Mesajlar",
-        `
-
-        <div class="messages-layout">
-
-            <div
-                id="conversations"
-                class="conversations">
-
-                ${
-                    otherUsers.length
-                    ?
-                    otherUsers
-                    .map(
-                        user =>
-                            `
-                            <div
-                                class="conversation"
-                                onclick="openChat(${user.id})">
-
-                                <img
-                                    src="${safeImage(
-                                        user.avatar
-                                    )}">
-
-                                <div
-                                    class="conversation-name">
-
-                                    ${escapeHTML(
-                                        user.username
-                                    )}
-
-                                </div>
-
-                            </div>
-                            `
-                    )
-                    .join("")
-                    :
-                    `
-                    <div class="empty">
-                        Kullanıcı yok.
-                    </div>
-                    `
                 }
 
-            </div>
+            });
 
-
-            <div class="chat">
-
-                <div
-                    id="chatHead"
-                    class="chat-head">
-
-                    Bir kullanıcı seç
-
-                </div>
-
-                <div
-                    id="chatBody"
-                    class="chat-body">
-
-                    <div class="empty">
-
-                        💬
-
-                        <br><br>
-
-                        Mesajlaşmaya başlamak için
-                        kullanıcı seç.
-
-                    </div>
-
-                </div>
-
-                <div class="chat-form">
-
-                    <input
-                        id="messageInput"
-                        placeholder="Mesaj yaz..."
-                        disabled>
-
-                    <button
-                        id="messageButton"
-                        onclick="sendMessage()"
-                        disabled>
-
-                        Gönder
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        `
+        },
+        {
+            threshold:.15
+        }
     );
 
-}
-
-
-/* OPEN CHAT */
-
-function openChat(userId){
-
-    currentChatUser =
-        userId;
-
-
-    const user =
-        users.find(
-            u =>
-                u.id === userId
-        );
-
-
-    if(!user)
-        return;
-
-
-    document.getElementById(
-        "chatHead"
-    ).textContent =
-        "@" + user.username;
-
-
-    document.getElementById(
-        "messageInput"
-    ).disabled = false;
-
-
-    document.getElementById(
-        "messageButton"
-    ).disabled = false;
-
-
-    renderMessages();
-
-}
-
-
-/* RENDER MESSAGES */
-
-function renderMessages(){
-
-    const body =
-        document.getElementById(
-            "chatBody"
-        );
-
-
-    if(!body)
-        return;
-
-
-    const current =
-        me();
-
-
-    const chat =
-        messages.filter(
-            message =>
-
-                (
-                    message.sender ===
-                    current.id
-                    &&
-                    message.receiver ===
-                    currentChatUser
-                )
-                ||
-                (
-                    message.sender ===
-                    currentChatUser
-                    &&
-                    message.receiver ===
-                    current.id
-                )
-        );
-
-
-    if(chat.length === 0){
-
-        body.innerHTML = `
-
-            <div class="empty">
-
-                Henüz mesaj yok.
-
-                <br>
-
-                İlk mesajı sen gönder! 👋
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    body.innerHTML =
-        chat
-        .map(
-            message =>
-                `
-
-                <div
-                    class="message ${
-                        message.sender === current.id
-                        ? "me"
-                        : "them"
-                    }">
-
-                    ${escapeHTML(
-                        message.text
-                    )}
-
-                </div>
-
-                `
-        )
-        .join("");
-
-
-    body.scrollTop =
-        body.scrollHeight;
-
-}
-
-
-/* SEND MESSAGE */
-
-function sendMessage(){
-
-    const input =
-        document.getElementById(
-            "messageInput"
-        );
-
-
-    if(!input)
-        return;
-
-
-    const text =
-        input.value.trim();
-
-
-    if(!text || !currentChatUser)
-        return;
-
-
-    messages.push({
-
-        id:Date.now(),
-
-        sender:me().id,
-
-        receiver:currentChatUser,
-
-        text:text,
-
-        date:Date.now()
-
+document.querySelectorAll(".message")
+    .forEach(message=>{
+        observer.observe(message);
     });
 
 
-    saveMessages();
+/* ================= SON SÜRPRİZ ================= */
 
-    input.value = "";
+let surpriseOpened = false;
 
-    renderMessages();
+function openSurprise(){
 
-}
+    const message =
+        document.getElementById("hiddenMessage");
 
+    message.style.display = "block";
 
-/* ======================================
-   PAGES
-====================================== */
+    if(!surpriseOpened){
 
-function showPage(title,content){
+        surpriseOpened = true;
 
-    document.getElementById(
-        "pageTitle"
-    ).textContent = title;
+        for(let i=0;i<40;i++){
 
-
-    document.getElementById(
-        "pageContent"
-    ).innerHTML = content;
-
-
-    document.getElementById(
-        "page"
-    ).classList.add("show");
-
-}
-
-
-function closePage(){
-
-    document.getElementById(
-        "page"
-    ).classList.remove("show");
-
-    currentChatUser = null;
-
-}
-
-
-function goHome(button){
-
-    closePage();
-
-    document
-        .querySelectorAll(
-            ".bottom-nav button"
-        )
-        .forEach(
-            b =>
-                b.classList.remove(
-                    "active"
-                )
-        );
-
-    button.classList.add(
-        "active"
-    );
-
-}
-
-
-/* ======================================
-   DARK MODE
-====================================== */
-
-function toggleDark(){
-
-    const dark =
-        document.body
-            .classList
-            .toggle("dark");
-
-
-    localStorage.setItem(
-        DARK_KEY,
-        dark
-    );
-
-}
-
-
-/* ======================================
-   SECURITY
-====================================== */
-
-function escapeHTML(text){
-
-    const div =
-        document.createElement(
-            "div"
-        );
-
-    div.textContent =
-        text ?? "";
-
-    return div.innerHTML;
-
-}
-
-
-function escapeAttribute(text){
-
-    return String(
-        text ?? ""
-    )
-    .replace(/&/g,"&amp;")
-    .replace(/"/g,"&quot;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;");
-
-}
-
-
-function safeImage(src){
-
-    if(
-        typeof src !== "string"
-        ||
-        (
-            !src.startsWith("data:image/")
-            &&
-            !src.startsWith("https://")
-        )
-    ){
-
-        return "https://i.pravatar.cc/200";
-
-    }
-
-
-    return src;
-
-}
-
-
-function safeVideo(src){
-
-    if(
-        typeof src !== "string"
-        ||
-        !src.startsWith("data:video/")
-    ){
-
-        return "";
-
-    }
-
-
-    return src;
-
-}
-
-
-/* ======================================
-   ENTER TO SEND
-====================================== */
-
-document.addEventListener(
-    "keydown",
-    function(e){
-
-        if(
-            e.key === "Enter"
-            &&
-            document.activeElement?.id
-            ===
-            "messageInput"
-        ){
-
-            e.preventDefault();
-
-            sendMessage();
+            setTimeout(
+                createHeart,
+                i*70
+            );
 
         }
 
+        setTimeout(()=>{
+
+            message.scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
+
+        },300);
+
     }
-);
-
-
-/* ======================================
-   START
-====================================== */
-
-if(
-    localStorage.getItem(
-        DARK_KEY
-    ) === "true"
-){
-
-    document.body
-        .classList
-        .add("dark");
-
-}
-
-
-if(currentId){
-
-    openApp();
-
-}else{
-
-    document.getElementById(
-        "auth"
-    ).style.display = "flex";
 
 }
 
