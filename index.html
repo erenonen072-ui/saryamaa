@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6c5ce7">
+
+<title>Vynza | Sosyal Platform</title>
+<meta name="description" content="Vynza - Paylaş, keşfet ve kendini ifade et.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --primary:#6c5ce7;
+    --primary-dark:#5848d8;
+    --bg:#f5f6fa;
+    --card:#ffffff;
+    --text:#17171c;
+    --muted:#777b87;
+    --border:#e5e6eb;
+    --hover:#f0efff;
+    --danger:#ef476f;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+body.dark{
+    --bg:#0d0e12;
+    --card:#17181e;
+    --text:#ffffff;
+    --muted:#9b9da8;
+    --border:#292b33;
+    --hover:#23212f;
+}
+
+/* HEADER */
+
+header{
+    height:64px;
+    background:var(--card);
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.header-inner{
+    max-width:1150px;
+    height:100%;
+    margin:auto;
+    padding:0 18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:-1px;
+    color:var(--primary);
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.header-btn{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:transparent;
+    cursor:pointer;
+    font-size:19px;
+    color:var(--text);
+}
+
+.header-btn:hover{
+    background:var(--hover);
+}
+
+/* LAYOUT */
+
+.container{
+    max-width:1150px;
+    margin:24px auto;
+    padding:0 18px;
+
+    display:grid;
+    grid-template-columns:280px minmax(0,650px);
+    justify-content:center;
+    gap:24px;
+}
+
+/* PROFILE */
+
+.profile-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:22px;
+    text-align:center;
+    position:sticky;
+    top:88px;
+}
+
+.avatar{
+    width:105px;
+    height:105px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid var(--primary);
+    background:#ddd;
+}
+
+.profile-name{
+    font-size:20px;
+    font-weight:800;
+    margin-top:13px;
+}
+
+.profile-bio{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.5;
+    margin-top:7px;
+}
+
+.profile-stats{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    margin:18px 0;
+}
+
+.stat strong{
+    display:block;
+    font-size:17px;
+}
+
+.stat span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.btn{
+    border:none;
+    background:var(--primary);
+    color:white;
+    font-weight:700;
+    border-radius:11px;
+    padding:11px 16px;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:var(--primary-dark);
+}
+
+.full{
+    width:100%;
+}
+
+/* CARD */
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:18px;
+}
+
+/* CREATE POST */
+
+.create-title{
+    font-size:18px;
+    font-weight:800;
+    margin-bottom:13px;
+}
+
+textarea{
+    width:100%;
+    min-height:105px;
+    resize:vertical;
+
+    border:1px solid var(--border);
+    border-radius:13px;
+    padding:14px;
+
+    background:var(--bg);
+    color:var(--text);
+
+    outline:none;
+    font-family:inherit;
+    font-size:15px;
+}
+
+textarea:focus{
+    border-color:var(--primary);
+}
+
+.create-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:12px;
+}
+
+.image-label{
+    cursor:pointer;
+    padding:9px 13px;
+    border-radius:10px;
+    background:var(--bg);
+    border:1px solid var(--border);
+    font-size:14px;
+}
+
+.image-label:hover{
+    background:var(--hover);
+}
+
+.image-label input{
+    display:none;
+}
+
+.image-preview{
+    display:none;
+    width:100%;
+    max-height:350px;
+    object-fit:cover;
+    border-radius:13px;
+    margin-top:12px;
+}
+
+/* POSTS */
+
+.post-header{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.post-avatar{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    object-fit:cover;
+    background:#ddd;
+}
+
+.post-user{
+    font-size:15px;
+    font-weight:800;
+}
+
+.post-date{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:3px;
+}
+
+.post-text{
+    margin-top:15px;
+    line-height:1.6;
+    font-size:15px;
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+}
+
+.post-image{
+    display:block;
+    width:100%;
+    max-height:600px;
+    object-fit:cover;
+    border-radius:14px;
+    margin-top:14px;
+}
+
+.post-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    border-top:1px solid var(--border);
+    margin-top:15px;
+    padding-top:12px;
+}
+
+.action-btn{
+    border:none;
+    background:transparent;
+    color:var(--text);
+    padding:8px 12px;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.action-btn:hover{
+    background:var(--hover);
+}
+
+.like.active{
+    color:var(--danger);
+}
+
+.delete{
+    margin-left:auto;
+}
+
+/* EMPTY */
+
+.empty{
+    text-align:center;
+    color:var(--muted);
+    padding:50px 20px;
+}
+
+.empty-icon{
+    font-size:45px;
+    margin-bottom:12px;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    z-index:500;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:430px;
+    background:var(--card);
+    color:var(--text);
+    border-radius:20px;
+    padding:24px;
+}
+
+.modal-title{
+    font-size:21px;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:7px;
+}
+
+input[type="text"]{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:11px;
+    padding:12px;
+
+    background:var(--bg);
+    color:var(--text);
+
+    outline:none;
+    font-size:15px;
+}
+
+input[type="text"]:focus{
+    border-color:var(--primary);
+}
+
+.modal-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.modal-buttons button{
+    flex:1;
+}
+
+.cancel{
+    background:var(--bg);
+    color:var(--text);
+    border:1px solid var(--border);
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .container{
+        display:block;
+        max-width:650px;
+    }
+
+    .profile-card{
+        position:static;
+        margin-bottom:18px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    header{
+        height:58px;
+    }
+
+    .logo{
+        font-size:23px;
+    }
+
+    .container{
+        margin:13px auto;
+        padding:0 10px;
+    }
+
+    .card{
+        border-radius:15px;
+        padding:15px;
+    }
+
+    .profile-card{
+        padding:18px;
+    }
+
+    .create-bottom{
+        gap:8px;
+    }
+
+    .image-label{
+        font-size:13px;
+    }
+
+    .btn{
+        padding:10px 13px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="header-inner">
+
+        <div class="logo">
+            Vynza
+        </div>
+
+        <div class="header-actions">
+
+            <button
+                class="header-btn"
+                onclick="toggleDark()"
+                id="themeButton"
+                title="Tema">
+                🌙
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+    <!-- PROFILE -->
+
+    <aside>
+
+        <div class="profile-card">
+
+            <img
+                id="profileAvatar"
+                class="avatar"
+                src="https://via.placeholder.com/200">
+
+            <div
+                id="profileName"
+                class="profile-name">
+                Vynza Kullanıcısı
+            </div>
+
+            <div
+                id="profileBio"
+                class="profile-bio">
+                Vynza'ya hoş geldin! 👋
+            </div>
+
+            <div class="profile-stats">
+
+                <div class="stat">
+                    <strong id="postCount">0</strong>
+                    <span>Gönderi</span>
+                </div>
+
+                <div class="stat">
+                    <strong>0</strong>
+                    <span>Takipçi</span>
+                </div>
+
+                <div class="stat">
+                    <strong>0</strong>
+                    <span>Takip</span>
+                </div>
+
+            </div>
+
+            <button
+                class="btn full"
+                onclick="openProfile()">
+                ✏️ Profili Düzenle
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- FEED -->
+
+    <main>
+
+        <!-- CREATE -->
+
+        <div class="card">
+
+            <div class="create-title">
+                Yeni gönderi
+            </div>
+
+            <textarea
+                id="postText"
+                maxlength="2000"
+                placeholder="Ne düşünüyorsun?"></textarea>
+
+            <img
+                id="imagePreview"
+                class="image-preview">
+
+            <div class="create-bottom">
+
+                <label class="image-label">
+
+                    🖼️ Fotoğraf
+
+                    <input
+                        type="file"
+                        id="postImage"
+                        accept="image/*"
+                        onchange="previewPostImage(event)">
+
+                </label>
+
+                <button
+                    class="btn"
+                    onclick="createPost()">
+                    🚀 Paylaş
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- POSTS -->
+
+        <div id="posts"></div>
+
+    </main>
+
+</div>
+
+
+<!-- PROFILE MODAL -->
+
+<div
+    class="modal"
+    id="profileModal">
+
+    <div class="modal-box">
+
+        <div class="modal-title">
+            Profilini Düzenle
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Kullanıcı adı
+            </label>
+
+            <input
+                type="text"
+                id="editName"
+                maxlength="30"
+                placeholder="Adını yaz">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Biyografi
+            </label>
+
+            <textarea
+                id="editBio"
+                maxlength="120"
+                placeholder="Kendinden bahset"></textarea>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Profil fotoğrafı
+            </label>
+
+            <input
+                type="file"
+                id="profileImage"
+                accept="image/*"
+                onchange="previewProfileImage(event)">
+
+        </div>
+
+        <div class="modal-buttons">
+
+            <button
+                class="btn cancel"
+                onclick="closeProfile()">
+                Vazgeç
+            </button>
+
+            <button
+                class="btn"
+                onclick="saveProfile()">
+                Kaydet
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   VERİLER
+========================= */
+
+let profile =
+JSON.parse(localStorage.getItem("vynza_profile"))
+||
+{
+    name:"Vynza Kullanıcısı",
+    bio:"Vynza'ya hoş geldin! 👋",
+    avatar:"https://via.placeholder.com/200"
+};
+
+let posts =
+JSON.parse(localStorage.getItem("vynza_posts"))
+||
+[];
+
+let selectedProfileImage = null;
+let selectedPostImage = null;
+
+
+/* =========================
+   PROFİL
+========================= */
+
+function loadProfile(){
+
+    document.getElementById("profileName")
+        .textContent = profile.name;
+
+    document.getElementById("profileBio")
+        .textContent = profile.bio;
+
+    document.getElementById("profileAvatar")
+        .src = profile.avatar;
+
+    document.getElementById("postCount")
+        .textContent = posts.length;
+}
+
+
+/* =========================
+   PROFİL PENCERESİ
+========================= */
+
+function openProfile(){
+
+    document.getElementById("editName")
+        .value = profile.name;
+
+    document.getElementById("editBio")
+        .value = profile.bio;
+
+    document.getElementById("profileModal")
+        .classList.add("show");
+
+    selectedProfileImage = null;
+}
+
+
+function closeProfile(){
+
+    document.getElementById("profileModal")
+        .classList.remove("show");
+}
+
+
+/* =========================
+   PROFİL FOTOĞRAFI
+========================= */
+
+function previewProfileImage(event){
+
+    const file =
+        event.target.files[0];
+
+    if(!file) return;
+
+    if(file.size > 5 * 1024 * 1024){
+
+        alert("Profil fotoğrafı 5 MB'dan küçük olmalı.");
+
+        event.target.value = "";
+
+        return;
+    }
+
+    const reader =
+        new FileReader();
+
+    reader.onload = function(e){
+
+        selectedProfileImage =
+            e.target.result;
+
+    };
+
+    reader.readAsDataURL(file);
+}
+
+
+/* =========================
+   PROFİLİ KAYDET
+========================= */
+
+function saveProfile(){
+
+    const name =
+        document.getElementById("editName")
+        .value
+        .trim();
+
+    const bio =
+        document.getElementById("editBio")
+        .value
+        .trim();
+
+    if(!name){
+
+        alert("Kullanıcı adı boş olamaz.");
+
+        return;
+    }
+
+    profile.name = name;
+
+    profile.bio =
+        bio || "Vynza kullanıcısı 👋";
+
+    if(selectedProfileImage){
+
+        profile.avatar =
+            selectedProfileImage;
+    }
+
+    localStorage.setItem(
+        "vynza_profile",
+        JSON.stringify(profile)
+    );
+
+    loadProfile();
+    renderPosts();
+    closeProfile();
+}
+
+
+/* =========================
+   GÖNDERİ RESMİ
+========================= */
+
+function previewPostImage(event){
+
+    const file =
+        event.target.files[0];
+
+    if(!file) return;
+
+    if(file.size > 8 * 1024 * 1024){
+
+        alert("Fotoğraf 8 MB'dan küçük olmalı.");
+
+        event.target.value = "";
+
+        return;
+    }
+
+    const reader =
+        new FileReader();
+
+    reader.onload = function(e){
+
+        selectedPostImage =
+            e.target.result;
+
+        const preview =
+            document.getElementById("imagePreview");
+
+        preview.src =
+            selectedPostImage;
+
+        preview.style.display =
+            "block";
+    };
+
+    reader.readAsDataURL(file);
+}
+
+
+/* =========================
+   GÖNDERİ PAYLAŞ
+========================= */
+
+function createPost(){
+
+    const text =
+        document.getElementById("postText")
+        .value
+        .trim();
+
+    if(!text && !selectedPostImage){
+
+        alert("Gönderi için yazı veya fotoğraf ekle.");
+
+        return;
+    }
+
+    const post = {
+
+        id:Date.now(),
+
+        text:text,
+
+        image:selectedPostImage,
+
+        likes:0,
+
+        liked:false,
+
+        date:new Date()
+            .toLocaleString("tr-TR")
+
+    };
+
+    posts.unshift(post);
+
+    savePosts();
+
+    document.getElementById("postText")
+        .value = "";
+
+    document.getElementById("postImage")
+        .value = "";
+
+    document.getElementById("imagePreview")
+        .style.display = "none";
+
+    selectedPostImage = null;
+
+    loadProfile();
+    renderPosts();
+}
+
+
+/* =========================
+   GÖNDERİLERİ KAYDET
+========================= */
+
+function savePosts(){
+
+    localStorage.setItem(
+        "vynza_posts",
+        JSON.stringify(posts)
+    );
+}
+
+
+/* =========================
+   GÖNDERİLERİ GÖSTER
+========================= */
+
+function renderPosts(){
+
+    const container =
+        document.getElementById("posts");
+
+    container.innerHTML = "";
+
+    if(posts.length === 0){
+
+        container.innerHTML = `
+
+            <div class="card empty">
+
+                <div class="empty-icon">
+                    📭
+                </div>
+
+                <strong>
+                    Henüz gönderi yok
+                </strong>
+
+                <p style="margin-top:7px;">
+                    İlk gönderiyi sen paylaş!
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    posts.forEach(post => {
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "card";
+
+
+        div.innerHTML = `
+
+            <div class="post-header">
+
+                <img
+                    class="post-avatar"
+                    src="${safeImage(profile.avatar)}">
+
+                <div>
+
+                    <div class="post-user">
+                        ${escapeHTML(profile.name)}
+                    </div>
+
+                    <div class="post-date">
+                        ${escapeHTML(post.date)}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            ${
+                post.text
+                ?
+                `
+                <div class="post-text">
+                    ${escapeHTML(post.text)}
+                </div>
+                `
+                :
+                ""
+            }
+
+
+            ${
+                post.image
+                ?
+                `
+                <img
+                    class="post-image"
+                    src="${safeImage(post.image)}">
+                `
+                :
+                ""
+            }
+
+
+            <div class="post-actions">
+
+                <button
+                    class="action-btn like
+                    ${post.liked ? "active" : ""}"
+                    onclick="likePost(${post.id})">
+
+                    ${post.liked ? "❤️" : "🤍"}
+
+                    ${post.likes}
+
+                </button>
+
+
+                <button
+                    class="action-btn delete"
+                    onclick="deletePost(${post.id})">
+
+                    🗑️ Sil
+
+                </button>
+
+            </div>
+
+        `;
+
+        container.appendChild(div);
+
+    });
+}
+
+
+/* =========================
+   BEĞEN
+========================= */
+
+function likePost(id){
+
+    const post =
+        posts.find(
+            item => item.id === id
+        );
+
+    if(!post) return;
+
+
+    if(post.liked){
+
+        post.likes--;
+
+        post.liked = false;
+
+    }else{
+
+        post.likes++;
+
+        post.liked = true;
+
+    }
+
+    savePosts();
+
+    renderPosts();
+}
+
+
+/* =========================
+   GÖNDERİ SİL
+========================= */
+
+function deletePost(id){
+
+    const confirmDelete =
+        confirm(
+            "Bu gönderiyi silmek istediğine emin misin?"
+        );
+
+    if(!confirmDelete) return;
+
+
+    posts =
+        posts.filter(
+            post => post.id !== id
+        );
+
+    savePosts();
+
+    loadProfile();
+    renderPosts();
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function toggleDark(){
+
+    document.body
+        .classList
+        .toggle("dark");
+
+    const dark =
+        document.body
+        .classList
+        .contains("dark");
+
+    localStorage.setItem(
+        "vynza_dark",
+        dark
+    );
+
+    document.getElementById("themeButton")
+        .textContent =
+        dark ? "☀️" : "🌙";
+}
+
+
+/* =========================
+   HTML GÜVENLİĞİ
+========================= */
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text ?? "";
+
+    return div.innerHTML;
+}
+
+
+/* =========================
+   RESİM GÜVENLİĞİ
+========================= */
+
+function safeImage(src){
+
+    if(
+        typeof src !== "string"
+        ||
+        (
+            !src.startsWith("data:image/")
+            &&
+            !src.startsWith("https://")
+        )
+    ){
+
+        return "https://via.placeholder.com/200";
+    }
+
+    return src;
+}
+
+
+/* =========================
+   TEMA
+========================= */
+
+if(
+    localStorage.getItem("vynza_dark")
+    ===
+    "true"
+){
+
+    document.body
+        .classList
+        .add("dark");
+
+    document.getElementById("themeButton")
+        .textContent = "☀️";
+}
+
+
+/* =========================
+   BAŞLAT
+========================= */
+
+loadProfile();
+renderPosts();
+
+</script>
+
+</body>
+</html>
