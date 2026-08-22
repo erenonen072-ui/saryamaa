@@ -3,298 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#07030d">
-<title>ULTIMATE • Eren ❤️ Sarya</title>
+<meta name="theme-color" content="#09020d">
+<title>Saryam ❤️ | Eren'den Sana</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
-:root{--bg:#07030d;--pink:#ff5cae;--pink2:#ffb0da;--purple:#9d72ff;--white:#fff;--muted:#aa9bad;--line:rgba(255,255,255,.11);--glass:rgba(255,255,255,.055)}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:"DM Sans",sans-serif;color:var(--white);background:var(--bg);overflow-x:hidden}button{font:inherit}a{color:inherit}
-#stars,#fx,#hearts,#confetti{position:fixed;inset:0;pointer-events:none}
-#stars{z-index:-20}#fx{z-index:-19}#hearts{z-index:3000}#confetti{z-index:9000}
-body:before{content:"";position:fixed;inset:0;z-index:-30;background:radial-gradient(circle at 15% 10%,rgba(255,70,170,.16),transparent 28%),radial-gradient(circle at 85% 20%,rgba(125,75,255,.15),transparent 30%),radial-gradient(circle at 50% 100%,rgba(255,70,160,.09),transparent 35%),#07030d}
-body:after{content:"";position:fixed;inset:0;z-index:-29;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:60px 60px;mask-image:linear-gradient(to bottom,#000,transparent)}
-.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle 2s infinite alternate}
-@keyframes twinkle{from{opacity:.12;transform:scale(.5)}to{opacity:1;transform:scale(1.5)}}
-.spark{position:absolute;width:3px;height:3px;border-radius:50%;background:rgba(255,150,220,.7);animation:float 10s linear infinite}
-@keyframes float{from{transform:translateY(110vh);opacity:0}15%{opacity:1}to{transform:translateY(-20vh);opacity:0}}
-
-#intro{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;text-align:center;background:radial-gradient(circle,#40134d 0,#14061b 40%,#020105 100%);transition:1.2s}
-#intro.hide{opacity:0;visibility:hidden;transform:scale(1.05)}
-.intro-inner{width:min(900px,92%);animation:introIn 1.5s ease}
-@keyframes introIn{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:none}}
-.intro-heart{font-size:86px;filter:drop-shadow(0 0 35px rgba(255,70,180,.8));animation:pulse 1.4s infinite}
-@keyframes pulse{50%{transform:scale(1.17)}}
-.kicker{color:var(--pink2);font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:800}
-.intro-title,.hero h1{font-family:"Playfair Display",serif;background:linear-gradient(120deg,#fff,#ff9fd1,#bb92ff,#fff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
-@keyframes shine{to{background-position:200% center}}
-.intro-title{font-size:clamp(48px,9vw,92px);line-height:.95;margin:20px 0}
-.intro-text{max-width:620px;margin:0 auto 30px;color:#c5b7c9;line-height:1.8}
-.primary{border:0;border-radius:999px;padding:16px 28px;color:#fff;font-weight:800;cursor:pointer;background:linear-gradient(135deg,#ff4fa4,#8e52ff);box-shadow:0 0 50px rgba(255,70,170,.3);transition:.3s}
-.primary:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 0 70px rgba(255,70,170,.5)}
-
-.nav{position:fixed;z-index:2500;top:16px;left:50%;transform:translateX(-50%);width:min(1050px,92%);display:flex;justify-content:space-between;align-items:center;padding:12px 15px;border:1px solid var(--line);border-radius:999px;background:rgba(7,3,13,.62);backdrop-filter:blur(20px);opacity:0;transition:.7s}.nav.show{opacity:1}.logo{font-weight:800}.logo span{color:var(--pink)}.links{display:flex;gap:4px}.links a{text-decoration:none;color:#bdb0c1;font-size:12px;padding:8px 11px;border-radius:999px}.links a:hover{background:rgba(255,255,255,.08);color:#fff}
-.music{position:fixed;right:20px;bottom:20px;z-index:4000;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:rgba(15,5,20,.8);color:#fff;cursor:pointer}.music.on{animation:music 1.2s infinite}@keyframes music{50%{box-shadow:0 0 30px rgba(255,80,180,.6)}}
-
-section{padding:125px 20px}.container{width:min(1100px,100%);margin:auto}.heading{text-align:center;margin-bottom:50px}.heading h2{font-family:"Playfair Display",serif;font-size:clamp(38px,6vw,64px);margin-top:12px}.heading p{color:var(--muted);line-height:1.7;margin-top:12px}
-.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding-top:100px;position:relative}.hero-content{max-width:1000px}.badge{display:inline-block;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.045);color:#d8c4d6;font-size:12px;margin-bottom:25px}.hero h1{font-size:clamp(68px,14vw,155px);line-height:.8;letter-spacing:-7px}.hero h1 span{display:block;font-size:clamp(42px,7vw,82px);letter-spacing:-2px;margin-top:25px}.hero-text{max-width:720px;margin:35px auto 0;color:#b9aebe;line-height:1.9;font-size:17px}.hero-text strong{color:#ffacd6}.scroll{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);color:#766b79;font-size:11px;animation:bounce 2s infinite}@keyframes bounce{50%{transform:translate(-50%,8px)}}
-
-.reveal{opacity:0;transform:translateY(30px);transition:.8s}.reveal.visible{opacity:1;transform:none}
-.glass{border:1px solid var(--line);border-radius:32px;background:var(--glass);backdrop-filter:blur(16px);box-shadow:0 30px 90px rgba(0,0,0,.18)}
-.counter{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.time{padding:32px 10px;text-align:center}.num{font-size:clamp(34px,6vw,60px);font-weight:800;background:linear-gradient(120deg,#fff,#ff87c6);-webkit-background-clip:text;color:transparent}.label{font-size:10px;letter-spacing:2px;color:#807483;text-transform:uppercase;margin-top:8px}
-.love-card{padding:70px 25px;text-align:center;position:relative;overflow:hidden}.love-card:before,.love-card:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;filter:blur(70px);opacity:.35}.love-card:before{left:-130px;top:-120px;background:#ff3caa}.love-card:after{right:-130px;bottom:-120px;background:#8150ff}.big-heart{font-size:70px;position:relative;z-index:1;animation:pulse 1.5s infinite}.love-card h2{font-family:"Playfair Display",serif;font-size:clamp(38px,6vw,64px);position:relative;z-index:1;margin-top:18px}.love-card p{position:relative;z-index:1;max-width:700px;margin:20px auto 0;color:#aea1b0;line-height:1.9}
-
-.envelope{max-width:780px;margin:auto;text-align:center}.env-head{padding:45px 25px;cursor:pointer}.env-icon{font-size:75px;filter:drop-shadow(0 0 25px rgba(255,70,180,.5))}.env-head h3{font:600 32px "Playfair Display",serif;margin-top:12px}.env-head p{color:#918596;margin-top:7px}.letter{max-height:0;overflow:hidden;transition:max-height 1.2s}.letter.open{max-height:1200px;margin-top:18px}.letter-inner{padding:36px;text-align:left;color:#c9bdca;line-height:2}.letter-title{font:600 31px "Playfair Display",serif;color:#ff9fd2}
-
-.reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.reason{padding:28px;min-height:225px;transition:.35s;position:relative;overflow:hidden}.reason:hover{transform:translateY(-8px);border-color:rgba(255,100,190,.3)}.reason-no{font-size:11px;letter-spacing:3px;color:#ff6db7}.reason h3{font:600 27px "Playfair Display",serif;margin:16px 0 9px}.reason p{color:#95899b;line-height:1.7}
-
-.timeline{max-width:850px;margin:auto;position:relative}.timeline:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(transparent,rgba(255,100,190,.6),transparent)}.titem{width:50%;padding:15px 30px;position:relative}.titem:nth-child(even){margin-left:50%}.titem:nth-child(odd){text-align:right}.dot{position:absolute;top:31px;width:12px;height:12px;border-radius:50%;background:#ff69b6;box-shadow:0 0 20px rgba(255,80,180,.8)}.titem:nth-child(odd) .dot{right:-6px}.titem:nth-child(even) .dot{left:-6px}.tcard{padding:24px}.tcard span{color:#ff8ac7;font-size:11px;letter-spacing:2px}.tcard h3{font:600 25px "Playfair Display",serif;margin-top:8px}.tcard p{color:#938798;line-height:1.6;margin-top:8px}
-
-.memories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.memory{min-height:360px;position:relative;overflow:hidden;cursor:pointer;transition:.4s;padding:0}.memory:hover{transform:translateY(-8px) scale(1.01)}.memory-photo{height:100%;min-height:360px;display:grid;place-items:center;font-size:70px;background:radial-gradient(circle at 25% 20%,#ff74b7,transparent 35%),linear-gradient(145deg,#32142c,#0d0611)}.memory:nth-child(2) .memory-photo{background:radial-gradient(circle at 70% 20%,#a170ff,transparent 35%),linear-gradient(145deg,#211335,#08050e)}.memory:nth-child(3) .memory-photo{background:radial-gradient(circle at 50% 20%,#ff9c78,transparent 35%),linear-gradient(145deg,#331a1b,#0d0708)}.memory-content{position:absolute;left:0;right:0;bottom:0;padding:27px;background:linear-gradient(transparent,rgba(0,0,0,.9))}.memory h3{font:600 29px "Playfair Display",serif}.memory p{color:#c0b3c3;line-height:1.6;margin-top:7px}
-.upload-note{margin-top:16px;text-align:center;color:#766b7a;font-size:12px}.upload-note code{color:#ff9fd2}
-
-.future-grid{display:grid;gap:15px;max-width:850px;margin:auto}.future{padding:28px;text-align:center}.future .emoji{font-size:36px}.future h3{font:600 26px "Playfair Display",serif;margin-top:10px}.future p{color:#938899;line-height:1.7;margin-top:8px}
-
-.random-box{max-width:800px;margin:auto;padding:45px 25px;text-align:center}.random-text{min-height:85px;display:grid;place-items:center;font:500 clamp(25px,5vw,40px) "Playfair Display",serif;color:#ffb1d9;transition:.2s}.small-btn{margin-top:25px;border:1px solid var(--line);padding:12px 21px;border-radius:999px;color:#fff;background:rgba(255,255,255,.06);cursor:pointer}
-
-.game{max-width:850px;margin:auto;padding:30px;text-align:center}.score{color:#ff9bce;font-weight:800;margin-bottom:18px}.game-area{height:250px;border-radius:22px;border:1px dashed rgba(255,255,255,.09);position:relative;overflow:hidden;background:radial-gradient(circle,rgba(255,70,170,.08),transparent)}.game-heart{position:absolute;font-size:37px;cursor:pointer;user-select:none;animation:gamepulse 1s infinite}@keyframes gamepulse{50%{transform:scale(1.16)}}
-
-.secret{max-width:800px;margin:auto;text-align:center;padding:35px}.secret-input{display:flex;max-width:520px;margin:20px auto 0;gap:8px}.secret-input input{flex:1;min-width:0;border:1px solid var(--line);background:rgba(0,0,0,.2);color:#fff;border-radius:999px;padding:14px 17px;outline:none}.secret-msg{min-height:50px;margin-top:20px;color:#ffacd6;line-height:1.7}
-
-.gift-wrap{text-align:center}.gift{width:175px;height:175px;margin:0 auto 30px;display:grid;place-items:center;border-radius:42px;font-size:82px;cursor:pointer;background:linear-gradient(135deg,#ff4d9f,#8d50ff);box-shadow:0 20px 90px rgba(255,60,170,.3);animation:gift 2.5s infinite;transition:.3s}.gift:hover{transform:scale(1.08)}@keyframes gift{50%{transform:translateY(-12px)}}.surprise{max-height:0;opacity:0;overflow:hidden;transition:1.2s}.surprise.show{max-height:1100px;opacity:1}.surprise h2{font:600 clamp(52px,9vw,95px) "Playfair Display",serif;background:linear-gradient(120deg,#fff,#ff8bc9,#b88aff);-webkit-background-clip:text;color:transparent;margin-bottom:18px}.surprise p{max-width:700px;margin:auto;color:#b8aaba;line-height:1.9;font-size:18px}.final-msg{margin-top:28px;font:500 32px "Playfair Display",serif;color:#ff9ed2}
-
-.final{min-height:70vh;display:grid;place-items:center;text-align:center;background:radial-gradient(circle,rgba(255,60,170,.13),transparent 50%)}.final-heart{font-size:82px;animation:pulse 1.5s infinite}.final h2{font:600 clamp(48px,9vw,90px) "Playfair Display",serif;margin-top:10px}.final p{color:#918694;line-height:1.8;margin-top:14px}footer{text-align:center;padding:35px 20px;color:#625868;border-top:1px solid rgba(255,255,255,.06);font-size:12px}footer span{color:#ff6bb6}
-.float-heart{position:fixed;bottom:-50px;animation:heartfloat linear forwards;pointer-events:none}@keyframes heartfloat{0%{opacity:0;transform:translateY(0) scale(.5)}10%{opacity:1}100%{opacity:0;transform:translateY(-115vh) scale(1.5) rotate(360deg)}}
-.modal{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.8);backdrop-filter:blur(15px);opacity:0;visibility:hidden;transition:.35s}.modal.show{opacity:1;visibility:visible}.modal-box{width:min(650px,100%);padding:40px 28px;text-align:center;border:1px solid var(--line);border-radius:32px;background:linear-gradient(145deg,#211025,#0c0611);transform:scale(.9);transition:.35s}.modal.show .modal-box{transform:none}.modal-icon{font-size:65px}.modal-box h2{font:600 36px "Playfair Display",serif}.modal-box p{color:#b5a7b9;line-height:1.8;margin-top:14px}.close{margin-top:24px;border:0;padding:12px 23px;border-radius:999px;color:#fff;background:rgba(255,255,255,.08);cursor:pointer}
-
-@media(max-width:800px){.links{display:none}.counter{grid-template-columns:repeat(2,1fr)}.reasons,.memories{grid-template-columns:1fr}.timeline:before{left:10px}.titem,.titem:nth-child(even){width:100%;margin-left:0;padding-left:35px;text-align:left}.titem:nth-child(odd) .dot,.titem:nth-child(even) .dot{left:4px;right:auto}}
-@media(max-width:560px){section{padding:90px 15px}.hero h1{letter-spacing:-3px}.love-card,.game,.secret{padding:28px 18px}.secret-input{flex-direction:column}.secret-input button{width:100%}}
+:root{--bg:#09020d;--pink:#ff5fae;--rose:#ff9acb;--purple:#a67cff;--text:#fff;--muted:#b9aabb;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;overflow-x:hidden}button{font:inherit}
+#stars,#petals,#confetti{position:fixed;inset:0;pointer-events:none}#stars{z-index:-5}#petals{z-index:5}.star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;opacity:.3;animation:twinkle 2s infinite alternate}@keyframes twinkle{to{opacity:1;transform:scale(1.7)}}
+body:before{content:"";position:fixed;inset:0;z-index:-6;background:radial-gradient(circle at 15% 10%,rgba(255,75,166,.2),transparent 28%),radial-gradient(circle at 85% 15%,rgba(141,93,255,.2),transparent 30%),radial-gradient(circle at 50% 100%,rgba(255,70,160,.12),transparent 40%)}
+#intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at center,#48133f 0,#18071d 40%,#030105 100%);transition:1s}
+#intro.hide{opacity:0;visibility:hidden;transform:scale(1.06)}
+.intro{width:min(820px,92%)}.heart{font-size:90px;filter:drop-shadow(0 0 35px #ff4da5);animation:beat 1.4s infinite}@keyframes beat{50%{transform:scale(1.16)}}
+.kicker{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--rose);font-weight:800}
+h1,h2,h3{font-family:"Playfair Display",serif}.intro h1{font-size:clamp(50px,10vw,100px);line-height:.95;margin:18px 0;background:linear-gradient(120deg,#fff,#ff9bcf,#b698ff,#fff);background-size:200%;-webkit-background-clip:text;color:transparent;animation:shine 5s linear infinite}@keyframes shine{to{background-position:200%}}
+.intro p{color:#c7b9ca;line-height:1.8;max-width:650px;margin:20px auto 30px}.btn{border:0;border-radius:999px;padding:15px 25px;color:#fff;font-weight:800;cursor:pointer;background:linear-gradient(135deg,#ff4e9f,#8c55ff);box-shadow:0 15px 50px rgba(255,65,165,.3);transition:.3s}.btn:hover{transform:translateY(-3px) scale(1.03)}
+.nav{position:fixed;top:15px;left:50%;transform:translateX(-50%);z-index:100;width:min(1050px,92%);padding:12px 16px;border:1px solid var(--line);border-radius:999px;background:rgba(10,3,14,.65);backdrop-filter:blur(20px);display:flex;justify-content:space-between;align-items:center;opacity:0;transition:.6s}.nav.show{opacity:1}.logo{font-weight:800}.logo span{color:var(--pink)}.nav a{color:#c6b9c8;text-decoration:none;font-size:12px;margin-left:16px}.nav a:hover{color:#fff}
+.music{position:fixed;right:20px;bottom:20px;z-index:500;border:1px solid var(--line);background:rgba(15,5,20,.8);color:#fff;border-radius:50%;width:58px;height:58px;cursor:pointer;backdrop-filter:blur(15px);box-shadow:0 10px 40px rgba(0,0,0,.4)}.music.playing{animation:ring 1.4s infinite}@keyframes ring{50%{box-shadow:0 0 35px rgba(255,80,175,.7)}}
+section{padding:110px 20px}.container{width:min(1050px,100%);margin:auto}.center{text-align:center}.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding-top:80px}.hero h1{font-size:clamp(75px,15vw,160px);line-height:.75;margin:25px 0;background:linear-gradient(120deg,#fff,#ff87c4,#b48aff,#fff);background-size:220%;-webkit-background-clip:text;color:transparent;animation:shine 6s linear infinite}.hero h1 small{display:block;font-size:.45em;letter-spacing:0}.hero p{max-width:700px;color:#b9acbb;line-height:1.9;font-size:17px;margin:30px auto}.glass{border:1px solid var(--line);background:rgba(255,255,255,.055);backdrop-filter:blur(18px);border-radius:30px;box-shadow:0 30px 100px rgba(0,0,0,.25)}
+.reveal{opacity:0;transform:translateY(30px);transition:.8s}.reveal.show{opacity:1;transform:none}.heading{text-align:center;margin-bottom:45px}.heading h2{font-size:clamp(40px,7vw,70px);margin:12px 0}.heading p{color:var(--muted);line-height:1.7}
+.counter{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.time{text-align:center;padding:28px 10px}.num{font-size:clamp(35px,6vw,65px);font-weight:800;background:linear-gradient(120deg,#fff,#ff83c2);-webkit-background-clip:text;color:transparent}.label{font-size:10px;letter-spacing:2px;color:#817384;text-transform:uppercase}
+.song{padding:45px 28px;text-align:center;position:relative;overflow:hidden}.song:before{content:"";position:absolute;width:350px;height:350px;background:#ff439e;filter:blur(100px);opacity:.12;left:-150px;top:-150px}.vinyl{width:180px;height:180px;border-radius:50%;margin:0 auto 25px;background:repeating-radial-gradient(circle,#080808 0 4px,#161616 5px 7px);border:10px solid #151015;box-shadow:0 0 70px rgba(255,70,170,.3);display:grid;place-items:center;animation:spin 8s linear infinite}.vinyl:after{content:"SARYAM";font-size:12px;font-weight:800;letter-spacing:2px;width:55px;height:55px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ff5aa9,#9258ff)}@keyframes spin{to{transform:rotate(360deg)}}.song h3{font-size:40px;margin:10px}.song .artist{color:#a99aac}.progress{height:5px;border-radius:10px;background:rgba(255,255,255,.1);margin:28px auto 10px;max-width:700px;overflow:hidden}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff5aa9,#a375ff)}.times{display:flex;justify-content:space-between;max-width:700px;margin:auto;color:#776b7b;font-size:11px}.lyrics{margin:30px auto 0;max-width:760px;min-height:90px;display:grid;place-items:center;font:500 27px "Playfair Display",serif;color:#ffafd5;line-height:1.5}.song-note{font-size:11px;color:#766a7a;margin-top:20px}
+.love{padding:60px 25px;text-align:center}.love .big{font-size:80px;animation:beat 1.5s infinite}.love h2{font-size:clamp(40px,7vw,72px)}.love p{max-width:700px;margin:auto;color:#b2a4b5;line-height:1.9}
+.letter{max-width:800px;margin:auto}.envelope{padding:45px;text-align:center;cursor:pointer}.envelope .icon{font-size:80px}.envelope h3{font-size:35px}.letter-body{max-height:0;overflow:hidden;transition:1.2s}.letter-body.open{max-height:1000px;margin-top:15px}.letter-inner{padding:35px;color:#c8bacb;line-height:2;text-align:left}.letter-inner strong{color:#ff9dce}
+.reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.reason{padding:28px;min-height:190px}.reason b{color:#ff6db6;letter-spacing:3px;font-size:11px}.reason h3{font-size:27px;margin:15px 0 8px}.reason p{color:#958899;line-height:1.7}
+.secret{max-width:800px;margin:auto;padding:35px;text-align:center}.inputrow{display:flex;max-width:520px;margin:20px auto;gap:8px}.inputrow input{flex:1;border:1px solid var(--line);background:#08030c;color:#fff;border-radius:999px;padding:14px 18px;outline:none}.secretmsg{min-height:50px;color:#ffacd3;line-height:1.7}
+.gift{text-align:center}.giftbox{width:180px;height:180px;margin:0 auto 25px;border-radius:45px;display:grid;place-items:center;font-size:90px;background:linear-gradient(135deg,#ff4d9e,#8e56ff);box-shadow:0 25px 90px rgba(255,70,165,.35);cursor:pointer;animation:gift 2s infinite}@keyframes gift{50%{transform:translateY(-10px)}}.surprise{max-height:0;overflow:hidden;opacity:0;transition:1.2s}.surprise.open{max-height:900px;opacity:1}.surprise h2{font-size:clamp(55px,10vw,100px);margin:25px 0 10px;background:linear-gradient(120deg,#fff,#ff86c5,#ae8cff);-webkit-background-clip:text;color:transparent}.surprise p{color:#b6a9b9;line-height:1.9;max-width:700px;margin:auto}.final{min-height:70vh;display:grid;place-items:center;text-align:center}.final .heart{font-size:75px}.final h2{font-size:clamp(50px,9vw,90px);margin:10px 0}.final p{color:#948798;line-height:1.8}footer{text-align:center;padding:35px;color:#655a69;border-top:1px solid rgba(255,255,255,.06);font-size:12px}
+.petal{position:fixed;top:-30px;font-size:20px;animation:fall linear forwards}.conf{position:fixed;top:-30px;font-size:20px;animation:fall 3.5s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(600deg);opacity:0}}
+@media(max-width:750px){.nav div:last-child{display:none}.counter,.reasons{grid-template-columns:repeat(2,1fr)}.inputrow{flex-direction:column}.inputrow .btn{width:100%}}@media(max-width:500px){.counter,.reasons{grid-template-columns:1fr}section{padding:85px 14px}.song{padding:35px 18px}}
 </style>
 </head>
 <body>
 
+<div id="stars"></div><div id="petals"></div><div id="confetti"></div>
+
 <div id="intro">
-  <div class="intro-inner">
-    <div class="intro-heart">❤️</div>
-    <div class="kicker">Özel erişim • Sadece Sarya için</div>
-    <h1 class="intro-title">Senin için<br>küçük bir dünya</h1>
-    <p class="intro-text">Bu sayfa sadece güzel görünmek için değil; yüzünde küçük bir gülümseme bırakmak için hazırlandı. Hazırsan hikâyeye başlayalım. ✨<br><small style="color:#8f7d91">🎵 İçeri girdiğinde romantik müzik başlar.</small></p>
-    <button class="primary" onclick="enterSite()">💗 İçeri Gir</button>
+  <div class="intro">
+    <div class="heart">❤️</div>
+    <div class="kicker">Eren'den • Sarya'ya</div>
+    <h1>Saryam,<br>bu sayfa sana.</h1>
+    <p>Bir internet sitesi değil... Senin için hazırlanmış küçük bir dünya. <br>Ve içinde en güzel şey sensin. ❤️</p>
+    <button class="btn" onclick="enter()">Hikâyeye Başla ✨</button>
   </div>
 </div>
 
-<div id="stars"></div><div id="fx"></div><div id="hearts"></div><div id="confetti"></div>
-
 <nav class="nav" id="nav">
-  <div class="logo">Eren <span>❤️</span> Sarya</div>
-  <div class="links">
-    <a href="#biz">Biz</a><a href="#mektup">Mektup</a><a href="#neden">Neden?</a><a href="#oyun">Oyun</a><a href="#surpriz">Sürpriz</a>
-  </div>
+  <div class="logo">Eren <span>❤️</span> Saryam</div>
+  <div><a href="#biz">Biz</a><a href="#sarki">Şarkımız</a><a href="#mektup">Mektup</a><a href="#surpriz">Sürpriz</a></div>
 </nav>
 
 <button class="music" id="musicBtn" onclick="toggleMusic()">🎵</button>
-<audio id="music" loop></audio>
+<audio id="audio" preload="auto">
+  <source src="https://raw.githubusercontent.com/erenonen072-ui/saryamaa/main/SARYAM%20%28Female%20Vocals%20Cover%29.mp3" type="audio/mpeg">
+</audio>
 
 <main>
 <section class="hero">
-  <div class="hero-content reveal">
-    <div class="badge">✨ 15.12.2025 • Bizim başlangıcımız</div>
-    <h1>Eren <span>❤️ Sarya</span></h1>
-    <p class="hero-text">Bazı insanlar hayatımıza girer ve birkaç güzel anı bırakır. Bazıları ise hikâyenin kendisi olur.<br><br><strong>Sen benim için öyle birisin.</strong></p>
-    <a class="primary" style="display:inline-block;text-decoration:none;margin-top:30px" href="#biz">Hikâyemize devam et ↓</a>
+  <div class="reveal">
+    <div class="kicker">15.12.2025 • Sonsuza kadar</div>
+    <h1>Eren<small>❤️</small>Sarya</h1>
+    <p>Bir tarih vardı. Sonra bir hikâye başladı.<br>Ve o hikâyede benim en sevdiğim kelime <strong style="color:#ff9bca">“Saryam”</strong> oldu.</p>
+    <button class="btn" onclick="document.getElementById('sarki').scrollIntoView({behavior:'smooth'})">Şarkımızı Dinle 🎵</button>
   </div>
-  <div class="scroll">aşağı kaydır</div>
 </section>
 
 <section id="biz">
 <div class="container">
-  <div class="heading reveal"><div class="kicker">Biz</div><h2>Birlikte geçen zaman</h2><p>15 Aralık 2025'ten beri sayaç çalışıyor. ❤️</p></div>
-  <div class="counter">
-    <div class="glass time reveal"><div class="num" id="days">0</div><div class="label">Gün</div></div>
-    <div class="glass time reveal"><div class="num" id="hours">00</div><div class="label">Saat</div></div>
-    <div class="glass time reveal"><div class="num" id="minutes">00</div><div class="label">Dakika</div></div>
-    <div class="glass time reveal"><div class="num" id="seconds">00</div><div class="label">Saniye</div></div>
-  </div>
+<div class="heading reveal"><div class="kicker">Biz</div><h2>15.12.2025'ten beri...</h2><p>Her saniye biraz daha fazla anı. ❤️</p></div>
+<div class="counter">
+<div class="glass time reveal"><div class="num" id="d">0</div><div class="label">Gün</div></div>
+<div class="glass time reveal"><div class="num" id="h">00</div><div class="label">Saat</div></div>
+<div class="glass time reveal"><div class="num" id="m">00</div><div class="label">Dakika</div></div>
+<div class="glass time reveal"><div class="num" id="s">00</div><div class="label">Saniye</div></div>
+</div>
+</div>
+</section>
+
+<section id="sarki">
+<div class="container">
+<div class="heading reveal"><div class="kicker">Sana özel</div><h2>Şarkımız burada. 🎵</h2><p>Sayfanın müziği: <strong style="color:#ff9bcf">SARYAM — Female Vocals Cover</strong></p></div>
+<div class="glass song reveal">
+<div class="vinyl" id="vinyl"></div>
+<h3>SARYAM</h3><div class="artist">Female Vocals Cover • Eren ❤️ Sarya</div>
+<div class="progress"><i id="bar"></i></div>
+<div class="times"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+<div class="lyrics" id="lyrics">“Saryam...” ❤️</div>
+<div style="margin-top:20px"><button class="btn" onclick="toggleMusic()" id="playText">▶ Şarkıyı Başlat</button></div>
+<div class="song-note">Müzik, verdiğin GitHub dosyasından yükleniyor.</div>
+</div>
 </div>
 </section>
 
 <section>
 <div class="container">
-  <div class="glass love-card reveal">
-    <div class="big-heart">💗</div>
-    <h2>Bu sayfanın en güzel<br>kısmı sensin.</h2>
-    <p>Buradaki yıldızlar, kalpler ve animasyonlar bir yana... benim için asıl önemli olan bu sayfayı senin görmen. ❤️</p>
-  </div>
+<div class="glass love reveal">
+<div class="big">💗</div>
+<h2>Sen benim en güzel tesadüfümsün.</h2>
+<p>Sana anlatmak istediğim çok şey var. Bazen kelimeler yetmiyor. O yüzden bu siteyi yaptım. Her bölümde sana küçük bir şey bırakmak istedim.</p>
+</div>
 </div>
 </section>
 
 <section id="mektup">
 <div class="container">
-  <div class="heading reveal"><div class="kicker">Sadece sana</div><h2>Açman gereken bir mektup var 💌</h2><p>Dokun ve oku.</p></div>
-  <div class="envelope">
-    <div class="glass env-head reveal" onclick="openLetter()">
-      <div class="env-icon">💌</div><h3>Sarya'ya...</h3><p>Eren'den sana • açmak için dokun</p>
-    </div>
-    <div class="letter" id="letter"><div class="glass letter-inner">
-      <div class="letter-title">Sevgili Sarya,</div><br>
-      Bunu hazırlarken düşündüğüm tek bir şey vardı: <strong style="color:#ff9fd2">“Acaba Sarya bunu görünce gülümser mi?”</strong>
-      <br><br>Çünkü sen benim için sıradan biri değilsin. Seninle konuştuğum, güldüğüm ve güzel zaman geçirdiğim her an benim için ayrı bir yerde.
-      <br><br>Belki bazen kelimelerle anlatamıyorum. Ama şunu bilmeni istiyorum:
-      <br><br><strong style="color:#ff9fd2">Sen benim için gerçekten çok özelsin.</strong>
-      <br><br>İyi ki varsın Sarya. İyi ki hayatımdasın.
-      <br><br><strong style="color:#ff9fd2">Seni çok seviyorum. ❤️</strong>
-      <br><br>— Eren
-    </div></div>
-  </div>
+<div class="heading reveal"><div class="kicker">Kalbimden</div><h2>Saryam'a bir mektup 💌</h2><p>Dokun. Mektup senin için açılacak.</p></div>
+<div class="letter">
+<div class="glass envelope reveal" onclick="openLetter()"><div class="icon">💌</div><h3>Saryam'a...</h3><p style="color:#8d7f90">Eren'den • sadece sana</p></div>
+<div class="letter-body" id="letter"><div class="glass letter-inner">
+<strong>Sevgili Saryam,</strong><br><br>
+Bu sayfayı hazırlarken aklımda sadece sen vardın.<br><br>
+Belki burada yüzlerce yıldız var, belki binlerce kalp... ama benim için hepsinden daha güzel olan tek bir şey var: <strong>sen.</strong><br><br>
+15.12.2025 benim için sadece bir tarih değil. O tarihten sonra bazı şeyler daha güzel hissettirmeye başladı.<br><br>
+Gülüşün, konuşman, küçük şeylerin... Hepsinin bende ayrı bir yeri var.<br><br>
+Sana verebileceğim en güzel cümle belki de şu:<br><br>
+<strong>Saryam, seni çok seviyorum. ❤️</strong><br><br>
+İyi ki varsın.<br><br>— Eren
+</div></div>
 </div>
-</section>
-
-<section id="neden">
-<div class="container">
-  <div class="heading reveal"><div class="kicker">Kalbimden</div><h2>Seni neden seviyorum?</h2><p>6 sebep yazdım ama aslında daha çok var.</p></div>
-  <div class="reasons">
-    <div class="glass reason reveal"><div class="reason-no">01</div><h3>Gülüşün</h3><p>Gülümsediğinde her şey biraz daha güzel oluyor.</p></div>
-    <div class="glass reason reveal"><div class="reason-no">02</div><h3>Sen olman</h3><p>Olduğun kişi olman, en sevdiğim şeylerden biri.</p></div>
-    <div class="glass reason reveal"><div class="reason-no">03</div><h3>Sesin</h3><p>Sesini duymak bile bazen günümü güzelleştiriyor.</p></div>
-    <div class="glass reason reveal"><div class="reason-no">04</div><h3>Küçük şeylerin</h3><p>Farkında olmadan yaptığın küçük şeyler bile benim için önemli.</p></div>
-    <div class="glass reason reveal"><div class="reason-no">05</div><h3>Yanımda oluşun</h3><p>Yanımda olduğunu bilmek bile güzel bir his.</p></div>
-    <div class="glass reason reveal"><div class="reason-no">06</div><h3>Çünkü sensin ❤️</h3><p>Bazen açıklamaya gerek yok. Cevap sadece sensin.</p></div>
-  </div>
 </div>
 </section>
 
 <section>
 <div class="container">
-  <div class="heading reveal"><div class="kicker">Hikâyemiz</div><h2>Bazı tarihler kalpte kalır.</h2><p>Bir başlangıç, bugün ve henüz yazılmamış bölümler.</p></div>
-  <div class="timeline">
-    <div class="titem reveal"><div class="dot"></div><div class="glass tcard"><span>15.12.2025</span><h3>Başlangıç ❤️</h3><p>Hikâyemizin başlangıç noktası.</p></div></div>
-    <div class="titem reveal"><div class="dot"></div><div class="glass tcard"><span>SONRA</span><h3>Güzel anlar ✨</h3><p>Birlikte güldüğümüz ve konuştuğumuz zamanlar.</p></div></div>
-    <div class="titem reveal"><div class="dot"></div><div class="glass tcard"><span>BUGÜN</span><h3>Hâlâ buradayız 💗</h3><p>Ve hikâyemiz devam ediyor.</p></div></div>
-    <div class="titem reveal"><div class="dot"></div><div class="glass tcard"><span>GELECEK</span><h3>Daha çok anı 🌟</h3><p>Henüz yaşanmamış çok güzel günler var.</p></div></div>
-  </div>
+<div class="heading reveal"><div class="kicker">Kalbimdeki 6 şey</div><h2>Seni neden seviyorum?</h2></div>
+<div class="reasons">
+<div class="glass reason reveal"><b>01</b><h3>Gülüşün</h3><p>Gülümsediğinde dünyamın sesi biraz değişiyor.</p></div>
+<div class="glass reason reveal"><b>02</b><h3>Sen olman</h3><p>Seni özel yapan şey, başkası olmaya çalışmaman.</p></div>
+<div class="glass reason reveal"><b>03</b><h3>Sesin</h3><p>Seni duymak bile bazen bütün günümü güzelleştiriyor.</p></div>
+<div class="glass reason reveal"><b>04</b><h3>Küçük şeylerin</h3><p>Fark etmeden yaptığın şeyler bile aklımda kalıyor.</p></div>
+<div class="glass reason reveal"><b>05</b><h3>Yanımda oluşun</h3><p>Varlığını bilmek bile bana güzel hissettiriyor.</p></div>
+<div class="glass reason reveal"><b>06</b><h3>Saryam oluşun</h3><p>Bunun açıklaması yok. Çünkü cevap sensin. ❤️</p></div>
+</div>
 </div>
 </section>
 
 <section>
 <div class="container">
-  <div class="heading reveal"><div class="kicker">Anılar</div><h2>Bizden küçük parçalar</h2><p>Şimdilik yer tutucular var. İstersen aşağıdaki kartları kendi fotoğraflarınla değiştirebilirsin.</p></div>
-  <div class="memories">
-    <div class="glass memory reveal" onclick="openMemory('İlk güzel anılarımız ❤️')"><div class="memory-photo">🌹</div><div class="memory-content"><h3>İlk Anılar</h3><p>Her güzel hikâyenin bir başlangıcı vardır.</p></div></div>
-    <div class="glass memory reveal" onclick="openMemory('Birlikte geçirdiğimiz güzel zamanlar... ✨')"><div class="memory-photo">🌙</div><div class="memory-content"><h3>Güzel Zamanlar</h3><p>Saatlerin nasıl geçtiğini anlamadığımız zamanlar.</p></div></div>
-    <div class="glass memory reveal" onclick="openMemory('Daha yaşayacağımız çok güzel anı var. ❤️')"><div class="memory-photo">⭐</div><div class="memory-content"><h3>Daha Başlangıç</h3><p>En güzel anılarımız henüz yaşanmamış olabilir.</p></div></div>
-  </div>
-  <div class="upload-note">Fotoğraf eklemek için HTML'deki <code>.memory-photo</code> alanlarını kendi görsellerinle değiştirebilirsin.</div>
+<div class="heading reveal"><div class="kicker">Gizli</div><h2>Sadece Saryam'ın açabileceği yer 🔐</h2><p>İpucu: Senin adın. ❤️</p></div>
+<div class="glass secret reveal">
+<div class="inputrow"><input id="code" placeholder="Gizli kelimeyi yaz..." autocomplete="off"><button class="btn" onclick="unlock()">Kilidi Aç 🔓</button></div>
+<div class="secretmsg" id="secret"></div>
 </div>
-</section>
-
-<section>
-<div class="container">
-  <div class="heading reveal"><div class="kicker">Gelecek</div><h2>Daha bitmedi... 🌙</h2><p>Daha yaşayacağımız çok şey var.</p></div>
-  <div class="future-grid">
-    <div class="glass future reveal"><div class="emoji">✨</div><h3>Daha fazla anı</h3><p>Birlikte güleceğimiz ve hatırlayacağımız daha çok gün.</p></div>
-    <div class="glass future reveal"><div class="emoji">❤️</div><h3>Daha fazla mutluluk</h3><p>Küçük şeylerden bile mutlu olduğumuz zamanlar.</p></div>
-    <div class="glass future reveal"><div class="emoji">🌟</div><h3>Daha yazılmamış bir hikâye</h3><p>Bu sayfanın sonu değil. Hikâyenin sadece bir bölümü.</p></div>
-  </div>
-</div>
-</section>
-
-<section>
-<div class="container">
-  <div class="heading reveal"><div class="kicker">Gizli bölüm</div><h2>Bir kelimeyi biliyorsan açılır. 🔐</h2><p>İpucu: Sadece ikinizin bildiği özel bir kelime seçebilirsin.</p></div>
-  <div class="glass secret reveal">
-    <div class="secret-input"><input id="secretInput" placeholder="Gizli kelime..." autocomplete="off"><button class="primary" onclick="checkSecret()">Kilidi Aç 🔓</button></div>
-    <div class="secret-msg" id="secretMsg"></div>
-  </div>
-</div>
-</section>
-
-<section>
-<div class="container">
-  <div class="heading reveal"><div class="kicker">Kalbimden bir cümle</div><h2>Rastgele bir mesaj</h2></div>
-  <div class="glass random-box reveal"><div class="random-text" id="randomText">Bazen seni ne kadar sevdiğimi anlatacak kelime bulamıyorum. ❤️</div><button class="small-btn" onclick="randomLove()">💕 Bir tane daha</button></div>
-</div>
-</section>
-
-<section id="oyun">
-<div class="container">
-  <div class="heading reveal"><div class="kicker">Mini sürpriz</div><h2>Kalpleri yakala ❤️</h2><p>10 kalp yakalarsan özel mesaj açılacak.</p></div>
-  <div class="glass game reveal">
-    <div class="score">Skor: <span id="score">0</span> / 10</div>
-    <div class="game-area" id="gameArea"><div id="gameInfo" style="color:#756a7a;padding-top:95px">Başlamak için aşağıdaki butona bas ❤️</div></div>
-    <button class="small-btn" onclick="startGame()">❤️ Oyunu Başlat</button>
-  </div>
 </div>
 </section>
 
 <section id="surpriz">
 <div class="container">
-  <div class="heading reveal"><div class="kicker">Son bir şey</div><h2>Sana sakladığım bir sürpriz var...</h2><p>Kutuyu açmadan gitme.</p></div>
-  <div class="gift-wrap">
-    <div class="gift" onclick="openGift()">🎁</div>
-    <div class="surprise" id="surprise">
-      <h2>Sarya ❤️</h2>
-      <p>Eğer buraya kadar geldiysen artık söylemek istediğim son şeyi söyleyebilirim.</p><br>
-      <p>Bu siteyi hazırlarken yüzünde bir gülümseme oluşmasını istedim.</p><br>
-      <p>Çünkü sen benim için gerçekten çok özelsin.</p><br>
-      <p><strong>İyi ki varsın. İyi ki hayatımdasın.</strong></p>
-      <div class="final-msg">Seni çok seviyorum. ❤️</div>
-    </div>
-  </div>
+<div class="heading reveal"><div class="kicker">Son sürpriz</div><h2>Bir kutu var. 🎁</h2><p>Sonuna kadar geldiysen bunu hak ettin.</p></div>
+<div class="gift">
+<div class="giftbox" onclick="gift()">🎁</div>
+<div class="surprise" id="surprise">
+<h2>Saryam ❤️</h2>
+<p>Bu sitenin her yerinde bir şey anlatmaya çalıştım.</p><br>
+<p>Ama bütün animasyonları, yıldızları ve cümleleri kaldırırsak geriye tek bir şey kalıyor.</p><br>
+<p><strong style="color:#ff9dce;font-size:24px">Seni seviyorum.</strong></p><br>
+<p>İyi ki varsın. İyi ki benim Saryam'sın. ❤️</p>
+</div>
+</div>
 </div>
 </section>
 
 <section class="final">
-  <div class="reveal">
-    <div class="final-heart">❤️</div>
-    <h2>Eren ❤️ Sarya</h2>
-    <p>15.12.2025'te başlayan hikâyemiz...<br>daha yeni başlıyor.</p>
-  </div>
+<div class="reveal">
+<div class="heart">❤️</div>
+<div class="kicker">SONSUZA KADAR</div>
+<h2>Eren ❤️ Saryam</h2>
+<p>15.12.2025 → ∞<br><br>Bu hikâyenin en güzel bölümleri daha yazılmadı.</p>
+</div>
 </section>
 </main>
-
-<footer>Eren tarafından <span>❤️</span> Sarya için hazırlandı.</footer>
-
-<div class="modal" id="modal" onclick="closeModal(event)">
-  <div class="modal-box"><div class="modal-icon">❤️</div><h2>Bir Anı</h2><p id="modalText"></p><button class="close" onclick="closeModal()">Kapat</button></div>
-</div>
+<footer>Eren'den Saryam'a, kalpten. ❤️</footer>
 
 <script>
-const START_DATE=new Date("2025-12-15T00:00:00");
-const SECRET_WORD="sarya"; // İstersen burayı kendi gizli kelimenizle değiştir.
-const MUSIC_URL="https://cdn.pixabay.com/audio/2022/10/25/audio_946f6e2e0f.mp3";
-
-for(let i=0;i<220;i++){const s=document.createElement("div");s.className="star";s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";let z=1+Math.random()*2.5;s.style.width=z+"px";s.style.height=z+"px";s.style.animationDelay=Math.random()*5+"s";document.getElementById("stars").appendChild(s)}
-for(let i=0;i<45;i++){const p=document.createElement("div");p.className="spark";p.style.left=Math.random()*100+"%";p.style.animationDuration=8+Math.random()*12+"s";p.style.animationDelay=Math.random()*10+"s";document.getElementById("fx").appendChild(p)}
-
-function enterSite(){document.getElementById("intro").classList.add("hide");document.getElementById("nav").classList.add("show");createHearts(30);document.body.style.overflowX="hidden"; if(MUSIC_URL){audio.volume=.38; audio.play().then(()=>{musicBtn.textContent="🔊";musicBtn.classList.add("on")}).catch(()=>{musicBtn.textContent="🎵";})}}
-function updateCounter(){let d=Math.max(0,Date.now()-START_DATE.getTime()),t=Math.floor(d/1000);document.getElementById("days").textContent=Math.floor(t/86400).toLocaleString("tr-TR");document.getElementById("hours").textContent=String(Math.floor(t%86400/3600)).padStart(2,"0");document.getElementById("minutes").textContent=String(Math.floor(t%3600/60)).padStart(2,"0");document.getElementById("seconds").textContent=String(t%60).padStart(2,"0")}updateCounter();setInterval(updateCounter,1000)
-
-function openLetter(){const l=document.getElementById("letter");l.classList.toggle("open");if(l.classList.contains("open"))createHearts(18)}
-function createHeart(){const h=document.createElement("div");h.className="float-heart";h.textContent=["❤️","💖","💕","💗","💓","💞","💘","✨","🌹"][Math.floor(Math.random()*9)];h.style.left=Math.random()*100+"vw";h.style.fontSize=14+Math.random()*27+"px";let dur=4+Math.random()*5;h.style.animationDuration=dur+"s";document.getElementById("hearts").appendChild(h);setTimeout(()=>h.remove(),dur*1000)}
-function createHearts(n=10){for(let i=0;i<n;i++)setTimeout(createHeart,i*65)}
-setInterval(()=>{if(document.visibilityState==="visible"&&!document.getElementById("intro").classList.contains("hide")===false)createHeart()},2600)
-
-function openMemory(text){document.getElementById("modalText").textContent=text;document.getElementById("modal").classList.add("show");createHearts(8)}
-function closeModal(e){if(e&&e.target!==document.getElementById("modal"))return;document.getElementById("modal").classList.remove("show")}
-
-const loveTexts=["İyi ki hayatıma girmişsin. ❤️","Gülüşünü gördüğümde her şey biraz daha güzel oluyor. 💗","Seni düşündüğümde yüzümde istemsiz bir gülümseme oluşuyor. 🥹","İyi ki sen. Gerçekten iyi ki sen. ❤️","Hayatımdaki en güzel detaylardan birisin. ✨","Sana söyleyemediğim kadar çok güzel şey var. 💕","Bazen sadece seni düşünmek bile yetiyor. 🌙","Seninle ilgili en sevdiğim şey: sen olman. ❤️","Bu sayfadaki bütün kalplerin adresi sensin. 💖","Seni seviyorum. Bunun daha güzel bir açıklaması yok. ❤️"];
-function randomLove(){const e=document.getElementById("randomText");e.style.opacity=0;setTimeout(()=>{e.textContent=loveTexts[Math.floor(Math.random()*loveTexts.length)];e.style.opacity=1;createHearts(5)},180)}
-
-function checkSecret(){const val=document.getElementById("secretInput").value.trim().toLowerCase();const out=document.getElementById("secretMsg");if(val===SECRET_WORD){out.innerHTML="🔓 <strong>Gizli bölüm açıldı.</strong><br><br>Sarya, bazı şeylerin şifresi tek bir kelime değildir. Ama bu sayfanın şifresi sensin. ❤️";createHearts(25);launchConfetti()}else{out.textContent="🔒 Henüz olmadı... İpucunu düşün ve tekrar dene. ❤️"}}
-document.getElementById("secretInput").addEventListener("keydown",e=>{if(e.key==="Enter")checkSecret()})
-
-let score=0,gameActive=false,gameTimer;
-function startGame(){score=0;gameActive=true;document.getElementById("score").textContent=0;document.getElementById("gameInfo").textContent="";spawnGameHeart()}
-function spawnGameHeart(){if(!gameActive)return;document.querySelector(".game-heart")?.remove();const h=document.createElement("div");h.className="game-heart";h.textContent="❤️";h.style.left=5+Math.random()*88+"%";h.style.top=5+Math.random()*75+"%";h.onclick=()=>{score++;document.getElementById("score").textContent=score;h.remove();createHearts(2);if(score>=10){gameActive=false;document.getElementById("gameInfo").innerHTML="🎉 <strong style='color:#ff9ed2'>Başardın!</strong><br><br>Sarya, sen kalbimi zaten çoktan yakaladın. ❤️";launchConfetti();createHearts(35)}else spawnGameHeart()};document.getElementById("gameArea").appendChild(h);clearTimeout(gameTimer);gameTimer=setTimeout(()=>{if(gameActive)spawnGameHeart()},1400)}
-
-function openGift(){document.getElementById("surprise").classList.add("show");createHearts(100);launchConfetti();setTimeout(()=>document.getElementById("surprise").scrollIntoView({behavior:"smooth",block:"center"}),200)}
-function launchConfetti(){const c=document.getElementById("confetti");const a=["❤️","💖","✨","💕","🌹","⭐"];for(let i=0;i<90;i++){const x=document.createElement("div");x.textContent=a[Math.floor(Math.random()*a.length)];x.style.position="absolute";x.style.left=Math.random()*100+"vw";x.style.top="-30px";x.style.fontSize=12+Math.random()*22+"px";x.style.transition="transform 3s linear,opacity 3s";c.appendChild(x);requestAnimationFrame(()=>{x.style.transform=`translateY(${110+Math.random()*100}vh) rotate(${Math.random()*900}deg)`;x.style.opacity=0});setTimeout(()=>x.remove(),3500)}}
-
-const audio=document.getElementById("music"),musicBtn=document.getElementById("musicBtn");if(MUSIC_URL)audio.src=MUSIC_URL;
-function toggleMusic(){if(!MUSIC_URL){alert("Müzik eklemek için kodun içindeki MUSIC_URL kısmına müzik dosyanın adını yaz. ❤️");return}if(audio.paused){audio.play().then(()=>{musicBtn.textContent="🔊";musicBtn.classList.add("on")}).catch(()=>{})}else{audio.pause();musicBtn.textContent="🎵";musicBtn.classList.remove("on")}}
-
-const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll(".reveal").forEach(x=>obs.observe(x));
-window.addEventListener("load",()=>setTimeout(()=>document.querySelector(".hero .reveal")?.classList.add("visible"),600));
-document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").classList.remove("show")});
+const audio=document.getElementById("audio"),btn=document.getElementById("musicBtn"),playText=document.getElementById("playText"),bar=document.getElementById("bar"),cur=document.getElementById("cur"),dur=document.getElementById("dur"),lyrics=document.getElementById("lyrics");
+const start=new Date("2025-12-15T00:00:00");
+for(let i=0;i<180;i++){let x=document.createElement("div");x.className="star";x.style.left=Math.random()*100+"%";x.style.top=Math.random()*100+"%";x.style.animationDelay=Math.random()*4+"s";document.getElementById("stars").appendChild(x)}
+function enter(){document.getElementById("intro").classList.add("hide");document.getElementById("nav").classList.add("show");setTimeout(()=>audio.play().then(setPlaying).catch(()=>{}),500);petals(25)}
+function setPlaying(){btn.textContent="🔊";btn.classList.add("playing");playText.textContent="⏸ Şarkıyı Durdur";document.getElementById("vinyl").style.animationPlayState="running"}
+function setPaused(){btn.textContent="🎵";btn.classList.remove("playing");playText.textContent="▶ Şarkıyı Başlat";document.getElementById("vinyl").style.animationPlayState="paused"}
+function toggleMusic(){if(audio.paused)audio.play().then(setPlaying).catch(()=>{});else{audio.pause();setPaused()}}
+audio.addEventListener("play",setPlaying);audio.addEventListener("pause",setPaused);audio.addEventListener("timeupdate",()=>{if(audio.duration){bar.style.width=(audio.currentTime/audio.duration*100)+"%";cur.textContent=time(audio.currentTime);dur.textContent=time(audio.duration)}});audio.addEventListener("ended",()=>{setPaused()});
+function time(x){if(!isFinite(x))return"0:00";return Math.floor(x/60)+":"+String(Math.floor(x%60)).padStart(2,"0")}
+const lines=["Saryam... ❤️","Sen benim en güzel hikâyemsin.","İyi ki varsın.","İyi ki hayatımdasın.","Seni çok seviyorum. ❤️"];
+let li=0;setInterval(()=>{if(!audio.paused){lyrics.style.opacity=0;setTimeout(()=>{lyrics.textContent="“"+lines[li++%lines.length]+"”";lyrics.style.opacity=1},250)}},5000);
+function counter(){let t=Math.max(0,Math.floor((Date.now()-start)/1000));document.getElementById("d").textContent=Math.floor(t/86400).toLocaleString("tr-TR");document.getElementById("h").textContent=String(Math.floor(t%86400/3600)).padStart(2,"0");document.getElementById("m").textContent=String(Math.floor(t%3600/60)).padStart(2,"0");document.getElementById("s").textContent=String(t%60).padStart(2,"0")}counter();setInterval(counter,1000);
+function openLetter(){document.getElementById("letter").classList.toggle("open");petals(18)}
+function unlock(){let v=document.getElementById("code").value.trim().toLowerCase(),o=document.getElementById("secret");if(v==="sarya"){o.innerHTML="🔓 Açıldı...<br><br><strong>Hoş geldin Saryam. Bu bölümün şifresi bile sensin. ❤️</strong>";petals(35);confetti()}else o.textContent="🔒 Olmadı... İpucu: Senin adın. ❤️"}
+document.getElementById("code").addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});
+function gift(){document.getElementById("surprise").classList.add("open");petals(80);confetti();setTimeout(()=>document.getElementById("surprise").scrollIntoView({behavior:"smooth",block:"center"}),250)}
+function petals(n){for(let i=0;i<n;i++){let p=document.createElement("div");p.className="petal";p.textContent=["🌹","❤️","💗","💕","✨"][Math.floor(Math.random()*5)];p.style.left=Math.random()*100+"vw";p.style.animationDuration=(3+Math.random()*5)+"s";document.getElementById("petals").appendChild(p);setTimeout(()=>p.remove(),8000)}}
+function confetti(){for(let i=0;i<70;i++){let p=document.createElement("div");p.className="conf";p.textContent=["❤️","💖","✨","💕","🌹"][Math.floor(Math.random()*5)];p.style.left=Math.random()*100+"vw";p.style.animationDuration=(2.5+Math.random()*2)+"s";document.getElementById("confetti").appendChild(p);setTimeout(()=>p.remove(),5000)}}
+const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");ob.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(e=>ob.observe(e));
 </script>
 </body>
 </html>
