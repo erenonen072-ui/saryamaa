@@ -3,11 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#09010f">
-
+<meta name="theme-color" content="#07020d">
 <title>Eren ❤️ Sarya</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root{
+    --pink:#ff5cab;
+    --pink2:#ff9bd3;
+    --purple:#9c6cff;
+    --bg:#05020a;
+    --card:rgba(255,255,255,.055);
+    --border:rgba(255,255,255,.11);
+    --muted:#a99caf;
+}
+
 *{
     margin:0;
     padding:0;
@@ -19,39 +30,47 @@ html{
 }
 
 body{
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-    background:#05020a;
-    color:white;
+    background:var(--bg);
+    color:#fff;
+    font-family:"DM Sans",sans-serif;
     overflow-x:hidden;
 }
 
-/* =========================
-   ARKA PLAN
-========================= */
+body.locked{
+    overflow:hidden;
+}
+
+/* ---------- BACKGROUND ---------- */
+
+#stars,
+#particles,
+#hearts{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
+
+#stars{
+    z-index:-5;
+}
+
+#particles{
+    z-index:-4;
+}
+
+#hearts{
+    z-index:500;
+}
 
 body::before{
     content:"";
     position:fixed;
     inset:0;
-    z-index:-3;
-
+    z-index:-10;
     background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(255,70,170,.13),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(120,60,255,.15),
-            transparent 35%
-        ),
+        radial-gradient(circle at 15% 15%,rgba(255,69,170,.13),transparent 27%),
+        radial-gradient(circle at 85% 30%,rgba(124,74,255,.13),transparent 30%),
+        radial-gradient(circle at 50% 100%,rgba(255,51,147,.08),transparent 35%),
         #05020a;
 }
 
@@ -59,36 +78,13 @@ body::after{
     content:"";
     position:fixed;
     inset:0;
-    z-index:-2;
-
-    background:
-        linear-gradient(
-            rgba(255,255,255,.015) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.015) 1px,
-            transparent 1px
-        );
-
-    background-size:50px 50px;
-    mask-image:linear-gradient(
-        to bottom,
-        black,
-        transparent
-    );
-}
-
-/* =========================
-   YILDIZLAR
-========================= */
-
-#stars{
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    pointer-events:none;
+    z-index:-9;
+    opacity:.18;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:linear-gradient(to bottom,black,transparent);
 }
 
 .star{
@@ -97,254 +93,266 @@ body::after{
     height:2px;
     background:white;
     border-radius:50%;
-    opacity:.5;
     animation:twinkle 2s infinite alternate;
 }
 
 @keyframes twinkle{
-    from{
-        opacity:.15;
-        transform:scale(.7);
-    }
+    from{opacity:.1;transform:scale(.5)}
+    to{opacity:1;transform:scale(1.5)}
+}
 
+.particle{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:rgba(255,160,220,.6);
+    animation:particleFloat linear infinite;
+}
+
+@keyframes particleFloat{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    15%{opacity:1}
     to{
-        opacity:1;
-        transform:scale(1.5);
+        transform:translateY(-20vh);
+        opacity:0;
     }
 }
 
-/* =========================
-   INTRO
-========================= */
+/* ---------- INTRO ---------- */
 
 #intro{
     position:fixed;
     inset:0;
     z-index:9999;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     text-align:center;
-
     background:
-        radial-gradient(
-            circle at center,
-            #351046 0%,
-            #11051a 45%,
-            #030106 100%
-        );
-
-    transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
+        radial-gradient(circle at center,#32113f 0,#120619 38%,#030106 100%);
+    transition:1.4s ease;
 }
 
-#intro.hidden{
+#intro.hide{
     opacity:0;
     visibility:hidden;
+    transform:scale(1.05);
 }
 
-.intro-content{
-    width:min(90%,700px);
-    animation:introAppear 1.8s ease;
+.intro-inner{
+    width:min(90%,720px);
+    animation:introIn 1.8s ease;
 }
 
-@keyframes introAppear{
+@keyframes introIn{
     from{
         opacity:0;
-        transform:translateY(35px) scale(.95);
+        transform:translateY(30px);
     }
-
     to{
         opacity:1;
-        transform:translateY(0) scale(1);
+        transform:none;
     }
 }
 
 .intro-heart{
-    font-size:70px;
-    margin-bottom:20px;
-    animation:heartbeat 1.5s infinite;
-    filter:drop-shadow(
-        0 0 30px rgba(255,60,170,.7)
-    );
+    font-size:78px;
+    margin-bottom:22px;
+    filter:drop-shadow(0 0 35px rgba(255,80,180,.7));
+    animation:heartbeat 1.4s infinite;
 }
 
 @keyframes heartbeat{
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.18);
-    }
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.16)}
 }
 
-.intro-small{
-    color:#dca9d9;
-    font-size:13px;
+.intro-kicker{
+    color:#e5afd4;
     letter-spacing:5px;
+    font-size:12px;
     text-transform:uppercase;
-    margin-bottom:25px;
+    margin-bottom:24px;
 }
 
 .intro-title{
-    font-size:
-        clamp(45px,9vw,90px);
-
+    font-family:"Playfair Display",serif;
+    font-size:clamp(48px,9vw,88px);
     line-height:.95;
-
-    background:
-        linear-gradient(
-            120deg,
-            #fff,
-            #ffacd9,
-            #c995ff,
-            #fff
-        );
-
+    background:linear-gradient(120deg,#fff,#ffacd9,#c39aff,#fff);
+    background-size:200% auto;
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
-
-    margin-bottom:25px;
+    animation:shine 5s linear infinite;
 }
 
-.intro-description{
-    color:#cbbbd1;
-    font-size:17px;
-    line-height:1.7;
-    margin-bottom:35px;
+@keyframes shine{
+    to{background-position:200% center}
 }
 
-.start-button{
-    border:0;
-    padding:17px 34px;
+.intro-text{
+    color:#bdb0c4;
+    line-height:1.8;
+    margin:25px auto 34px;
+    max-width:570px;
+}
 
-    border-radius:999px;
-
+.enter{
+    border:1px solid rgba(255,255,255,.18);
     color:white;
-    font-size:16px;
+    background:linear-gradient(135deg,#ff4fa6,#8e50ff);
+    border-radius:999px;
+    padding:17px 34px;
     font-weight:700;
-
     cursor:pointer;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff4fa7,
-            #9148ff
-        );
-
-    box-shadow:
-        0 0 30px rgba(255,60,170,.35);
-
+    box-shadow:0 0 45px rgba(255,72,174,.3);
     transition:.3s;
 }
 
-.start-button:hover{
-    transform:scale(1.08);
-
-    box-shadow:
-        0 0 60px rgba(255,60,170,.65);
+.enter:hover{
+    transform:translateY(-3px) scale(1.04);
+    box-shadow:0 0 65px rgba(255,72,174,.55);
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* ---------- NAV ---------- */
 
-.navbar{
+nav{
     position:fixed;
     top:18px;
     left:50%;
     transform:translateX(-50%);
-
-    z-index:100;
-
-    width:min(92%,900px);
-
+    z-index:1000;
+    width:min(920px,92%);
     display:flex;
-    align-items:center;
     justify-content:space-between;
-
-    padding:12px 16px;
-
-    border:
-        1px solid rgba(255,255,255,.1);
-
-    background:
-        rgba(10,4,17,.65);
-
-    backdrop-filter:blur(18px);
-
+    align-items:center;
+    padding:12px 15px;
+    border:1px solid var(--border);
+    background:rgba(8,3,13,.62);
+    backdrop-filter:blur(20px);
     border-radius:999px;
+    box-shadow:0 15px 50px rgba(0,0,0,.25);
+    opacity:0;
+    transition:.7s;
+}
 
-    box-shadow:
-        0 10px 40px rgba(0,0,0,.25);
+nav.visible{
+    opacity:1;
 }
 
 .logo{
-    font-weight:800;
-    font-size:17px;
+    font-weight:700;
 }
 
 .logo span{
-    color:#ff72bd;
+    color:var(--pink);
 }
 
-.nav-links{
+.navlinks{
     display:flex;
-    gap:8px;
+    gap:5px;
 }
 
-.nav-links a{
-    color:#cfc3d5;
+.navlinks a{
     text-decoration:none;
+    color:#b9adbe;
     font-size:13px;
-
     padding:8px 12px;
     border-radius:999px;
-
     transition:.25s;
 }
 
-.nav-links a:hover{
+.navlinks a:hover{
     color:white;
     background:rgba(255,255,255,.08);
 }
 
 @media(max-width:650px){
-
-    .navbar{
+    nav{
         justify-content:center;
     }
-
-    .nav-links{
+    .navlinks{
         display:none;
     }
 }
 
-/* =========================
-   HERO
-========================= */
+/* ---------- MUSIC ---------- */
+
+.music{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:900;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.13);
+    background:rgba(15,6,20,.75);
+    backdrop-filter:blur(15px);
+    color:white;
+    cursor:pointer;
+    box-shadow:0 10px 35px rgba(0,0,0,.3);
+}
+
+.music.playing{
+    animation:musicPulse 1.5s infinite;
+}
+
+@keyframes musicPulse{
+    50%{box-shadow:0 0 30px rgba(255,80,175,.45)}
+}
+
+/* ---------- GENERAL ---------- */
+
+section{
+    padding:125px 20px;
+}
+
+.container{
+    width:min(1050px,100%);
+    margin:auto;
+}
+
+.kicker{
+    color:var(--pink2);
+    text-transform:uppercase;
+    letter-spacing:4px;
+    font-size:11px;
+    font-weight:700;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.heading h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(38px,6vw,62px);
+    margin-top:12px;
+}
+
+.heading p{
+    color:var(--muted);
+    margin-top:15px;
+    line-height:1.7;
+}
+
+/* ---------- HERO ---------- */
 
 .hero{
     min-height:100vh;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     text-align:center;
-
-    padding:
-        130px
-        20px
-        80px;
-
     position:relative;
+    padding-top:120px;
 }
 
 .hero-content{
@@ -353,819 +361,546 @@ body::after{
 
 .hero-badge{
     display:inline-block;
-
     padding:9px 17px;
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
+    border:1px solid var(--border);
     border-radius:999px;
-
-    background:
-        rgba(255,255,255,.05);
-
-    color:#e8bfdc;
-
-    font-size:13px;
-
+    background:rgba(255,255,255,.045);
+    color:#d8bfd7;
+    font-size:12px;
     margin-bottom:25px;
 }
 
 .hero h1{
-    font-size:
-        clamp(55px,11vw,125px);
-
-    line-height:.9;
-
+    font-family:"Playfair Display",serif;
+    font-size:clamp(65px,12vw,140px);
+    line-height:.82;
     letter-spacing:-5px;
-
-    background:
-        linear-gradient(
-            120deg,
-            #fff,
-            #ffacd9,
-            #c68cff,
-            #fff
-        );
-
+    background:linear-gradient(120deg,#fff,#ff9ed1,#c08cff,#fff);
+    background-size:200%;
     -webkit-background-clip:text;
     background-clip:text;
-
     color:transparent;
-
-    filter:
-        drop-shadow(
-            0 0 30px
-            rgba(255,90,180,.15)
-        );
-
-    margin-bottom:35px;
+    animation:shine 6s linear infinite;
 }
 
 .hero h1 span{
     display:block;
-
-    font-size:
-        clamp(35px,6vw,70px);
-
+    font-size:clamp(42px,7vw,78px);
     letter-spacing:-2px;
-
-    margin-top:15px;
+    margin-top:18px;
 }
 
-.hero-description{
+.hero-desc{
     max-width:650px;
-    margin:auto;
-
-    color:#bdb0c4;
-
-    font-size:18px;
-    line-height:1.8;
+    margin:35px auto 0;
+    color:#b7abbc;
+    line-height:1.9;
+    font-size:17px;
 }
 
-.hero-button{
+.hero-desc strong{
+    color:#ffafd9;
+}
+
+.hero-cta{
     display:inline-block;
-
-    margin-top:35px;
-
+    margin-top:32px;
     padding:14px 25px;
-
-    border-radius:999px;
-
     color:white;
     text-decoration:none;
-
-    background:
-        rgba(255,255,255,.07);
-
-    border:
-        1px solid rgba(255,255,255,.15);
-
+    border-radius:999px;
+    background:rgba(255,255,255,.06);
+    border:1px solid var(--border);
     transition:.3s;
 }
 
-.hero-button:hover{
-    background:
-        rgba(255,90,180,.15);
-
-    transform:translateY(-3px);
+.hero-cta:hover{
+    transform:translateY(-4px);
+    background:rgba(255,80,170,.1);
 }
 
-.scroll-down{
+.scroll{
     position:absolute;
-    bottom:30px;
+    bottom:28px;
     left:50%;
-
     transform:translateX(-50%);
-
-    color:#796d80;
-
+    color:#6e6473;
     font-size:12px;
-
-    animation:scrollBounce 2s infinite;
+    animation:bounce 2s infinite;
 }
 
-@keyframes scrollBounce{
-
-    0%,100%{
-        transform:translate(-50%,0);
-    }
-
-    50%{
-        transform:translate(-50%,8px);
-    }
+@keyframes bounce{
+    50%{transform:translate(-50%,8px)}
 }
 
-/* =========================
-   SECTION
-========================= */
+/* ---------- COUNTER ---------- */
 
-section{
-    padding:110px 20px;
-}
-
-.container{
-    width:min(1050px,100%);
-    margin:auto;
-}
-
-.section-heading{
-    text-align:center;
-    margin-bottom:55px;
-}
-
-.section-heading .mini{
-    color:#ff72bc;
-
-    text-transform:uppercase;
-
-    letter-spacing:4px;
-
-    font-size:12px;
-
-    font-weight:700;
-}
-
-.section-heading h2{
-    margin-top:13px;
-
-    font-size:
-        clamp(34px,6vw,58px);
-
-    letter-spacing:-2px;
-}
-
-.section-heading p{
-    color:#8f8495;
-
-    margin-top:14px;
-
-    line-height:1.6;
-}
-
-/* =========================
-   COUNTER
-========================= */
-
-.counter-section{
-    background:
-        linear-gradient(
-            180deg,
-            transparent,
-            rgba(130,40,140,.08),
-            transparent
-        );
+.counter-wrap{
+    background:linear-gradient(180deg,transparent,rgba(140,50,150,.07),transparent);
 }
 
 .counter{
     display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:15px;
 }
 
 .time-card{
-    padding:30px 15px;
-
     text-align:center;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.07),
-            rgba(255,255,255,.025)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.09);
-
-    border-radius:24px;
-
-    backdrop-filter:blur(10px);
+    padding:30px 12px;
+    border:1px solid var(--border);
+    border-radius:26px;
+    background:var(--card);
+    backdrop-filter:blur(12px);
+    transition:.4s;
 }
 
-.time-number{
-    font-size:
-        clamp(30px,6vw,55px);
+.time-card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(255,100,190,.25);
+}
 
-    font-weight:800;
-
-    background:
-        linear-gradient(
-            120deg,
-            white,
-            #ff88c8
-        );
-
+.number{
+    font-size:clamp(32px,6vw,58px);
+    font-weight:700;
+    background:linear-gradient(120deg,#fff,#ff8dc9);
     -webkit-background-clip:text;
-    background-clip:text;
     color:transparent;
 }
 
-.time-label{
-    margin-top:7px;
-
-    color:#8e8295;
-
-    font-size:12px;
-
-    text-transform:uppercase;
-
+.label{
+    color:#827787;
+    font-size:11px;
     letter-spacing:2px;
+    text-transform:uppercase;
+    margin-top:8px;
 }
 
 @media(max-width:650px){
-
     .counter{
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 }
 
-/* =========================
-   LETTER
-========================= */
+/* ---------- SPECIAL MESSAGE ---------- */
 
-.letter-section{
+.special{
     text-align:center;
 }
 
-.envelope{
-    width:min(470px,90vw);
-    margin:auto;
-
-    padding:40px 30px;
-
+.special-card{
     position:relative;
-
-    border-radius:30px;
-
+    overflow:hidden;
+    width:min(800px,100%);
+    margin:auto;
+    padding:60px 35px;
+    border:1px solid var(--border);
+    border-radius:35px;
     background:
-        linear-gradient(
-            145deg,
-            rgba(255,80,170,.12),
-            rgba(120,60,255,.08)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
-    cursor:pointer;
-
-    transition:
-        transform .4s,
-        box-shadow .4s;
+        radial-gradient(circle at 50% 0,rgba(255,70,170,.12),transparent 45%),
+        rgba(255,255,255,.035);
 }
 
-.envelope:hover{
-    transform:
-        translateY(-8px)
-        scale(1.01);
+.special-card::before{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:250px;
+    background:rgba(156,108,255,.12);
+    filter:blur(70px);
+    left:-100px;
+    top:-100px;
+}
 
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.3);
+.special-heart{
+    font-size:60px;
+    margin-bottom:20px;
+    animation:heartbeat 1.6s infinite;
+}
+
+.special-card h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(34px,6vw,58px);
+}
+
+.special-card p{
+    color:#aaa0ae;
+    line-height:1.9;
+    max-width:600px;
+    margin:20px auto 0;
+}
+
+/* ---------- LETTER ---------- */
+
+.envelope{
+    width:min(720px,100%);
+    margin:auto;
+    text-align:center;
+    cursor:pointer;
+}
+
+.envelope-top{
+    padding:40px 25px;
+    border:1px solid var(--border);
+    border-radius:30px;
+    background:linear-gradient(145deg,rgba(255,83,170,.09),rgba(128,73,255,.07));
+    transition:.4s;
+}
+
+.envelope-top:hover{
+    transform:translateY(-7px);
+    box-shadow:0 25px 80px rgba(0,0,0,.3);
 }
 
 .envelope-icon{
     font-size:75px;
-
+    filter:drop-shadow(0 0 25px rgba(255,80,180,.5));
     margin-bottom:15px;
-
-    filter:
-        drop-shadow(
-            0 0 25px
-            rgba(255,80,180,.45)
-        );
 }
 
-.envelope h3{
-    font-size:24px;
-    margin-bottom:10px;
+.envelope-top h3{
+    font-family:"Playfair Display",serif;
+    font-size:30px;
 }
 
-.envelope p{
-    color:#9d91a5;
+.envelope-top p{
+    color:#938799;
+    margin-top:8px;
 }
 
 .letter{
     max-height:0;
     overflow:hidden;
-
-    transition:
-        max-height 1s ease,
-        margin-top 1s ease;
+    transition:1s ease;
 }
 
 .letter.open{
-    max-height:600px;
-    margin-top:30px;
+    max-height:900px;
+    margin-top:20px;
 }
 
 .letter-inner{
     text-align:left;
-
-    padding:30px;
-
-    border-radius:22px;
-
-    background:
-        rgba(255,255,255,.05);
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    line-height:1.9;
-
-    color:#d4c7d7;
+    padding:35px;
+    border-radius:26px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.045);
+    line-height:2;
+    color:#c8bdcb;
 }
 
-.letter-inner strong{
-    color:#ff9dd2;
+.letter-inner .hello{
+    font-family:"Playfair Display",serif;
+    font-size:28px;
+    color:#ffadd7;
 }
 
-/* =========================
-   REASONS
-========================= */
+/* ---------- REASONS ---------- */
 
 .reasons{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:18px;
+    grid-template-columns:repeat(3,1fr);
+    gap:17px;
 }
 
 .reason{
-    min-height:210px;
-
-    padding:28px;
-
-    border-radius:25px;
-
-    background:
-        rgba(255,255,255,.045);
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    transition:.35s;
-
     position:relative;
-
     overflow:hidden;
-}
-
-.reason::before{
-    content:"";
-
-    position:absolute;
-
-    width:100px;
-    height:100px;
-
-    right:-30px;
-    top:-30px;
-
-    border-radius:50%;
-
-    background:
-        rgba(255,80,180,.12);
-
-    filter:blur(20px);
+    min-height:220px;
+    padding:28px;
+    border:1px solid var(--border);
+    border-radius:27px;
+    background:var(--card);
+    transition:.4s;
 }
 
 .reason:hover{
-    transform:
-        translateY(-8px);
+    transform:translateY(-8px);
+    border-color:rgba(255,100,190,.28);
+}
 
-    border-color:
-        rgba(255,110,190,.25);
+.reason::after{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background:rgba(255,70,170,.1);
+    filter:blur(25px);
+    right:-30px;
+    top:-30px;
 }
 
 .reason-number{
-    color:#ff75be;
-
-    font-size:13px;
-
+    color:#ff6db8;
+    font-size:12px;
     letter-spacing:3px;
-
-    margin-bottom:20px;
 }
 
 .reason h3{
-    font-size:22px;
-
-    margin-bottom:12px;
+    font-family:"Playfair Display",serif;
+    font-size:25px;
+    margin:18px 0 10px;
 }
 
 .reason p{
-    color:#95899b;
-
+    color:#958b9a;
     line-height:1.7;
 }
 
 @media(max-width:800px){
-
     .reasons{
-        grid-template-columns:
-            1fr;
+        grid-template-columns:1fr;
     }
 }
 
-/* =========================
-   MEMORIES
-========================= */
+/* ---------- MEMORY ---------- */
 
 .memories{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:18px;
 }
 
 .memory{
-    min-height:280px;
-
-    padding:25px;
-
-    border-radius:28px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:flex-end;
-
     position:relative;
-
+    min-height:330px;
+    border-radius:30px;
     overflow:hidden;
-
+    border:1px solid var(--border);
     cursor:pointer;
-
-    border:
-        1px solid rgba(255,255,255,.1);
-
     transition:.4s;
 }
 
 .memory:hover{
-    transform:
-        translateY(-8px)
-        scale(1.015);
+    transform:translateY(-8px) scale(1.01);
 }
 
 .memory:nth-child(1){
     background:
-        radial-gradient(
-            circle at 30% 20%,
-            #ff82bd,
-            transparent 40%
-        ),
-        linear-gradient(
-            145deg,
-            #35122d,
-            #120916
-        );
+        radial-gradient(circle at 25% 20%,#ff75b8,transparent 35%),
+        linear-gradient(145deg,#30152b,#0d0711);
 }
 
 .memory:nth-child(2){
     background:
-        radial-gradient(
-            circle at 70% 25%,
-            #b37aff,
-            transparent 40%
-        ),
-        linear-gradient(
-            145deg,
-            #24133a,
-            #0d0714
-        );
+        radial-gradient(circle at 70% 15%,#9d71ff,transparent 35%),
+        linear-gradient(145deg,#211536,#090611);
 }
 
 .memory:nth-child(3){
     background:
-        radial-gradient(
-            circle at 50% 15%,
-            #ff9e72,
-            transparent 40%
-        ),
-        linear-gradient(
-            145deg,
-            #321b1c,
-            #100708
-        );
+        radial-gradient(circle at 50% 20%,#ff9979,transparent 35%),
+        linear-gradient(145deg,#321c1c,#0e0708);
 }
 
 .memory::after{
     content:"";
-
     position:absolute;
     inset:0;
-
-    background:
-        linear-gradient(
-            transparent 25%,
-            rgba(0,0,0,.85)
-        );
+    background:linear-gradient(transparent 25%,rgba(0,0,0,.9));
 }
 
 .memory-content{
-    position:relative;
-
+    position:absolute;
     z-index:2;
+    bottom:0;
+    padding:27px;
 }
 
 .memory-icon{
-    font-size:45px;
+    font-size:48px;
     margin-bottom:15px;
 }
 
 .memory h3{
-    font-size:23px;
-    margin-bottom:7px;
+    font-family:"Playfair Display",serif;
+    font-size:27px;
 }
 
 .memory p{
-    color:#c0b3c5;
-    line-height:1.5;
+    color:#c0b4c3;
+    line-height:1.6;
+    margin-top:8px;
 }
 
 @media(max-width:800px){
-
     .memories{
-        grid-template-columns:
-            1fr;
+        grid-template-columns:1fr;
     }
 }
 
-/* =========================
-   SURPRISE
-========================= */
+/* ---------- FUTURE ---------- */
 
-.surprise-section{
+.future{
+    text-align:center;
+}
+
+.future-line{
+    width:min(700px,100%);
+    margin:0 auto;
+    position:relative;
+}
+
+.future-item{
+    padding:30px;
+    border:1px solid var(--border);
+    border-radius:25px;
+    background:rgba(255,255,255,.04);
+    margin:15px 0;
+}
+
+.future-item strong{
+    color:#ff9bce;
+}
+
+.future-item p{
+    color:#958a9b;
+    margin-top:8px;
+}
+
+/* ---------- GIFT ---------- */
+
+.gift-section{
     text-align:center;
     padding-bottom:150px;
 }
 
 .gift{
-    width:150px;
-    height:150px;
-
-    margin:0 auto 30px;
-
-    border-radius:35px;
-
+    width:160px;
+    height:160px;
+    margin:0 auto 35px;
+    border-radius:38px;
     display:flex;
-
     align-items:center;
     justify-content:center;
-
-    font-size:70px;
-
+    font-size:76px;
     cursor:pointer;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff4e9e,
-            #8f4dff
-        );
-
-    box-shadow:
-        0 20px 70px
-        rgba(255,60,170,.3);
-
-    transition:.4s;
-
+    background:linear-gradient(135deg,#ff4e9f,#8e50ff);
+    box-shadow:0 20px 80px rgba(255,60,170,.28);
     animation:giftFloat 2.5s infinite ease-in-out;
-}
-
-@keyframes giftFloat{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-12px);
-    }
+    transition:.3s;
 }
 
 .gift:hover{
-    transform:
-        scale(1.1)
-        rotate(3deg);
+    transform:scale(1.1) rotate(2deg);
 }
 
-.surprise-message{
-    max-width:700px;
+@keyframes giftFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-12px)}
+}
 
-    margin:auto;
-
-    opacity:0;
-
+.surprise{
     max-height:0;
-
     overflow:hidden;
-
-    transition:
-        opacity .8s,
-        max-height 1s;
+    opacity:0;
+    transition:1.2s ease;
 }
 
-.surprise-message.show{
+.surprise.show{
+    max-height:1000px;
     opacity:1;
-    max-height:700px;
 }
 
-.surprise-message h2{
-    font-size:
-        clamp(40px,8vw,80px);
-
-    margin-bottom:20px;
-
-    background:
-        linear-gradient(
-            120deg,
-            #fff,
-            #ff80c7,
-            #c18cff
-        );
-
+.surprise h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(48px,9vw,90px);
+    background:linear-gradient(120deg,#fff,#ff8bc9,#bd8cff);
     -webkit-background-clip:text;
-    background-clip:text;
-
     color:transparent;
+    margin-bottom:20px;
 }
 
-.surprise-message p{
-    color:#c5b6ca;
-
-    font-size:19px;
-
-    line-height:1.8;
+.surprise p{
+    color:#b7aaba;
+    line-height:1.9;
+    max-width:650px;
+    margin:auto;
+    font-size:18px;
 }
 
-/* =========================
-   FINAL
-========================= */
+.final-line{
+    margin-top:35px;
+    color:#ff9fd1;
+    font-family:"Playfair Display",serif;
+    font-size:27px;
+}
+
+/* ---------- FINAL ---------- */
 
 .final{
-    min-height:60vh;
-
+    min-height:65vh;
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     text-align:center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,60,170,.12),
-            transparent 45%
-        );
+    background:radial-gradient(circle at center,rgba(255,60,170,.11),transparent 50%);
 }
 
 .final-heart{
-    font-size:70px;
-
-    margin-bottom:25px;
-
+    font-size:75px;
     animation:heartbeat 1.5s infinite;
-}
-
-.final h2{
-    font-size:
-        clamp(40px,8vw,75px);
-
     margin-bottom:20px;
 }
 
-.final p{
-    color:#a99baa;
-    line-height:1.7;
+.final h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(45px,8vw,80px);
 }
 
-/* =========================
-   FOOTER
-========================= */
+.final p{
+    color:#918694;
+    margin-top:15px;
+}
 
 footer{
-    padding:35px 20px;
-
     text-align:center;
-
-    border-top:
-        1px solid rgba(255,255,255,.06);
-
-    color:#665d6a;
-
-    font-size:13px;
+    padding:35px 20px;
+    border-top:1px solid rgba(255,255,255,.06);
+    color:#625966;
+    font-size:12px;
 }
 
 footer span{
     color:#ff69b5;
 }
 
-/* =========================
-   FLOATING HEART
-========================= */
+/* ---------- HEARTS ---------- */
 
 .floating-heart{
     position:fixed;
-
-    bottom:-50px;
-
-    z-index:500;
-
+    bottom:-40px;
     pointer-events:none;
-
-    animation:
-        floatHeart
-        linear
-        forwards;
+    animation:floatHeart linear forwards;
 }
 
 @keyframes floatHeart{
-
     0%{
-        transform:
-            translateY(0)
-            scale(.6)
-            rotate(0deg);
-
         opacity:0;
+        transform:translateY(0) scale(.6) rotate(0);
     }
-
-    10%{
-        opacity:1;
-    }
-
+    10%{opacity:1}
     100%{
-        transform:
-            translateY(-110vh)
-            scale(1.3)
-            rotate(360deg);
-
         opacity:0;
+        transform:translateY(-115vh) scale(1.4) rotate(360deg);
     }
 }
 
-/* =========================
-   MODAL
-========================= */
+/* ---------- MODAL ---------- */
 
 .modal{
     position:fixed;
-
     inset:0;
-
-    z-index:1000;
-
+    z-index:3000;
     display:flex;
-
     align-items:center;
     justify-content:center;
-
     padding:20px;
-
-    background:
-        rgba(0,0,0,.75);
-
-    backdrop-filter:blur(12px);
-
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(15px);
     opacity:0;
-
     visibility:hidden;
-
     transition:.4s;
 }
 
@@ -1175,161 +910,161 @@ footer span{
 }
 
 .modal-box{
-    width:min(600px,100%);
-
-    padding:35px;
-
-    border-radius:30px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #1d0d24,
-            #0d0712
-        );
-
-    border:
-        1px solid rgba(255,255,255,.12);
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.5);
-
+    width:min(620px,100%);
+    padding:40px 30px;
     text-align:center;
-
-    transform:
-        translateY(20px)
-        scale(.95);
-
+    border:1px solid var(--border);
+    border-radius:30px;
+    background:linear-gradient(145deg,#211025,#0d0612);
+    transform:scale(.9) translateY(20px);
     transition:.4s;
 }
 
 .modal.show .modal-box{
-    transform:
-        translateY(0)
-        scale(1);
+    transform:none;
 }
 
 .modal-icon{
-    font-size:60px;
+    font-size:65px;
     margin-bottom:15px;
 }
 
 .modal-box h2{
-    font-size:30px;
-    margin-bottom:15px;
+    font-family:"Playfair Display",serif;
+    font-size:34px;
 }
 
 .modal-box p{
-    color:#b7aabd;
+    color:#b4a7b9;
     line-height:1.8;
+    margin-top:15px;
 }
 
-.close-modal{
+.close{
     margin-top:25px;
-
     border:0;
-
-    padding:12px 22px;
-
-    border-radius:999px;
-
     color:white;
-
-    background:
-        rgba(255,255,255,.08);
-
+    background:rgba(255,255,255,.08);
+    padding:12px 23px;
+    border-radius:999px;
     cursor:pointer;
+}
+
+/* ---------- REVEAL ---------- */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:600px){
+
+    section{
+        padding:90px 17px;
+    }
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    .special-card{
+        padding:45px 22px;
+    }
+
+    .letter-inner{
+        padding:25px;
+    }
+
+    .gift-section{
+        padding-bottom:100px;
+    }
 }
 </style>
 </head>
 
-<body>
+<body class="locked">
 
-<!-- YILDIZLAR -->
-<div id="stars"></div>
-
-<!-- =========================
-     GİRİŞ
-========================= -->
+<!-- ================= INTRO ================= -->
 
 <div id="intro">
 
-    <div class="intro-content">
+    <div class="intro-inner">
 
-        <div class="intro-heart">
-            ❤️
-        </div>
+        <div class="intro-heart">❤️</div>
 
-        <div class="intro-small">
+        <div class="intro-kicker">
             Eren'den Sarya'ya
         </div>
 
         <h1 class="intro-title">
             Sana özel<br>
-            bir şey var...
+            küçük bir dünya
         </h1>
 
-        <p class="intro-description">
-            Bu site internetteki herhangi bir site değil.
+        <p class="intro-text">
+            Herkesin göremeyeceği,
+            sadece senin için hazırlanmış
+            küçük bir sürpriz var.
             <br>
-            Bu küçük dünya sadece ikimiz için. ❤️
+            Hazırsan başlayalım... ✨
         </p>
 
-        <button
-            class="start-button"
-            onclick="startExperience()"
-        >
-            ✨ Keşfet
+        <button class="enter" onclick="enterSite()">
+            ✨ İçeri Gir
         </button>
 
     </div>
 
 </div>
 
-<!-- =========================
-     NAVBAR
-========================= -->
+<div id="stars"></div>
+<div id="particles"></div>
+<div id="hearts"></div>
 
-<nav class="navbar">
+<!-- ================= NAV ================= -->
+
+<nav id="navbar">
 
     <div class="logo">
         Eren <span>❤️</span> Sarya
     </div>
 
-    <div class="nav-links">
-
-        <a href="#biz">
-            Biz
-        </a>
-
-        <a href="#mektup">
-            Mektup
-        </a>
-
-        <a href="#neden">
-            Neden?
-        </a>
-
-        <a href="#surpriz">
-            Sürpriz
-        </a>
-
+    <div class="navlinks">
+        <a href="#biz">Biz</a>
+        <a href="#mektup">Mektup</a>
+        <a href="#neden">Neden?</a>
+        <a href="#surpriz">Sürpriz</a>
     </div>
 
 </nav>
 
+<!-- Müzik butonu.
+     İstersen aşağıdaki JavaScript'teki MUSIC_URL
+     değişkenine kendi müzik dosyanı ekleyebilirsin. -->
+<button class="music" id="musicBtn" onclick="toggleMusic()">
+    🎵
+</button>
+
+<audio id="music" loop></audio>
+
 <main>
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
-    <div class="hero-content">
+    <div class="hero-content reveal">
 
         <div class="hero-badge">
-            ✨ 15.12.2025'ten beri
+            ✨ 15 ARALIK 2025'DEN BERİ
         </div>
 
         <h1>
@@ -1337,229 +1072,219 @@ footer span{
             <span>❤️ Sarya</span>
         </h1>
 
-        <p class="hero-description">
-            Bazı insanlar hayatımıza girer ve sadece
-            birkaç anı bırakır.
+        <p class="hero-desc">
+            Bazı insanlar hayatımıza girer
+            ve sadece birkaç anı bırakır.
             <br><br>
-            Bazıları ise hayatımızın en güzel
-            hikâyesine dönüşür.
+            Bazılarıysa hayatımızın
+            en güzel hikâyesine dönüşür.
             <br><br>
-            <strong>Sen benim en güzel hikâyemsin. ❤️</strong>
+            <strong>
+                Sen benim en güzel hikâyelerimden birisin.
+            </strong>
         </p>
 
-        <a
-            class="hero-button"
-            href="#biz"
-        >
-            Hikâyemize Bak ↓
+        <a class="hero-cta" href="#biz">
+            Hikâyemize devam et ↓
         </a>
 
     </div>
 
-    <div class="scroll-down">
-        Aşağı kaydır ↓
+    <div class="scroll">
+        aşağı kaydır
     </div>
 
 </section>
 
-<!-- =========================
-     COUNTER
-========================= -->
+<!-- ================= COUNTER ================= -->
 
-<section
-    class="counter-section"
-    id="biz"
->
+<section class="counter-wrap" id="biz">
 
-<div class="container">
+    <div class="container">
 
-    <div class="section-heading">
+        <div class="heading reveal">
 
-        <div class="mini">
-            Biz
-        </div>
+            <div class="kicker">Biz</div>
 
-        <h2>
-            Birlikte geçen zaman ❤️
-        </h2>
+            <h2>
+                Birlikte geçen zaman
+            </h2>
 
-        <p>
-            15 Aralık 2025'ten beri...
-        </p>
-
-    </div>
-
-    <div class="counter">
-
-        <div class="time-card">
-
-            <div
-                class="time-number"
-                id="days"
-            >
-                0
-            </div>
-
-            <div class="time-label">
-                Gün
-            </div>
+            <p>
+                15.12.2025'ten beri her saniye ayrı bir anı.
+            </p>
 
         </div>
 
-        <div class="time-card">
+        <div class="counter">
 
-            <div
-                class="time-number"
-                id="hours"
-            >
-                0
+            <div class="time-card reveal">
+                <div class="number" id="days">0</div>
+                <div class="label">Gün</div>
             </div>
 
-            <div class="time-label">
-                Saat
+            <div class="time-card reveal">
+                <div class="number" id="hours">00</div>
+                <div class="label">Saat</div>
             </div>
 
-        </div>
-
-        <div class="time-card">
-
-            <div
-                class="time-number"
-                id="minutes"
-            >
-                0
+            <div class="time-card reveal">
+                <div class="number" id="minutes">00</div>
+                <div class="label">Dakika</div>
             </div>
 
-            <div class="time-label">
-                Dakika
-            </div>
-
-        </div>
-
-        <div class="time-card">
-
-            <div
-                class="time-number"
-                id="seconds"
-            >
-                0
-            </div>
-
-            <div class="time-label">
-                Saniye
+            <div class="time-card reveal">
+                <div class="number" id="seconds">00</div>
+                <div class="label">Saniye</div>
             </div>
 
         </div>
 
     </div>
-
-</div>
 
 </section>
 
-<!-- =========================
-     MEKTUP
-========================= -->
+<!-- ================= SPECIAL ================= -->
+
+<section class="special">
+
+    <div class="container">
+
+        <div class="special-card reveal">
+
+            <div class="special-heart">
+                💗
+            </div>
+
+            <h2>
+                Bu sayfanın<br>
+                en güzel kısmı sensin.
+            </h2>
+
+            <p>
+                Burada yazan bütün kelimelerden,
+                bütün animasyonlardan ve bütün
+                kalplerden daha önemli olan tek
+                bir şey var:
+                <br><br>
+                <strong style="color:#ff9dcc">
+                    Sarya'nın kendisi. ❤️
+                </strong>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= LETTER ================= -->
 
 <section id="mektup">
 
-<div class="container">
+    <div class="container">
 
-    <div class="section-heading">
+        <div class="heading reveal">
 
-        <div class="mini">
-            Sadece Sana
+            <div class="kicker">Sadece Sana</div>
+
+            <h2>
+                Açman gereken bir mektup var 💌
+            </h2>
+
+            <p>
+                Dokun ve içindekileri oku.
+            </p>
+
         </div>
 
-        <h2>
-            Sana bir mektubum var 💌
-        </h2>
+        <div class="envelope reveal">
 
-        <p>
-            Açmak için zarfa dokun.
-        </p>
+            <div class="envelope-top" onclick="openLetter()">
 
-    </div>
+                <div class="envelope-icon">
+                    💌
+                </div>
 
-    <div
-        class="envelope"
-        onclick="openLetter()"
-    >
-
-        <div class="envelope-icon">
-            💌
-        </div>
-
-        <h3>
-            Sarya'ya...
-        </h3>
-
-        <p>
-            Açmak için tıkla ❤️
-        </p>
-
-        <div
-            class="letter"
-            id="letter"
-        >
-
-            <div class="letter-inner">
+                <h3>
+                    Sarya'ya...
+                </h3>
 
                 <p>
-                    <strong>Sevgili Sarya,</strong>
+                    Eren'den küçük bir mektup
+                    · açmak için dokun
                 </p>
 
-                <br>
+            </div>
 
-                <p>
-                    Nereden başlayacağımı bilmiyorum.
-                    Çünkü bazen bir insanın hayatındaki
-                    yerini anlatmaya kelimeler yetmiyor.
-                </p>
+            <div class="letter" id="letter">
 
-                <br>
+                <div class="letter-inner">
 
-                <p>
-                    Ama bildiğim bir şey var:
-                    seni tanıdığım için gerçekten çok mutluyum.
-                </p>
+                    <div class="hello">
+                        Sevgili Sarya,
+                    </div>
 
-                <br>
+                    <br>
 
-                <p>
-                    Gülüşün, konuşman, küçük şeylere verdiğin
-                    tepkiler ve sadece sen olman bile
-                    benim için çok özel.
-                </p>
+                    Bunu yazarken nereden başlayacağımı
+                    gerçekten bilmiyorum.
 
-                <br>
+                    <br><br>
 
-                <p>
-                    Belki bu sadece bir internet sitesi.
-                    Ama içindeki her şeyin arkasında
-                    gerçek bir his var.
-                </p>
+                    Çünkü bazen bir insanın senin için
+                    ne kadar önemli olduğunu anlatmaya
+                    kelimeler yetmiyor.
 
-                <br>
+                    <br><br>
 
-                <p>
-                    <strong>
-                        İyi ki varsın Sarya.
-                        İyi ki hayatımdasın.
+                    Ama yine de söylemek istiyorum.
+
+                    <br><br>
+
+                    Seni tanıdığım için çok mutluyum.
+                    Seninle konuştuğum, güldüğüm,
+                    güzel anılar biriktirdiğim her an
+                    benim için ayrı bir yerde.
+
+                    <br><br>
+
+                    Belki bazen söylemiyorum,
+                    belki her zaman belli etmiyorum...
+                    ama sen benim için gerçekten
+                    çok özelsin.
+
+                    <br><br>
+
+                    Bu siteyi hazırlarken düşündüğüm
+                    tek şey şuydu:
+
+                    <br><br>
+
+                    <strong style="color:#ff9dd2">
+                        "Sarya bunu görünce acaba
+                        ne kadar mutlu olur?"
                     </strong>
-                </p>
 
-                <br>
+                    <br><br>
 
-                <p>
+                    Umarım yüzünde küçük de olsa
+                    bir gülümseme oluşturabilirim.
+
+                    <br><br>
+
+                    İyi ki varsın.
+                    İyi ki hayatımdasın.
+
+                    <br><br>
+
                     Seni çok seviyorum. ❤️
-                </p>
 
-                <br>
+                    <br><br>
 
-                <p>
                     — Eren
-                </p>
+
+                </div>
 
             </div>
 
@@ -1567,377 +1292,374 @@ footer span{
 
     </div>
 
-</div>
-
 </section>
 
-<!-- =========================
-     NEDENLER
-========================= -->
+<!-- ================= REASONS ================= -->
 
 <section id="neden">
 
-<div class="container">
+    <div class="container">
 
-    <div class="section-heading">
+        <div class="heading reveal">
 
-        <div class="mini">
-            Kalbimden
-        </div>
+            <div class="kicker">Kalbimden</div>
 
-        <h2>
-            Seni neden seviyorum?
-        </h2>
-
-        <p>
-            Aslında bunun tek bir cevabı yok...
-        </p>
-
-    </div>
-
-    <div class="reasons">
-
-        <div class="reason">
-
-            <div class="reason-number">
-                01
-            </div>
-
-            <h3>
-                Gülüşün
-            </h3>
+            <h2>
+                Seni neden seviyorum?
+            </h2>
 
             <p>
-                Gülümsediğinde dünyanın
-                biraz daha güzel olduğunu
-                düşünüyorum.
+                Aslında bunun tek bir cevabı yok.
             </p>
 
         </div>
 
-        <div class="reason">
+        <div class="reasons">
 
-            <div class="reason-number">
-                02
+            <div class="reason reveal">
+
+                <div class="reason-number">01</div>
+
+                <h3>Gülüşün</h3>
+
+                <p>
+                    Gülümsediğinde her şeyin
+                    biraz daha güzel göründüğünü
+                    düşünüyorum.
+                </p>
+
             </div>
 
-            <h3>
-                Sen olman
-            </h3>
+            <div class="reason reveal">
 
-            <p>
-                Başka biri olmaya çalışmadan,
-                olduğun kişi olduğun için.
-            </p>
+                <div class="reason-number">02</div>
 
-        </div>
+                <h3>Sen olman</h3>
 
-        <div class="reason">
+                <p>
+                    Başka biri olmaya çalışmadan
+                    olduğun kişi olman.
+                    En sevdiğim şeylerden biri bu.
+                </p>
 
-            <div class="reason-number">
-                03
             </div>
 
-            <h3>
-                Bana hissettirdiklerin
-            </h3>
+            <div class="reason reveal">
 
-            <p>
-                Yanında kendimi daha mutlu,
-                daha huzurlu ve daha iyi
-                hissediyorum.
-            </p>
+                <div class="reason-number">03</div>
 
-        </div>
+                <h3>Sesin</h3>
 
-        <div class="reason">
+                <p>
+                    Bazen sadece sesini duymak bile
+                    günümü güzelleştirmeye yetiyor.
+                </p>
 
-            <div class="reason-number">
-                04
             </div>
 
-            <h3>
-                Küçük şeylerin
-            </h3>
+            <div class="reason reveal">
 
-            <p>
-                Belki sen fark etmiyorsun
-                ama yaptığın küçük şeyler
-                benim için çok büyük.
-            </p>
+                <div class="reason-number">04</div>
 
-        </div>
+                <h3>Küçük şeylerin</h3>
 
-        <div class="reason">
+                <p>
+                    Belki sen fark etmiyorsun ama
+                    yaptığın küçük şeylerin benim
+                    için çok büyük anlamı var.
+                </p>
 
-            <div class="reason-number">
-                05
             </div>
 
-            <h3>
-                Anılarımız
-            </h3>
+            <div class="reason reveal">
 
-            <p>
-                Birlikte yaşadığımız her güzel
-                anı kalbimde ayrı bir yerde.
-            </p>
+                <div class="reason-number">05</div>
 
-        </div>
+                <h3>Yanımda oluşun</h3>
 
-        <div class="reason">
+                <p>
+                    Bazen hiçbir şey söylemesen bile
+                    yanımda olduğunu bilmek güzel.
+                </p>
 
-            <div class="reason-number">
-                06
             </div>
 
-            <h3>
-                Çünkü sensin ❤️
-            </h3>
+            <div class="reason reveal">
 
-            <p>
-                Bazen birini sevmek için
-                uzun bir açıklamaya gerek yok.
-                Çünkü cevap sensin.
-            </p>
+                <div class="reason-number">06</div>
+
+                <h3>Çünkü sensin ❤️</h3>
+
+                <p>
+                    Bazen birini sevmek için uzun
+                    bir açıklama gerekmez.
+                    Cevap sadece o kişidir.
+                </p>
+
+            </div>
 
         </div>
 
     </div>
-
-</div>
 
 </section>
 
-<!-- =========================
-     ANILAR
-========================= -->
+<!-- ================= MEMORIES ================= -->
 
 <section>
 
-<div class="container">
+    <div class="container">
 
-    <div class="section-heading">
+        <div class="heading reveal">
 
-        <div class="mini">
-            Anılar
+            <div class="kicker">Anılar</div>
+
+            <h2>
+                Bizden küçük parçalar ✨
+            </h2>
+
+            <p>
+                Bazı anılar unutulmaz.
+            </p>
+
         </div>
 
-        <h2>
-            Bizden küçük parçalar ✨
-        </h2>
+        <div class="memories">
 
-        <p>
-            Buraya ileride kendi fotoğraflarınızı
-            ekleyebilirsin.
-        </p>
+            <div
+                class="memory reveal"
+                onclick="memory('İlk güzel anılarımız ❤️')"
+            >
+
+                <div class="memory-content">
+
+                    <div class="memory-icon">
+                        🌹
+                    </div>
+
+                    <h3>
+                        İlk Anılar
+                    </h3>
+
+                    <p>
+                        Her güzel hikâyenin
+                        bir başlangıcı vardır.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div
+                class="memory reveal"
+                onclick="memory('Birlikte güldüğümüz, konuştuğumuz ve güzel zaman geçirdiğimiz anlar... ✨')"
+            >
+
+                <div class="memory-content">
+
+                    <div class="memory-icon">
+                        🌙
+                    </div>
+
+                    <h3>
+                        Güzel Zamanlar
+                    </h3>
+
+                    <p>
+                        Saatlerin nasıl geçtiğini
+                        anlamadığımız zamanlar.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div
+                class="memory reveal"
+                onclick="memory('Daha yaşayacağımız çok güzel anı var. Bu sadece başlangıç. ❤️')"
+            >
+
+                <div class="memory-content">
+
+                    <div class="memory-icon">
+                        ⭐
+                    </div>
+
+                    <h3>
+                        Daha Başlangıç
+                    </h3>
+
+                    <p>
+                        En güzel anılarımız
+                        belki de henüz yaşanmadı.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
-
-    <div class="memories">
-
-        <div
-            class="memory"
-            onclick="showMemory('İlk güzel anılarımız ❤️')"
-        >
-
-            <div class="memory-content">
-
-                <div class="memory-icon">
-                    🌹
-                </div>
-
-                <h3>
-                    İlk Anılar
-                </h3>
-
-                <p>
-                    Her güzel hikâyenin
-                    bir başlangıcı vardır.
-                </p>
-
-            </div>
-
-        </div>
-
-        <div
-            class="memory"
-            onclick="showMemory('Birlikte geçirdiğimiz güzel zamanlar ✨')"
-        >
-
-            <div class="memory-content">
-
-                <div class="memory-icon">
-                    🌙
-                </div>
-
-                <h3>
-                    Güzel Zamanlar
-                </h3>
-
-                <p>
-                    Saatlerin nasıl geçtiğini
-                    anlamadığımız zamanlar.
-                </p>
-
-            </div>
-
-        </div>
-
-        <div
-            class="memory"
-            onclick="showMemory('Daha yaşayacağımız çok güzel anı var ❤️')"
-        >
-
-            <div class="memory-content">
-
-                <div class="memory-icon">
-                    ⭐
-                </div>
-
-                <h3>
-                    Daha Başlangıç
-                </h3>
-
-                <p>
-                    En güzel anılarımız
-                    belki de daha yaşanmadı.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
 
 </section>
 
-<!-- =========================
-     SURPRISE
-========================= -->
+<!-- ================= FUTURE ================= -->
 
-<section
-    class="surprise-section"
-    id="surpriz"
->
+<section class="future">
 
-<div class="container">
+    <div class="container">
 
-    <div class="section-heading">
+        <div class="heading reveal">
 
-        <div class="mini">
-            Son Bir Şey
+            <div class="kicker">Gelecek</div>
+
+            <h2>
+                Daha bitmedi... 🌙
+            </h2>
+
+            <p>
+                Çünkü daha yaşayacağımız
+                çok güzel şey var.
+            </p>
+
         </div>
 
-        <h2>
-            Sana bir sürprizim var 🎁
-        </h2>
+        <div class="future-line">
 
-        <p>
-            Kutuyu açmaya cesaretin var mı?
-        </p>
+            <div class="future-item reveal">
+                ✨ Daha fazla güzel anı
+                <p>
+                    Birlikte güleceğimiz,
+                    konuşacağımız ve hatırlayacağımız
+                    daha çok gün.
+                </p>
+            </div>
+
+            <div class="future-item reveal">
+                ❤️ Daha fazla mutluluk
+                <p>
+                    Küçük şeylerden bile
+                    mutlu olduğumuz günler.
+                </p>
+            </div>
+
+            <div class="future-item reveal">
+                🌟 Daha yazılmamış bir hikâye
+                <p>
+                    Bu sayfanın sonu değil.
+                    Hikâyenin sadece bir kısmı.
+                </p>
+            </div>
+
+        </div>
 
     </div>
 
-    <div
-        class="gift"
-        onclick="openGift()"
-    >
-        🎁
-    </div>
+</section>
 
-    <div
-        class="surprise-message"
-        id="surpriseMessage"
-    >
+<!-- ================= GIFT ================= -->
 
-        <h2>
-            Sarya ❤️
-        </h2>
+<section class="gift-section" id="surpriz">
 
-        <p>
-            Eğer buraya kadar geldiysen,
-            sana söylemek istediğim son bir şey var.
-        </p>
+    <div class="container">
 
-        <br>
+        <div class="heading reveal">
 
-        <p>
-            Hayatımdaki en güzel şeylerden biri
-            olduğun için teşekkür ederim.
-        </p>
+            <div class="kicker">Son Bir Şey</div>
 
-        <br>
+            <h2>
+                Buraya kadar geldiysen...
+            </h2>
 
-        <p>
-            Bugün, yarın ve bundan sonra
-            birlikte daha nice güzel anımız olsun.
-        </p>
+            <p>
+                Sana sakladığım son bir sürpriz var.
+            </p>
 
-        <br>
+        </div>
 
-        <p>
-            <strong>
+        <div
+            class="gift"
+            onclick="openGift()"
+        >
+            🎁
+        </div>
+
+        <div
+            class="surprise"
+            id="surprise"
+        >
+
+            <h2>
+                Sarya ❤️
+            </h2>
+
+            <p>
+                Bütün bu siteyi hazırlarken
+                aklımdaki tek şey senin yüzünde
+                bir gülümseme görmekti.
+            </p>
+
+            <br>
+
+            <p>
+                Umarım bu küçük sürpriz sana
+                ne kadar özel olduğunu biraz olsun
+                hissettirebilmiştir.
+            </p>
+
+            <br>
+
+            <p>
+                Çünkü bazen bir insana
+                "seni seviyorum" demek yetmiyor.
+                Bazen bunu küçük bir dünyaya
+                dönüştürmek gerekiyor.
+            </p>
+
+            <div class="final-line">
                 İyi ki sen. ❤️
-            </strong>
-        </p>
+            </div>
+
+        </div>
 
     </div>
 
-</div>
-
 </section>
 
-<!-- =========================
-     FINAL
-========================= -->
+<!-- ================= FINAL ================= -->
 
 <section class="final">
 
-<div>
+    <div class="reveal">
 
-    <div class="final-heart">
-        ❤️
+        <div class="final-heart">
+            ❤️
+        </div>
+
+        <h2>
+            Eren ❤️ Sarya
+        </h2>
+
+        <p>
+            15.12.2025'ten başlayan güzel hikâyemiz...
+            <br>
+            daha yeni başlıyor.
+        </p>
+
     </div>
-
-    <h2>
-        Eren ❤️ Sarya
-    </h2>
-
-    <p>
-        Hikâyemizin en güzel kısmı
-        henüz yazılmadı.
-    </p>
-
-</div>
 
 </section>
 
 </main>
 
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
-
-    Eren tarafından
-    <span>❤️</span>
-    Sarya için hazırlandı.
-
+    Eren tarafından <span>❤️</span> Sarya için hazırlandı.
 </footer>
 
-<!-- =========================
-     MODAL
-========================= -->
+<!-- ================= MODAL ================= -->
 
-<div
-    class="modal"
-    id="modal"
-    onclick="closeModal(event)"
->
+<div class="modal" id="modal" onclick="closeModal(event)">
 
     <div class="modal-box">
 
@@ -1945,16 +1667,14 @@ footer span{
             ❤️
         </div>
 
-        <h2 id="modalTitle">
-            Anı
+        <h2>
+            Bir Anı
         </h2>
 
-        <p id="modalText">
-            Güzel bir anı...
-        </p>
+        <p id="modalText"></p>
 
         <button
-            class="close-modal"
+            class="close"
             onclick="closeModal()"
         >
             Kapat
@@ -1966,117 +1686,148 @@ footer span{
 
 <script>
 
-/* =========================
-   YILDIZ OLUŞTUR
-========================= */
+/* ==========================================
+   AYARLAR
+========================================== */
 
-const stars = document.getElementById("stars");
+const START_DATE =
+    new Date("2025-12-15T00:00:00");
 
-for(let i = 0; i < 180; i++){
+/*
+   MÜZİK EKLEMEK İSTERSEN:
 
-    const star = document.createElement("div");
+   Örneğin GitHub'a
+   music.mp3 yükle.
 
-    star.className = "star";
+   Sonra:
+
+   const MUSIC_URL = "music.mp3";
+
+   yap.
+
+   Şimdilik boş bırakıldığı için
+   müzik butonu hata vermeden çalışır.
+*/
+const MUSIC_URL = "";
+
+
+/* ==========================================
+   YILDIZLAR
+========================================== */
+
+const stars =
+    document.getElementById("stars");
+
+for(let i=0;i<190;i++){
+
+    const star =
+        document.createElement("div");
+
+    star.className="star";
 
     star.style.left =
-        Math.random() * 100 + "%";
+        Math.random()*100+"%";
 
     star.style.top =
-        Math.random() * 100 + "%";
+        Math.random()*100+"%";
+
+    const size =
+        Math.random()*2+1;
+
+    star.style.width=size+"px";
+    star.style.height=size+"px";
 
     star.style.animationDelay =
-        Math.random() * 3 + "s";
-
-    star.style.opacity =
-        Math.random();
+        Math.random()*4+"s";
 
     stars.appendChild(star);
 }
 
 
-/* =========================
-   DENEYİMİ BAŞLAT
-========================= */
+/* ==========================================
+   PARÇACIKLAR
+========================================== */
 
-function startExperience(){
+const particles =
+    document.getElementById("particles");
+
+for(let i=0;i<35;i++){
+
+    const particle =
+        document.createElement("div");
+
+    particle.className="particle";
+
+    particle.style.left =
+        Math.random()*100+"%";
+
+    particle.style.animationDuration =
+        (8+Math.random()*12)+"s";
+
+    particle.style.animationDelay =
+        Math.random()*10+"s";
+
+    particles.appendChild(particle);
+}
+
+
+/* ==========================================
+   GİRİŞ
+========================================== */
+
+function enterSite(){
 
     const intro =
         document.getElementById("intro");
 
-    intro.classList.add("hidden");
+    intro.classList.add("hide");
 
-    setTimeout(() => {
+    document.body.classList.remove("locked");
 
-        createHearts(12);
+    document
+        .getElementById("navbar")
+        .classList.add("visible");
 
-    },500);
-
-}
-
-
-/* =========================
-   MEKTUP
-========================= */
-
-function openLetter(){
-
-    const letter =
-        document.getElementById("letter");
-
-    letter.classList.toggle("open");
-
-    if(letter.classList.contains("open")){
-
-        createHearts(8);
-
-    }
+    setTimeout(()=>{
+        createHearts(25);
+    },700);
 
 }
 
 
-/* =========================
+/* ==========================================
    SAYAÇ
-========================= */
-
-const startDate =
-    new Date("2025-12-15T00:00:00");
+========================================== */
 
 function updateCounter(){
 
-    const now = new Date();
+    const now =
+        new Date();
 
-    let difference =
+    let diff =
         now.getTime() -
-        startDate.getTime();
+        START_DATE.getTime();
 
-    if(difference < 0){
+    if(diff<0) diff=0;
 
-        difference = 0;
-
-    }
-
-    const totalSeconds =
-        Math.floor(
-            difference / 1000
-        );
+    const total =
+        Math.floor(diff/1000);
 
     const days =
-        Math.floor(
-            totalSeconds / 86400
-        );
+        Math.floor(total/86400);
 
     const hours =
         Math.floor(
-            (totalSeconds % 86400) / 3600
+            (total%86400)/3600
         );
 
     const minutes =
         Math.floor(
-            (totalSeconds % 3600) / 60
+            (total%3600)/60
         );
 
     const seconds =
-        totalSeconds % 60;
+        total%60;
 
     document.getElementById("days")
         .textContent =
@@ -2098,44 +1849,35 @@ function updateCounter(){
 
 updateCounter();
 
-setInterval(
-    updateCounter,
-    1000
-);
+setInterval(updateCounter,1000);
 
 
-/* =========================
-   HEDİYE
-========================= */
+/* ==========================================
+   MEKTUP
+========================================== */
 
-function openGift(){
+function openLetter(){
 
-    const message =
-        document.getElementById(
-            "surpriseMessage"
-        );
+    const letter =
+        document.getElementById("letter");
 
-    message.classList.add("show");
+    letter.classList.toggle("open");
 
-    createHearts(60);
-
-    setTimeout(() => {
-
-        message.scrollIntoView({
-            behavior:"smooth",
-            block:"center"
-        });
-
-    },200);
+    if(letter.classList.contains("open")){
+        createHearts(15);
+    }
 
 }
 
 
-/* =========================
-   KALP OLUŞTUR
-========================= */
+/* ==========================================
+   KALP
+========================================== */
 
 function createHeart(){
+
+    const container =
+        document.getElementById("hearts");
 
     const heart =
         document.createElement("div");
@@ -2143,7 +1885,7 @@ function createHeart(){
     heart.className =
         "floating-heart";
 
-    const hearts = [
+    const emojis=[
         "❤️",
         "💖",
         "💕",
@@ -2155,43 +1897,40 @@ function createHeart(){
     ];
 
     heart.textContent =
-        hearts[
+        emojis[
             Math.floor(
-                Math.random() *
-                hearts.length
+                Math.random()*emojis.length
             )
         ];
 
     heart.style.left =
-        Math.random() * 100 + "vw";
+        Math.random()*100+"vw";
 
     heart.style.fontSize =
-        (14 + Math.random() * 25) + "px";
+        (14+Math.random()*25)+"px";
 
     const duration =
-        4 + Math.random() * 5;
+        4+Math.random()*5;
 
     heart.style.animationDuration =
-        duration + "s";
+        duration+"s";
 
-    document.body.appendChild(heart);
+    container.appendChild(heart);
 
-    setTimeout(() => {
-
+    setTimeout(()=>{
         heart.remove();
-
-    },duration * 1000);
+    },duration*1000);
 
 }
 
 
-function createHearts(amount = 10){
+function createHearts(amount){
 
-    for(let i = 0; i < amount; i++){
+    for(let i=0;i<amount;i++){
 
         setTimeout(
             createHeart,
-            i * 100
+            i*70
         );
 
     }
@@ -2199,39 +1938,62 @@ function createHearts(amount = 10){
 }
 
 
-/* =========================
+/* ==========================================
    OTOMATİK KALPLER
-========================= */
+========================================== */
 
-setInterval(() => {
+setInterval(()=>{
 
     if(
-        document.visibilityState ===
-        "visible"
+        document.visibilityState==="visible" &&
+        !document.body.classList.contains("locked")
     ){
-
         createHeart();
-
     }
 
-},2500);
+},2800);
 
 
-/* =========================
-   ANILAR MODAL
-========================= */
+/* ==========================================
+   HEDİYE
+========================================== */
 
-function showMemory(text){
+function openGift(){
+
+    const surprise =
+        document.getElementById("surprise");
+
+    surprise.classList.add("show");
+
+    createHearts(100);
+
+    setTimeout(()=>{
+
+        surprise.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    },250);
+
+}
+
+
+/* ==========================================
+   ANILAR
+========================================== */
+
+function memory(text){
 
     document.getElementById(
         "modalText"
-    ).textContent = text;
+    ).textContent=text;
 
     document.getElementById(
         "modal"
     ).classList.add("show");
 
-    createHearts(10);
+    createHearts(12);
 
 }
 
@@ -2253,43 +2015,41 @@ function closeModal(event){
 }
 
 
-/* =========================
-   ESC İLE MODAL KAPAT
-========================= */
+/* ==========================================
+   ESC
+========================================== */
 
 document.addEventListener(
     "keydown",
-    function(event){
+    event=>{
 
-        if(event.key === "Escape"){
-
-            document.getElementById(
-                "modal"
-            ).classList.remove("show");
-
+        if(event.key==="Escape"){
+            closeModal();
         }
 
     }
 );
 
 
-/* =========================
+/* ==========================================
    SCROLL REVEAL
-========================= */
+========================================== */
 
 const observer =
     new IntersectionObserver(
-        entries => {
+        entries=>{
 
-            entries.forEach(entry => {
+            entries.forEach(entry=>{
 
                 if(entry.isIntersecting){
 
-                    entry.target.style.opacity =
-                        "1";
+                    entry.target
+                        .classList
+                        .add("visible");
 
-                    entry.target.style.transform =
-                        "translateY(0)";
+                    observer.unobserve(
+                        entry.target
+                    );
 
                 }
 
@@ -2301,35 +2061,83 @@ const observer =
         }
     );
 
-
 document
-    .querySelectorAll(
-        ".reason,.memory,.time-card,.envelope"
-    )
-    .forEach(element => {
-
-        element.style.opacity = "0";
-
-        element.style.transform =
-            "translateY(25px)";
-
-        element.style.transition =
-            "opacity .7s ease, transform .7s ease";
-
-        observer.observe(element);
-
+    .querySelectorAll(".reveal")
+    .forEach(el=>{
+        observer.observe(el);
     });
 
 
-/* =========================
-   SAYFA AÇILDIĞINDA
-========================= */
+/* ==========================================
+   MÜZİK
+========================================== */
+
+const audio =
+    document.getElementById("music");
+
+const musicBtn =
+    document.getElementById("musicBtn");
+
+let musicReady=false;
+
+if(MUSIC_URL){
+
+    audio.src=MUSIC_URL;
+    musicReady=true;
+
+}
+
+function toggleMusic(){
+
+    if(!musicReady){
+
+        alert(
+            "Müzik eklemek için kodun içindeki MUSIC_URL kısmına music.mp3 dosyanın adını yazabilirsin. ❤️"
+        );
+
+        return;
+
+    }
+
+    if(audio.paused){
+
+        audio.play()
+            .then(()=>{
+                musicBtn.textContent="🔊";
+                musicBtn.classList.add("playing");
+            })
+            .catch(()=>{});
+
+    }else{
+
+        audio.pause();
+
+        musicBtn.textContent="🎵";
+        musicBtn.classList.remove("playing");
+
+    }
+
+}
+
+
+/* ==========================================
+   SAYFA YÜKLENDİ
+========================================== */
 
 window.addEventListener(
     "load",
-    () => {
+    ()=>{
 
-        document.body.style.opacity = "1";
+        setTimeout(()=>{
+
+            const hero =
+                document.querySelector(".hero .reveal");
+
+            if(hero){
+                hero.classList.add("visible");
+            }
+
+        },500);
 
     }
 );
