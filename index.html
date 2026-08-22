@@ -26,7 +26,7 @@ section{padding:110px 20px}.container{width:min(1050px,100%);margin:auto}.center
 .love{padding:60px 25px;text-align:center}.love .big{font-size:80px;animation:beat 1.5s infinite}.love h2{font-size:clamp(40px,7vw,72px)}.love p{max-width:700px;margin:auto;color:#b2a4b5;line-height:1.9}
 .letter{max-width:800px;margin:auto}.envelope{padding:45px;text-align:center;cursor:pointer}.envelope .icon{font-size:80px}.envelope h3{font-size:35px}.letter-body{max-height:0;overflow:hidden;transition:1.2s}.letter-body.open{max-height:1000px;margin-top:15px}.letter-inner{padding:35px;color:#c8bacb;line-height:2;text-align:left}.letter-inner strong{color:#ff9dce}
 .reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.reason{padding:28px;min-height:190px}.reason b{color:#ff6db6;letter-spacing:3px;font-size:11px}.reason h3{font-size:27px;margin:15px 0 8px}.reason p{color:#958899;line-height:1.7}
-.secret{max-width:800px;margin:auto;padding:35px;text-align:center}.inputrow{display:flex;max-width:520px;margin:20px auto;gap:8px}.inputrow input{flex:1;border:1px solid var(--line);background:#08030c;color:#fff;border-radius:999px;padding:14px 18px;outline:none}.secretmsg{min-height:50px;color:#ffacd3;line-height:1.7}
+.secret{max-width:800px;margin:auto;padding:35px;text-align:center}.inputrow{display:flex;max-width:520px;margin:20px auto;gap:8px}.inputrow input{flex:1;border:1px solid var(--line);background:#08030c;color:#fff;border-radius:999px;padding:14px 18px;outline:none}.secretmsg{min-height:50px;color:#ffacd3;line-height:1.7}.secret input{text-align:center;font-size:18px;letter-spacing:2px}.secret h3{color:#fff}
 .gift{text-align:center}.giftbox{width:180px;height:180px;margin:0 auto 25px;border-radius:45px;display:grid;place-items:center;font-size:90px;background:linear-gradient(135deg,#ff4d9e,#8e56ff);box-shadow:0 25px 90px rgba(255,70,165,.35);cursor:pointer;animation:gift 2s infinite}@keyframes gift{50%{transform:translateY(-10px)}}.surprise{max-height:0;overflow:hidden;opacity:0;transition:1.2s}.surprise.open{max-height:900px;opacity:1}.surprise h2{font-size:clamp(55px,10vw,100px);margin:25px 0 10px;background:linear-gradient(120deg,#fff,#ff86c5,#ae8cff);-webkit-background-clip:text;color:transparent}.surprise p{color:#b6a9b9;line-height:1.9;max-width:700px;margin:auto}.final{min-height:70vh;display:grid;place-items:center;text-align:center}.final .heart{font-size:75px}.final h2{font-size:clamp(50px,9vw,90px);margin:10px 0}.final p{color:#948798;line-height:1.8}footer{text-align:center;padding:35px;color:#655a69;border-top:1px solid rgba(255,255,255,.06);font-size:12px}
 .petal{position:fixed;top:-30px;font-size:20px;animation:fall linear forwards}.conf{position:fixed;top:-30px;font-size:20px;animation:fall 3.5s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(600deg);opacity:0}}
 @media(max-width:750px){.nav div:last-child{display:none}.counter,.reasons{grid-template-columns:repeat(2,1fr)}.inputrow{flex-direction:column}.inputrow .btn{width:100%}}@media(max-width:500px){.counter,.reasons{grid-template-columns:1fr}section{padding:85px 14px}.song{padding:35px 18px}}
@@ -138,10 +138,24 @@ Sana verebileceğim en güzel cümle belki de şu:<br><br>
 
 <section>
 <div class="container">
-<div class="heading reveal"><div class="kicker">Gizli</div><h2>Sadece Saryam'ın açabileceği yer 🔐</h2><p>İpucu: Senin adın. ❤️</p></div>
-<div class="glass secret reveal">
-<div class="inputrow"><input id="code" placeholder="Gizli kelimeyi yaz..." autocomplete="off"><button class="btn" onclick="unlock()">Kilidi Aç 🔓</button></div>
-<div class="secretmsg" id="secret"></div>
+<div class="heading reveal"><div class="kicker">Bizim tarihimiz</div><h2>Kalbimin kilidi 🔐</h2><p>Şifre bir kelime değil... Bizim başladığımız tarih.</p></div>
+<div class="glass secret reveal" id="dateLock">
+  <div style="font-size:70px;filter:drop-shadow(0 0 25px rgba(255,70,170,.5));animation:beat 1.4s infinite">🔐</div>
+  <h3 style="font:600 34px 'Playfair Display',serif;margin:10px 0">Tarihi biliyor musun Saryam?</h3>
+  <p style="color:#988a9a;line-height:1.7">Kalbimin kilidini açmak için bizim özel günümüzü yaz.</p>
+  <div class="inputrow">
+    <input id="dateCode" inputmode="numeric" maxlength="10" placeholder="GG.AA.YYYY" autocomplete="off">
+    <button class="btn" onclick="unlockDate()">❤️ Kalbimi Aç</button>
+  </div>
+  <div class="secretmsg" id="secret"></div>
+  <div id="secretRoom" style="display:none;margin-top:30px">
+    <div style="font-size:56px;letter-spacing:12px;line-height:1.8">❤️ 🌹 ✨ 💖 🌙 🎁 ⭐ 💕 🦋 💗</div>
+    <div class="glass" style="padding:30px;margin-top:20px;background:rgba(255,80,170,.07)">
+      <div style="font-size:45px">💌</div>
+      <h3 style="font:600 35px 'Playfair Display',serif;margin:10px 0">DOĞRU! 🔓</h3>
+      <p style="color:#c4b6c7;line-height:1.9">O gün sadece bir tarih değildi...<br><strong style="color:#ff9dce;font-size:22px">O gün Eren ❤️ Saryam başladı.</strong><br><br>15.12.2025 → ∞</p>
+    </div>
+  </div>
 </div>
 </div>
 </section>
@@ -187,8 +201,35 @@ const lines=["Saryam... ❤️","Sen benim en güzel hikâyemsin.","İyi ki vars
 let li=0;setInterval(()=>{if(!audio.paused){lyrics.style.opacity=0;setTimeout(()=>{lyrics.textContent="“"+lines[li++%lines.length]+"”";lyrics.style.opacity=1},250)}},5000);
 function counter(){let t=Math.max(0,Math.floor((Date.now()-start)/1000));document.getElementById("d").textContent=Math.floor(t/86400).toLocaleString("tr-TR");document.getElementById("h").textContent=String(Math.floor(t%86400/3600)).padStart(2,"0");document.getElementById("m").textContent=String(Math.floor(t%3600/60)).padStart(2,"0");document.getElementById("s").textContent=String(t%60).padStart(2,"0")}counter();setInterval(counter,1000);
 function openLetter(){document.getElementById("letter").classList.toggle("open");petals(18)}
-function unlock(){let v=document.getElementById("code").value.trim().toLowerCase(),o=document.getElementById("secret");if(v==="sarya"){o.innerHTML="🔓 Açıldı...<br><br><strong>Hoş geldin Saryam. Bu bölümün şifresi bile sensin. ❤️</strong>";petals(35);confetti()}else o.textContent="🔒 Olmadı... İpucu: Senin adın. ❤️"}
-document.getElementById("code").addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});
+function unlockDate(){
+  const v=document.getElementById("dateCode").value.trim().replace(/\//g,".");
+  const o=document.getElementById("secret");
+  if(v==="15.12.2025"){
+    o.innerHTML="🔓 <strong>DOĞRU TARİH!</strong>";
+    document.getElementById("secretRoom").style.display="block";
+    massiveHearts(180);
+    petals(90);
+    confetti();
+    setTimeout(()=>document.getElementById("secretRoom").scrollIntoView({behavior:"smooth",block:"center"}),250);
+  }else{
+    o.textContent="🔒 Bu tarih değil... İpucu: Hikâyemizin başladığı gün. ❤️";
+  }
+}
+document.getElementById("dateCode").addEventListener("keydown",e=>{if(e.key==="Enter")unlockDate()});
+function massiveHearts(n){
+  const layer=document.getElementById("petals");
+  for(let i=0;i<n;i++){
+    const p=document.createElement("div");
+    p.className="petal";
+    p.textContent=["❤️","💖","💕","💗","💓","💞","💘","🌹","✨","⭐"][Math.floor(Math.random()*10)];
+    p.style.left=Math.random()*100+"vw";
+    p.style.fontSize=(14+Math.random()*32)+"px";
+    p.style.animationDuration=(3+Math.random()*6)+"s";
+    p.style.zIndex=20;
+    layer.appendChild(p);
+    setTimeout(()=>p.remove(),10000);
+  }
+}
 function gift(){document.getElementById("surprise").classList.add("open");petals(80);confetti();setTimeout(()=>document.getElementById("surprise").scrollIntoView({behavior:"smooth",block:"center"}),250)}
 function petals(n){for(let i=0;i<n;i++){let p=document.createElement("div");p.className="petal";p.textContent=["🌹","❤️","💗","💕","✨"][Math.floor(Math.random()*5)];p.style.left=Math.random()*100+"vw";p.style.animationDuration=(3+Math.random()*5)+"s";document.getElementById("petals").appendChild(p);setTimeout(()=>p.remove(),8000)}}
 function confetti(){for(let i=0;i<70;i++){let p=document.createElement("div");p.className="conf";p.textContent=["❤️","💖","✨","💕","🌹"][Math.floor(Math.random()*5)];p.style.left=Math.random()*100+"vw";p.style.animationDuration=(2.5+Math.random()*2)+"s";document.getElementById("confetti").appendChild(p);setTimeout(()=>p.remove(),5000)}}
